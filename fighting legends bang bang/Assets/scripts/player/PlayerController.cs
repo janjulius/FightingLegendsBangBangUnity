@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody body;
-    public float speed = 10.0f;
-    public float gravity = 10.0f;
-    public float inAirControl = 0.1f;
-    public float maxVelocityChange = 10.0f;
-    public bool canJump = true;
-    public float jumpHeight = 2.0f;
+    private float speed = 10.0f;
+    private float gravity = 15;
+    private float inAirControl = 0.8f;
+    private float maxVelocityChange = 10.0f;
+    private bool canJump = true;
+    private float jumpHeight = 2.0f;
     private bool grounded = false;
     private CapsuleCollider capsule;
     private Vector3 groundVelocity;
@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
             // Apply a force that attempts to reach our target velocity
             var velocity = body.velocity;
             var velocityChange = (targetVelocity - velocity) + groundVelocity;
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
             velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
             velocityChange.y = 0;
             body.AddForce(velocityChange, ForceMode.VelocityChange);
@@ -58,11 +57,16 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // Add in air
-            var targetVelocity = new Vector3(0, 0, Input.GetAxis("Horizontal"));
-            targetVelocity = transform.TransformDirection(targetVelocity) * inAirControl;
+            Vector3 targetVelocity = new Vector3(0, 0, Input.GetAxis("Horizontal"));
+            targetVelocity = transform.TransformDirection(targetVelocity);
+            targetVelocity *= speed * inAirControl;
 
-            body.AddForce(targetVelocity, ForceMode.VelocityChange);
+            // Apply a force that attempts to reach our target velocity
+            var velocity = body.velocity;
+            var velocityChange = (targetVelocity - velocity) + groundVelocity;
+            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+            velocityChange.y = 0;
+            body.AddForce(velocityChange, ForceMode.VelocityChange);
         }
 
         // We apply gravity manually for more tuning control
