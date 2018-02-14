@@ -25,6 +25,7 @@ public class PlayerNetwork : MonoBehaviour
     {
         if (scene.name == "test")
         {
+            playersInGame = 0;
             if(PhotonNetwork.isMasterClient)
                 MasterLoadedGame();
             else
@@ -46,7 +47,7 @@ public class PlayerNetwork : MonoBehaviour
     [PunRPC]
     private void RPC_LoadGameOthers()
     {
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel(2);
     }
 
     [PunRPC]

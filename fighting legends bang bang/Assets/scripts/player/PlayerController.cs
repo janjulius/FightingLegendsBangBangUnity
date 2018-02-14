@@ -75,6 +75,12 @@ public class PlayerController : MonoBehaviour
             pb.RegularAttack(right ? 0 : -1);
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.LoadLevel(1);
+        }
+
         if (grounded)
             jumpsLeft = maxJumps;
     }

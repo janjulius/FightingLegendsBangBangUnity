@@ -9,13 +9,17 @@ public class LobbySystem : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this);
+        PhotonNetwork.LoadLevel(1);
     }
 
     // Use this for initialization
     void Start()
     {
-        print("connecting to server...");
-        PhotonNetwork.ConnectUsingSettings("1");
+        if (!PhotonNetwork.connected)
+        {
+            print("connecting to server...");
+            PhotonNetwork.ConnectUsingSettings("1");
+        }
     }
 
     private void OnConnectedToMaster()
