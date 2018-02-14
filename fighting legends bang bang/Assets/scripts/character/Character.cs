@@ -68,6 +68,7 @@ public abstract class Character : MonoBehaviour
     private double TDamageDoneWithUlt = 0;
     private int TotalUltsUsed = 0;
 
+    #region overridable methods
 
     public virtual void Attack()
     {
@@ -77,6 +78,29 @@ public abstract class Character : MonoBehaviour
     public virtual void SpecialAttack()
     {
         
+    }
+
+    public virtual void Jump()
+    {
+        
+    }
+
+    public virtual void Block()
+    {
+        
+    }
+
+    #endregion
+
+    public int SpecialCounter
+    {
+        get { return this.specialCounter; }
+        set { this.specialCounter = value; }
+    }
+
+    public bool SpecialReady()
+    {
+        return specialCounter >= specialCounterThreshHold;
     }
 
     public string GetFullName()
