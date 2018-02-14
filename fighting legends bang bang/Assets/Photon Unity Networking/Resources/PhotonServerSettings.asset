@@ -43,4 +43,7 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - DealDamage
+  - RPC_LoadedGameScene
+  - RPC_LoadGameOthers
+  - RPC_CreatePlayer
   DisableAutoOpenWizard: 1

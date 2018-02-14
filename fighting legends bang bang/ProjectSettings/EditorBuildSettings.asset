@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/lobby.unity
     guid: d0910a42b4bf1d6479adbc88322a723f
+  - enabled: 1
+    path: Assets/scenes/test.unity
+    guid: e8a85edb44e604347af8c0be75881e90
