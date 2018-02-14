@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private PhotonView photonViewer;
 
+    private PlayerBase pb;
+
     // Use this for initialization
     void Start()
     {
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
         body.freezeRotation = true;
         body.useGravity = false;
         photonViewer = GetComponent<PhotonView>();
+        pb = GetComponent<PlayerBase>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,12 @@ public class PlayerController : MonoBehaviour
         if ((grounded || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
         {
             jumping = true;
+        }
+
+        if (Input.GetButtonDown("RegularAttack"))
+        {
+            Debug.Log("regular attack by " + PhotonNetwork.player.ID);
+            pb.RegularAttack();
         }
 
         if (grounded)

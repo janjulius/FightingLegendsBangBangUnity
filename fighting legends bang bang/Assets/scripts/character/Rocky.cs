@@ -8,6 +8,9 @@ public class Rocky : Character {
     {
         name = "Rocky";
         nameAfter = "the Raccoon";
+        AttackCooldown = 0.5;
+        SwingCooldown = 0.1;
+        BasicAttackDamage = 10;
     }
     public override void Attack()
     {

@@ -19,4 +19,10 @@ public class Health : MonoBehaviour
         get { return hp; }
         set { hp = value; }
     }
+
+    public void DealDamage(int dmg)
+    {
+        this.dmg = this.dmg + dmg;
+        Debug.Log("new health " + this.dmg);
+    }
 }

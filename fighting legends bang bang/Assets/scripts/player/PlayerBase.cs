@@ -7,12 +7,11 @@ public class PlayerBase : MonoBehaviour
     public Character currentCharacter;
     public Health healthController;
 
-    public void Update()
+    public void RegularAttack()
     {
-        //Debug.Log(PhotonNetwork.playerList.Length);
-        //
-        //Debug.Log(PhotonNetwork.playerList[0].TagObject);
-
+        if (!currentCharacter.isBlocking)
+            if (currentCharacter.CanAttack())
+                currentCharacter.Attack();
     }
 
     public void TakeDamage(int damage)
