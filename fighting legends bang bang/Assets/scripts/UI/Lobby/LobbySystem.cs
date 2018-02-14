@@ -34,7 +34,7 @@ public class LobbySystem : MonoBehaviour
     private void OnJoinedLobby()
     {
         print("Joined lobby.");
-
+        GameManager.Instance.Players.Clear();
 
 
         if (!PhotonNetwork.inRoom)

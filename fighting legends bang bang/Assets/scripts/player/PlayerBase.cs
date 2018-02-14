@@ -7,6 +7,11 @@ public class PlayerBase : MonoBehaviour
     public Character currentCharacter;
     public Health healthController;
 
+    private void Start()
+    {
+        GameManager.Instance.Players.Add(this);
+    }
+
     //dir -1 = right
     //dir 0 = left
     //dir 1 = up
@@ -21,7 +26,7 @@ public class PlayerBase : MonoBehaviour
     public void SpecialAttack()
     {
         if (!currentCharacter.isBlocking)
-            if(currentCharacter.SpecialReady())
+            if (currentCharacter.SpecialReady())
                 currentCharacter.SpecialAttack();
     }
 
@@ -37,7 +42,7 @@ public class PlayerBase : MonoBehaviour
 
     public void AddKnockBack(Vector3 dir, double power)
     {
-        
+
     }
-    
+
 }
