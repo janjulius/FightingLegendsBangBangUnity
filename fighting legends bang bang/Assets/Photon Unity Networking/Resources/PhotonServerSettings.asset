@@ -27,4 +27,4 @@ MonoBehaviour:
   NetworkLogging: 1
   RunInBackground: 1
   RpcList: []
-  DisableAutoOpenWizard: 0
+  DisableAutoOpenWizard: 1
