@@ -8,10 +8,13 @@ public class Rocky : Character {
     {
         name = "Rocky";
         nameAfter = "the Raccoon";
+        AttackCooldown = 0.5;
+        SwingCooldown = 0.1;
+        BasicAttackDamage = 10;
     }
-    public override void Attack()
+    public override void Attack(int dir)
     {
-        base.Attack();
+        base.Attack(dir);
     }
 
     public override void SpecialAttack()

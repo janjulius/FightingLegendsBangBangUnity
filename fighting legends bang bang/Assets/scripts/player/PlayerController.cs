@@ -17,9 +17,13 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
+    private bool right = false;
+
     private bool jumping = false;
 
     private PhotonView photonViewer;
+
+    private PlayerBase pb;
 
     // Use this for initialization
     void Start()
@@ -29,6 +33,7 @@ public class PlayerController : MonoBehaviour
         body.freezeRotation = true;
         body.useGravity = false;
         photonViewer = GetComponent<PhotonView>();
+        pb = GetComponent<PlayerBase>();
     }
 
     // Update is called once per frame
@@ -42,6 +47,32 @@ public class PlayerController : MonoBehaviour
         if ((grounded || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
         {
             jumping = true;
+        }
+
+        Debug.Log(Input.GetButtonDown("RegularAttack") + " " + Input.GetKey(KeyCode.W));
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            right = false;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            right = true;
+        }
+        
+        if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.S)
+            || Input.GetKey(KeyCode.S) && Input.GetButtonDown("RegularAttack"))
+        {
+            pb.RegularAttack(2);
+        }
+        else if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.W)
+            || Input.GetKey(KeyCode.W) && Input.GetButtonDown("RegularAttack"))
+        {
+            pb.RegularAttack(1);
+        }
+        else if (Input.GetButtonDown("RegularAttack"))
+        {
+            pb.RegularAttack(right ? 0 : -1);
         }
 
         if (grounded)

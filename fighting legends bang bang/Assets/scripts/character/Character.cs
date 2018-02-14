@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
 using UnityEngine;
@@ -33,8 +34,8 @@ public abstract class Character : MonoBehaviour
 
     //other properties
     private bool blocking;
-    private bool isAlive;
-    private bool isStunned;
+    private bool alive;
+    private bool stunned;
     private Vector3 knockBack;
     private double maxGravityVelocity;
     private double gravityVelocity;
@@ -46,8 +47,8 @@ public abstract class Character : MonoBehaviour
     private double blockCoolDownTimer;
     private double blockCooldownTime;
     private bool canBlock;
-    private double swingTimer;
-    private double swingCooldown;
+    private double swingDelay;
+    private double swingRemoveCooldown;
     private double attackRemoveCooldown;
     private double attackDelay;
     private double respawnDelay;
@@ -68,11 +69,53 @@ public abstract class Character : MonoBehaviour
     private double TDamageDoneWithUlt = 0;
     private int TotalUltsUsed = 0;
 
+    private SwingObject swingobject;
+
+    public void Start()
+    {
+        swingobject = GetComponentInChildren<SwingObject>();
+        swingobject.Setup(basicAttackDamage);
+    }
+
+    public void Update()
+    {
+        if (attackDelay >= 0)
+        {
+            attackDelay -= 1 * Time.deltaTime;
+        }
+        if (swingDelay >= 0)
+        {
+            swingDelay -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            swingobject.gameObject.SetActive(false);
+        }
+    }
+
     #region overridable methods
 
-    public virtual void Attack()
+    public virtual void Attack(int dir)
     {
-        
+        swingobject.gameObject.SetActive(true);
+        Debug.Log(dir);
+        switch (dir)
+        {
+            case -1:
+                swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1);
+                break;
+            case 0:
+                swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 1);
+                break;
+            case 1:
+                swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z);
+                break;
+            case 2:
+                swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1, gameObject.transform.position.z);
+                break;
+        }
+        swingDelay = swingRemoveCooldown;
+        attackDelay = attackRemoveCooldown;
     }
 
     public virtual void SpecialAttack()
@@ -92,15 +135,47 @@ public abstract class Character : MonoBehaviour
 
     #endregion
 
+    public int BasicAttackDamage
+    {
+        get { return basicAttackDamage; }
+        set { basicAttackDamage = value; }
+    }
+
     public int SpecialCounter
     {
         get { return this.specialCounter; }
         set { this.specialCounter = value; }
     }
 
+    public bool isBlocking {
+        get { return blocking; }
+        set { blocking = value; }
+    }
+
+    public double AttackCooldown
+    {
+        get { return attackRemoveCooldown; }
+        set { attackRemoveCooldown = value; }
+    }
+
+    public double AttackDelay
+    {
+        get { return attackDelay; }
+    }
+
+    public double SwingCooldown {
+        get { return swingRemoveCooldown; }
+        set { swingRemoveCooldown = value; }
+    } 
+
     public bool SpecialReady()
     {
         return specialCounter >= specialCounterThreshHold;
+    }
+
+    public bool CanAttack()
+    {
+        return attackDelay <= 0;
     }
 
     public string GetFullName()
