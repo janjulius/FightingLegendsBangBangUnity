@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
         set { hp = value; }
     }
 
+    [PunRPC]
     public void DealDamage(int dmg)
     {
         this.dmg = this.dmg + dmg;
