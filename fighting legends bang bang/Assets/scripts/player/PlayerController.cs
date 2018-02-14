@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody body;
+    [SerializeField] private GameObject playerBody;
     private float speed = 13.0f;
     private float gravity = 25;
     private float inAirControl = 0.8f;
@@ -39,6 +40,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateFaceDirection();
+
         if (!photonViewer.isMine)
             return;
 
@@ -50,15 +53,6 @@ public class PlayerController : MonoBehaviour
         }
 
         Debug.Log(Input.GetButtonDown("RegularAttack") + " " + Input.GetKey(KeyCode.W));
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            right = false;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            right = true;
-        }
         
         if (Input.GetButton("RegularAttack") && Input.GetKey(KeyCode.S)
             || Input.GetKey(KeyCode.S) && Input.GetButton("RegularAttack"))
@@ -87,6 +81,20 @@ public class PlayerController : MonoBehaviour
 
         if (grounded)
             jumpsLeft = maxJumps;
+    }
+
+    private void UpdateFaceDirection()
+    {
+        if (body.velocity.z > 1)
+        {
+            right = true;
+            playerBody.transform.eulerAngles = new Vector3(0,180,0);
+        }else if (body.velocity.z < -1)
+        {
+            right = false;
+            playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
+
+        }
     }
 
     void FixedUpdate()

@@ -7,6 +7,8 @@ public class RoomListing : MonoBehaviour
 {
 
     [SerializeField] private Text roomNameText;
+    [SerializeField] private Text playerNameText;
+    [SerializeField] private Text totalPlayersText;
     public bool Updated;
 
     public string RoomName;
@@ -14,7 +16,7 @@ public class RoomListing : MonoBehaviour
     private void Start()
     {
         GameObject lobbyCanvasObj = MainCanvasManager.Instance.lobbyCanvas.gameObject;
-        if(lobbyCanvasObj == null)
+        if (lobbyCanvasObj == null)
             return;
 
         LobbyCanvas lobbyCanvas = lobbyCanvasObj.GetComponent<LobbyCanvas>();
@@ -31,9 +33,15 @@ public class RoomListing : MonoBehaviour
 
     }
 
-    public void SetRoomNameText(string text)
+    public void SetRoomNameText(RoomInfo room)
     {
-        RoomName = text;
+        RoomName = room.Name;
         roomNameText.text = RoomName;
+
+        string roomOwner = "";
+        playerNameText.text = string.Format("owner: {0}", roomOwner);
+
+        totalPlayersText.text = string.Format("players: {0}/{1}", room.MaxPlayers, room.PlayerCount);
+
     }
 }

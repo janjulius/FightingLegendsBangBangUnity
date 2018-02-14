@@ -42,7 +42,7 @@ public class RoomLayoutGroup : MonoBehaviour
         if (index != -1)
         {
             RoomListing roomListing = roomListingButtons[index];
-            roomListing.SetRoomNameText(room.Name);
+            roomListing.SetRoomNameText(room);
             roomListing.Updated = true;
         }
     }
