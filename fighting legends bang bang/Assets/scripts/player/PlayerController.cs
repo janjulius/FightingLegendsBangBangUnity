@@ -5,15 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody body;
-    private float speed = 10.0f;
-    private float gravity = 15;
+    private float speed = 13.0f;
+    private float gravity = 25;
     private float inAirControl = 0.8f;
     private float maxVelocityChange = 10.0f;
     private bool canJump = true;
-    private float jumpHeight = 2.0f;
+    private float jumpHeight = 4.0f;
+    private float jumpsLeft = 1;
+    private float maxJumps = 1;
     private bool grounded = false;
     private CapsuleCollider capsule;
     private Vector3 groundVelocity;
+
+    private bool jumping = false;
 
     private PhotonView photonViewer;
 
@@ -30,7 +34,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!photonViewer.isMine)
+            return;
 
+        TrackGrounded();
+
+        if ((grounded || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
+        {
+            jumping = true;
+        }
+
+        if (grounded)
+            jumpsLeft = maxJumps;
     }
 
     void FixedUpdate()
@@ -39,77 +54,57 @@ public class PlayerController : MonoBehaviour
             return;
 
 
-            if (grounded)
+
+        // Calculate how fast we should be moving
+        Vector3 targetVelocity = new Vector3(0, 0, Input.GetAxis("Horizontal"));
+        targetVelocity = transform.TransformDirection(targetVelocity);
+        targetVelocity *= speed;
+
+        // Apply a force that attempts to reach our target velocity
+        var velocity = body.velocity;
+        var velocityChange = (targetVelocity - velocity) + groundVelocity;
+        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+        velocityChange.y = 0;
+        body.AddForce(velocityChange, ForceMode.VelocityChange);
+
+
+        // Jump
+        if (jumping)
         {
-            // Calculate how fast we should be moving
-            Vector3 targetVelocity = new Vector3(0, 0, Input.GetAxis("Horizontal"));
-            targetVelocity = transform.TransformDirection(targetVelocity);
-            targetVelocity *= speed;
-
-            // Apply a force that attempts to reach our target velocity
-            var velocity = body.velocity;
-            var velocityChange = (targetVelocity - velocity) + groundVelocity;
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-            velocityChange.y = 0;
-            body.AddForce(velocityChange, ForceMode.VelocityChange);
-
-
-            // Jump
-            if (grounded && Input.GetButton("Jump"))
-            {
-                body.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
-            }
-
-            grounded = false;
+            if (!grounded)
+                jumpsLeft--;
+            body.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+            jumping = false;
         }
-        else
-        {
-            Vector3 targetVelocity = new Vector3(0, 0, Input.GetAxis("Horizontal"));
-            targetVelocity = transform.TransformDirection(targetVelocity);
-            targetVelocity *= speed * inAirControl;
 
-            // Apply a force that attempts to reach our target velocity
-            var velocity = body.velocity;
-            var velocityChange = (targetVelocity - velocity) + groundVelocity;
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-            velocityChange.y = 0;
-            body.AddForce(velocityChange, ForceMode.VelocityChange);
-        }
+        grounded = false;
 
         // We apply gravity manually for more tuning control
         body.AddForce(new Vector3(0, -gravity * body.mass, 0));
 
     }
 
-    void TrackGrounded(Collision col)
+    void TrackGrounded()
     {
-        var minimumHeight = capsule.bounds.min.y + capsule.radius;
-        foreach (var c in col.contacts)
+        Ray rayLeft = new Ray(transform.position + new Vector3(0, -0.7f, -0.4f), Vector3.down);
+        Ray rayRight = new Ray(transform.position + new Vector3(0, -0.7f, 0.4f), Vector3.down);
+        RaycastHit hitLeft;
+        RaycastHit hitRight;
+
+        if (Physics.Raycast(rayLeft, out hitLeft, 0.4f))
         {
-            if (c.point.y < minimumHeight)
-            {
-                if (col.rigidbody)
-                    groundVelocity = col.rigidbody.velocity;
-                else
-                    groundVelocity = Vector3.zero;
+            if (hitLeft.transform.gameObject.layer == 9)
                 grounded = true;
-            }
+
         }
-    }
+        else if (Physics.Raycast(rayRight, out hitRight, 0.4f))
+        {
+            if (hitRight.transform.gameObject.layer == 9)
+                grounded = true;
+        }
+        Debug.DrawLine(rayLeft.origin, rayLeft.origin + new Vector3(0, -0.4f, 0), Color.red);
+        Debug.DrawLine(rayRight.origin, rayRight.origin + new Vector3(0, -0.4f, 0), Color.red);
 
-
-    void OnCollisionStay(Collision col)
-    {
-        if (!photonViewer.isMine)
-            return;
-        TrackGrounded(col);
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        if (!photonViewer.isMine)
-            return;
-        TrackGrounded(col);
     }
 
     float CalculateJumpVerticalSpeed()
