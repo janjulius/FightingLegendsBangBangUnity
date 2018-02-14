@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
+    private PhotonView photonViewer;
+
     // Use this for initialization
     void Start()
     {
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
         capsule = GetComponent<CapsuleCollider>();
         body.freezeRotation = true;
         body.useGravity = false;
+        photonViewer = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -32,7 +35,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (grounded)
+        if (!photonViewer.isMine)
+            return;
+
+
+            if (grounded)
         {
             // Calculate how fast we should be moving
             Vector3 targetVelocity = new Vector3(0, 0, Input.GetAxis("Horizontal"));
@@ -93,11 +100,15 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay(Collision col)
     {
+        if (!photonViewer.isMine)
+            return;
         TrackGrounded(col);
     }
 
     void OnCollisionEnter(Collision col)
     {
+        if (!photonViewer.isMine)
+            return;
         TrackGrounded(col);
     }
 
