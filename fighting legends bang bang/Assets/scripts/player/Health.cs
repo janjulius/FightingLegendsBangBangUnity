@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
 
     public void DealDamage(int dmg)
     {
-        GetComponent<PhotonView>().RPC("DealDamage", PhotonTargets.All, dmg);
+        GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.All, dmg);
     }
 
 
