@@ -66,5 +66,6 @@ public class PlayerNetwork : MonoBehaviour
     {
         Vector3 spawn = new Vector3(0,5,0);
         PhotonNetwork.Instantiate("TestPlayer", spawn, Quaternion.identity, 0);
+        GetComponent<Game>().LoadInterface();
     }
 }
