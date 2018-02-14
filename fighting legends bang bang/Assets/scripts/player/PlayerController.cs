@@ -60,19 +60,24 @@ public class PlayerController : MonoBehaviour
             right = true;
         }
         
-        if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.S)
-            || Input.GetKey(KeyCode.S) && Input.GetButtonDown("RegularAttack"))
+        if (Input.GetButton("RegularAttack") && Input.GetKey(KeyCode.S)
+            || Input.GetKey(KeyCode.S) && Input.GetButton("RegularAttack"))
         {
             pb.RegularAttack(2);
         }
-        else if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.W)
-            || Input.GetKey(KeyCode.W) && Input.GetButtonDown("RegularAttack"))
+        else if (Input.GetButton("RegularAttack") && Input.GetKey(KeyCode.W)
+            || Input.GetKey(KeyCode.W) && Input.GetButton("RegularAttack"))
         {
             pb.RegularAttack(1);
         }
-        else if (Input.GetButtonDown("RegularAttack"))
+        else if (Input.GetButton("RegularAttack"))
         {
             pb.RegularAttack(right ? 0 : -1);
+        }
+
+        if (Input.GetButton("SpecialAttack"))
+        {
+            pb.SpecialAttack();
         }
 
         if (grounded)

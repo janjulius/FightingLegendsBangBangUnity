@@ -18,6 +18,13 @@ public class PlayerBase : MonoBehaviour
                 currentCharacter.Attack(dir);
     }
 
+    public void SpecialAttack()
+    {
+        if (!currentCharacter.isBlocking)
+            if(currentCharacter.SpecialReady())
+                currentCharacter.SpecialAttack();
+    }
+
     public void TakeDamage(int damage)
     {
         healthController.Damage += damage;
