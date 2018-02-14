@@ -62,7 +62,6 @@ public class CameraController : MonoBehaviour {
     Vector3 CalculateCameraPosition(Rect boundingBox)
     {
         Vector2 boundingBoxCenter = boundingBox.center;
-        Debug.Log(boundingBox.size.magnitude);
         float newpos = standardDistance + (boundingBox.size.magnitude / 2);
 
         return new Vector3(newpos, boundingBoxCenter.y, boundingBoxCenter.x);

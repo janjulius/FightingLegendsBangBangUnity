@@ -13,6 +13,9 @@ public class PlayerListing : MonoBehaviour
     public void ApplyPhotonPlayer(PhotonPlayer phoPlayer)
     {
         photonPlayer = phoPlayer;
-        playerName.text = phoPlayer.NickName;
+        if (phoPlayer.IsMasterClient)
+            playerName.text = string.Format("{0} - OWNER", phoPlayer.NickName);
+        else
+            playerName.text = string.Format("{0}", phoPlayer.NickName);
     }
 }

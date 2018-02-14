@@ -195,8 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomNameText: {fileID: 114554688035571470}
-  playerNameText: {fileID: 0}
-  totalPlayersText: {fileID: 0}
+  playerNameText: {fileID: 114309557627987718}
+  totalPlayersText: {fileID: 114507255725685062}
   Updated: 0
   RoomName: 
 --- !u!114 &114507255725685062
