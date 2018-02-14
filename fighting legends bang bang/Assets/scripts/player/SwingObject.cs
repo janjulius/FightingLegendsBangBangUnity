@@ -19,6 +19,8 @@ public class SwingObject : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log("hit someone");
+
         if (other.gameObject.GetComponent<Health>() != null)
             other.gameObject.GetComponent<Health>().DealDamage(dmg);
     }
