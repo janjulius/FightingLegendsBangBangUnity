@@ -6,8 +6,8 @@ public class Game : MonoBehaviour
 {
     private PlayerBase[] players;
     private Canvas myCanvas;
+    private GamePanelContainer gpc;
 
-    [SerializeField] private GameObject gamePlayerListingObject;
 
     //game properties
     private bool gamePaused = false;
@@ -32,24 +32,11 @@ public class Game : MonoBehaviour
 
     public void LoadInterface()
     {
-        myCanvas = GetComponent<Canvas>();
+        gpc = FindObjectOfType<GamePanelContainer>();
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
         for(int i = 0; i < photonPlayers.Length; i++)
         {
-            PlayerJoinedUpdateInterface(photonPlayers[i]);
+            gpc.PlayerJoinedInterface(photonPlayers[i]);
         }
-    }
-
-    public void PlayerJoinedUpdateInterface(PhotonPlayer player)
-    {
-        if(player == null)
-            return;
-
-        GameObject playerListingObj = Instantiate(gamePlayerListingObject);
-        playerListingObj.transform.SetParent(transform, false);
-
-        PlayerListing playerlisting = playerListingObj.GetComponent<PlayerListing>();
-        playerlisting.ApplyPhotonPlayer(player);
-        
     }
 }
