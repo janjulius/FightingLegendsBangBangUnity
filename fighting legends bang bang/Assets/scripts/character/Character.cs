@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
 
-    private string name, nameBefore, nameAfter;
+    public string name = "", nameBefore = "", nameAfter = "";
     private string specialAttackName;
 
     private int id;
@@ -76,5 +77,22 @@ public abstract class Character : MonoBehaviour
     public virtual void SpecialAttack()
     {
         
+    }
+
+    public string GetFullName()
+    {
+        if (nameBefore != "")
+        {
+            if (nameAfter != "")
+            {
+                return nameBefore + " " + name + " " + nameAfter;
+            }
+            return nameBefore + " " + name;
+        }
+        if (nameAfter != "")
+        {
+            return name + " " + nameAfter;
+        }
+        return name;
     }
 }
