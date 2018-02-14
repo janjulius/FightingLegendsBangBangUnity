@@ -20,8 +20,14 @@ public class Health : MonoBehaviour
         set { hp = value; }
     }
 
-    [PunRPC]
     public void DealDamage(int dmg)
+    {
+        GetComponent<PhotonView>().RPC("DealDamage", PhotonTargets.All, dmg);
+    }
+
+
+    [PunRPC]
+    public void RPC_DealDamage(int dmg)
     {
         this.dmg = this.dmg + dmg;
         Debug.Log("new health " + this.dmg);

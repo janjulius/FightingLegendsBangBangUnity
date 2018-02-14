@@ -19,7 +19,7 @@ public class SwingObject : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<PhotonView>() != null)
-            other.gameObject.GetComponent<PhotonView>().RPC("DealDamage", PhotonTargets.All, dmg);
+        if (other.gameObject.GetComponent<Health>() != null)
+            other.gameObject.GetComponent<Health>().DealDamage(dmg);
     }
 }
