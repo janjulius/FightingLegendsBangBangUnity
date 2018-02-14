@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
+    private bool right = false;
+
     private bool jumping = false;
 
     private PhotonView photonViewer;
@@ -47,10 +49,30 @@ public class PlayerController : MonoBehaviour
             jumping = true;
         }
 
-        if (Input.GetButtonDown("RegularAttack"))
+        Debug.Log(Input.GetButtonDown("RegularAttack") + " " + Input.GetKey(KeyCode.W));
+
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("regular attack by " + PhotonNetwork.player.ID);
-            pb.RegularAttack();
+            right = false;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            right = true;
+        }
+        
+        if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.S)
+            || Input.GetKey(KeyCode.S) && Input.GetButtonDown("RegularAttack"))
+        {
+            pb.RegularAttack(2);
+        }
+        else if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.W)
+            || Input.GetKey(KeyCode.W) && Input.GetButtonDown("RegularAttack"))
+        {
+            pb.RegularAttack(1);
+        }
+        else if (Input.GetButtonDown("RegularAttack"))
+        {
+            pb.RegularAttack(right ? 0 : -1);
         }
 
         if (grounded)

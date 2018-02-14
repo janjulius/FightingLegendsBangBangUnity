@@ -7,11 +7,15 @@ public class PlayerBase : MonoBehaviour
     public Character currentCharacter;
     public Health healthController;
 
-    public void RegularAttack()
+    //dir -1 = right
+    //dir 0 = left
+    //dir 1 = up
+    //dir 2 = down
+    public void RegularAttack(int dir)
     {
         if (!currentCharacter.isBlocking)
             if (currentCharacter.CanAttack())
-                currentCharacter.Attack();
+                currentCharacter.Attack(dir);
     }
 
     public void TakeDamage(int damage)

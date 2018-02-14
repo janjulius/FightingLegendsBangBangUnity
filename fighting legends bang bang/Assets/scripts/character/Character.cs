@@ -95,10 +95,26 @@ public abstract class Character : MonoBehaviour
 
     #region overridable methods
 
-    public virtual void Attack()
+    public virtual void Attack(int dir)
     {
-        swingDelay = swingRemoveCooldown;
         swingobject.gameObject.SetActive(true);
+        Debug.Log(dir);
+        switch (dir)
+        {
+            case -1:
+                swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1);
+                break;
+            case 0:
+                swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 1);
+                break;
+            case 1:
+                swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z);
+                break;
+            case 2:
+                swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1, gameObject.transform.position.z);
+                break;
+        }
+        swingDelay = swingRemoveCooldown;
         attackDelay = attackRemoveCooldown;
     }
 
