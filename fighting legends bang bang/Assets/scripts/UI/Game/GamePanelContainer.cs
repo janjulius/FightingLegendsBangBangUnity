@@ -6,7 +6,7 @@ public class GamePanelContainer : MonoBehaviour
 {
     [SerializeField] private GameObject playerListingGameObject;
 
-    private List<PlayerPanel> playerPanels = new List<PlayerPanel>();
+    public List<PlayerPanel> playerPanels = new List<PlayerPanel>();
 
     public void PlayerJoinedInterface(PhotonPlayer photonPlayer)
     {

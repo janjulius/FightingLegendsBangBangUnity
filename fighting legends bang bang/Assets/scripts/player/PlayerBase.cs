@@ -6,10 +6,18 @@ public class PlayerBase : MonoBehaviour
 {
     public Character currentCharacter;
     public Health healthController;
+    public PhotonPlayer netPlayer;
+    public GamePanelContainer gpc;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.Instance.Players.Add(this);
+        PhotonView phov = GetComponent<PhotonView>();
+        netPlayer = phov.owner;
+        gpc = FindObjectOfType<GamePanelContainer>();
+        gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).playerBase = this;
+
+        PhotonNetwork.player.TagObject = gameObject;
     }
 
     //dir -1 = right

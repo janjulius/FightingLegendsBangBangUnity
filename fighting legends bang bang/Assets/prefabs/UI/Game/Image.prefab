@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 222997267144035400}
   - component: {fileID: 114541369887465976}
   - component: {fileID: 114707580294061106}
+  - component: {fileID: 114132813472011594}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -63,6 +64,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114132813472011594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780890714412258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 100
+  m_MinHeight: 100
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &114205438652136530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,17 +105,17 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
+    m_FontStyle: 1
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
-    m_RichText: 1
+    m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: PLAYER#1232
 --- !u!114 &114541369887465976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,7 +154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a045703b6984a44c9541ef981760b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBase: {fileID: 0}
   playerName: {fileID: 114205438652136530}
+  charImage: {fileID: 0}
+  damageText: {fileID: 114751764766250272}
+  charText: {fileID: 0}
 --- !u!114 &114751764766250272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,17 +181,17 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
+    m_FontStyle: 1
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 500%
 --- !u!222 &222261918338424342
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -201,8 +225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -26}
-  m_SizeDelta: {x: 67.2, y: 23.4}
+  m_AnchoredPosition: {x: -12.97, y: -4.58}
+  m_SizeDelta: {x: 128.95, y: 44.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224230763943641040
 RectTransform:
@@ -219,8 +243,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: 100, y: 30}
+  m_AnchoredPosition: {x: 0.0000038147, y: 72.68}
+  m_SizeDelta: {x: 180, y: 34.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224518355588171378
 RectTransform:
@@ -237,8 +261,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -307, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -8,6 +8,9 @@ public class Health : MonoBehaviour
 
     private int hp = 250;
 
+    private PlayerBase pb;
+
+
     public int Damage
     {
         get { return dmg; }
@@ -18,6 +21,11 @@ public class Health : MonoBehaviour
     {
         get { return hp; }
         set { hp = value; }
+    }
+
+    private void Awake()
+    {
+        pb = GetComponent<PlayerBase>();
     }
 
     public void DealDamage(int dmg)
@@ -32,5 +40,6 @@ public class Health : MonoBehaviour
     {
         this.dmg = this.dmg + dmg;
         Debug.Log("new health " + this.dmg);
+        pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
     }
 }

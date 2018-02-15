@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateFaceDirection()
     {
-        if (Input.GetAxis("Horizontal") > 0.5 && !right)
+        if (Input.GetAxis("Horizontal") > 0.2 && !right)
         {
             right = true;
             photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, true);
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
             lookDirection.x = 0;
 
         }
-        else if (Input.GetAxis("Horizontal") < -0.5 && right)
+        else if (Input.GetAxis("Horizontal") < -0.2 && right)
         {
             right = false;
             photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, false);
@@ -107,12 +107,12 @@ public class PlayerController : MonoBehaviour
             lookDirection.x = -1;
 
         }
-        if (Input.GetAxis("Vertical") > 0.5)
+        if (Input.GetAxis("Vertical") > 0.2)
         {
             lookDirection.y = 1;
 
         }
-        else if (Input.GetAxis("Vertical") < -0.5)
+        else if (Input.GetAxis("Vertical") < -0.2)
         {
             lookDirection.y = 2;
         }

@@ -7,6 +7,7 @@ public class PlayerPanel : MonoBehaviour {
 
 
     public PhotonPlayer photonPlayer;
+    public PlayerBase playerBase;
 
     [SerializeField] private Text playerName;
     [SerializeField] private Image charImage;
@@ -17,5 +18,11 @@ public class PlayerPanel : MonoBehaviour {
     {
         photonPlayer = phoPlayer;
         playerName.text = phoPlayer.NickName;
+        damageText.text = string.Format("{0}%", 0);
+    }
+
+    public void UpdateUI()
+    {
+        damageText.text = string.Format("{0}%", playerBase.healthController.Damage);
     }
 }

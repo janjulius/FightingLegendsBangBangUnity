@@ -64,8 +64,10 @@ public class PlayerNetwork : MonoBehaviour
     [PunRPC]
     private void RPC_CreatePlayer()
     {
-        Vector3 spawn = new Vector3(0,5,0);
-        PhotonNetwork.Instantiate("TestPlayer", spawn, Quaternion.identity, 0);
         GetComponent<Game>().LoadInterface();
+
+        Vector3 spawn = new Vector3(0,5,0);
+        GameObject obj = PhotonNetwork.Instantiate("TestPlayer", spawn, Quaternion.identity, 0);
+        PlayerBase pBase = obj.GetComponent<PlayerBase>();
     }
 }
