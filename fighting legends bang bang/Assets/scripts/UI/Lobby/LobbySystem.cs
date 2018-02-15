@@ -19,6 +19,8 @@ public class LobbySystem : MonoBehaviour
         {
             print("connecting to server...");
             PhotonNetwork.ConnectUsingSettings("1");
+            PhotonNetwork.sendRate = 20;
+            PhotonNetwork.sendRateOnSerialize = 20;
         }
     }
 

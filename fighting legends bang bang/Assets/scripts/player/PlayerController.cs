@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     private bool right = false;
 
+    private Vector2 lookDirection = new Vector2();
+
     private bool jumping = false;
 
     private PhotonView photonViewer;
@@ -40,10 +42,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateFaceDirection();
+
 
         if (!photonViewer.isMine)
             return;
+
+        UpdateFaceDirection();
 
         TrackGrounded();
 
@@ -53,7 +57,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Debug.Log(Input.GetButtonDown("RegularAttack") + " " + Input.GetKey(KeyCode.W));
-        
+
         if (Input.GetButton("RegularAttack") && Input.GetKey(KeyCode.S)
             || Input.GetKey(KeyCode.S) && Input.GetButton("RegularAttack"))
         {
@@ -66,7 +70,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetButton("RegularAttack"))
         {
-            pb.RegularAttack(right ? 0 : -1);
+            int dir = lookDirection.y != 0 ? (int)lookDirection.y : (int)lookDirection.x;
+
+            pb.RegularAttack(dir);
         }
 
         if (Input.GetButton("SpecialAttack"))
@@ -85,15 +91,34 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateFaceDirection()
     {
-        if (body.velocity.z > 1)
+        print(string.Format("horizontal: {0} , vertical: {1}", Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+
+        if (Input.GetAxis("Horizontal") > 0.5 && !right)
         {
             right = true;
-            playerBody.transform.eulerAngles = new Vector3(0,180,0);
-        }else if (body.velocity.z < -1)
+            playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
+            lookDirection.x = 0;
+
+        }
+        else if (Input.GetAxis("Horizontal") < -0.5 && right)
         {
             right = false;
             playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
+            lookDirection.x = -1;
 
+        }
+        if (Input.GetAxis("Vertical") > 0.5)
+        {
+            lookDirection.y = 1;
+
+        }
+        else if (Input.GetAxis("Vertical") < -0.5)
+        {
+            lookDirection.y = 2;
+        }
+        else
+        {
+            lookDirection.y = 0;
         }
     }
 
