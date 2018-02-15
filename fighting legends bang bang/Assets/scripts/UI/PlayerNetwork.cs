@@ -98,7 +98,7 @@ public class PlayerNetwork : MonoBehaviour
         Debug.Log(pre);
 
         Vector3 spawn = new Vector3(0, 5, 0);
-        GameObject obj = PhotonNetwork.Instantiate("TestPlayer", spawn, Quaternion.identity, 0);
+        GameObject obj = PhotonNetwork.Instantiate(pre, spawn, Quaternion.identity, 0);
         PlayerBase pBase = obj.GetComponent<PlayerBase>();
     }
 

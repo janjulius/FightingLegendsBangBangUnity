@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
         body.useGravity = false;
         photonViewer = GetComponent<PhotonView>();
         pb = GetComponent<PlayerBase>();
+        animator = GetComponentInChildren<Animator>();
+        playerBody = animator.transform.gameObject;
     }
 
     // Update is called once per frame
@@ -238,7 +240,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsGrounded", g);
     }
 
-    void DoPunch(int a)
+    public void DoPunch(int a)
     {
         Debug.Log("punch anim " + a);
         animator.SetInteger("AttackState", a);

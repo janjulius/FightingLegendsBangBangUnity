@@ -91,6 +91,7 @@ public abstract class Character : MonoBehaviour
         else
         {
             swingobject.gameObject.SetActive(false);
+            GetComponent<PlayerController>().DoPunch(-1);
         }
     }
 
