@@ -64,19 +64,19 @@ public class PlayerController : MonoBehaviour
             photonViewer.RPC("DoJump", PhotonTargets.Others);
         }
 
-        if (Input.GetButton("RegularAttack") && Input.GetKey(KeyCode.S)
-            || Input.GetKey(KeyCode.S) && Input.GetButton("RegularAttack"))
+        if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.S)
+            || Input.GetKey(KeyCode.S) && Input.GetButtonDown("RegularAttack"))
         {
             pb.RegularAttack(2);
             DoPunch(3);
         }
-        else if (Input.GetButton("RegularAttack") && Input.GetKey(KeyCode.W)
-            || Input.GetKey(KeyCode.W) && Input.GetButton("RegularAttack"))
+        else if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.W)
+            || Input.GetKey(KeyCode.W) && Input.GetButtonDown("RegularAttack"))
         {
             pb.RegularAttack(1);
             DoPunch(2);
         }
-        else if (Input.GetButton("RegularAttack"))
+        else if (Input.GetButtonDown("RegularAttack"))
         {
             int dir = lookDirection.y != 0 ? (int)lookDirection.y : (int)lookDirection.x;
 
