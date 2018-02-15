@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CurrentRoomCanvas : MonoBehaviour
 {
+    public PlayerLayoutGroup PlayerLayoutGroup;
+
     public void OnClickStartMatch()
     {
         if(!PhotonNetwork.isMasterClient)

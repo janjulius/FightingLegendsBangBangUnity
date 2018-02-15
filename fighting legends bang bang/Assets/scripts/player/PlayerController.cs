@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
         if (!photonViewer.isMine)
             return;
 
+
+        pb.CheckWithinArena();
         UpdateFaceDirection();
 
         TrackGrounded();
@@ -125,7 +127,7 @@ public class PlayerController : MonoBehaviour
     [PunRPC]
     public void RPC_UpdateDirection(bool dir)
     {
-        playerBody.transform.eulerAngles = new Vector3(0, dir ? 180 : 0, 0);
+        playerBody.transform.eulerAngles = new Vector3(0, dir ? 0 : 180, 0);
     }
 
     void FixedUpdate()

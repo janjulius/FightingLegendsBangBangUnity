@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4403d74f41507fe41a2a4eda6378be2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 0}
 --- !u!114 &1371888468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +219,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Players: []
+  CharacterHeads:
+  - {fileID: 21300000, guid: 8a422aefc691f32458e3357b35c7725f, type: 3}
+  - {fileID: 21300000, guid: 4d2b714a55e279a449b2322a469b6eec, type: 3}
+  - {fileID: 21300000, guid: 0914d614d1c4f814b981d09e913a2ab3, type: 3}
+  - {fileID: 21300000, guid: df1a1d34b225db54fa88176c9f0bd9ee, type: 3}
+  - {fileID: 21300000, guid: 9af7bb2bb7aff82469ecd289b8f77dc6, type: 3}
+  - {fileID: 21300000, guid: e8074bef4bc0b3b4ca7f4c37a08964a2, type: 3}
+  - {fileID: 21300000, guid: 267bd591d91bec7469c0c816f9d66c3e, type: 3}
+  - {fileID: 21300000, guid: bce3bb89f1d54a94abc0288f655712e8, type: 3}
+  - {fileID: 21300000, guid: cdadd3e8ec08aca4596a1082495d832b, type: 3}
 --- !u!114 &1371888473
 MonoBehaviour:
   m_ObjectHideFlags: 0

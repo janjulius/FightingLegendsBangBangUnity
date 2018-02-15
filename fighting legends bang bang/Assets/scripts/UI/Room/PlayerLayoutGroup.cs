@@ -6,7 +6,7 @@ public class PlayerLayoutGroup : MonoBehaviour
 {
     [SerializeField] private GameObject playerListingGameObject;
 
-    private List<PlayerListing> playerListings = new List<PlayerListing>();
+    public List<PlayerListing> playerListings = new List<PlayerListing>();
 
     private void OnJoinedRoom()
     {
@@ -23,6 +23,18 @@ public class PlayerLayoutGroup : MonoBehaviour
         {
             PlayerJoinedRoom(photonPlayers[i]);
         }
+
+        print(PhotonNetwork.player);
+
+        Color randomc = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+
+        print("i Joined the lobby");
+        PlayerNetwork.Instance.properties["charId"] = 0;
+        PlayerNetwork.Instance.properties["pColorR"] = randomc.r;
+        PlayerNetwork.Instance.properties["pColorG"] = randomc.g;
+        PlayerNetwork.Instance.properties["pColorB"] = randomc.b;
+        PhotonNetwork.player.SetCustomProperties(PlayerNetwork.Instance.properties);
+        PlayerNetwork.Instance.photonView.RPC("RPC_UpdateSelection", PhotonTargets.AllBuffered, PhotonNetwork.player);
     }
 
     private void OnPhotonPlayerConnected(PhotonPlayer phoPlayer)

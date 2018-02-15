@@ -24,10 +24,33 @@ public class PlayerBase : MonoBehaviour
 
         pc.transform.parent = gameObject.transform;
         GetComponent<PlayerController>().PlayerBody = pc;
-        
+
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).UpdateUI();
         PhotonNetwork.player.TagObject = gameObject;
     }
+
+    public void CheckWithinArena()
+    {
+        AreaManager manager = AreaManager.Instance;
+
+        Vector3 arenaTopRight = new Vector3(manager.arenaBottemRight.x, manager.arenaTopLeft.y, manager.arenaBottemRight.z);
+        Vector3 arenaBottemLeft = new Vector3(manager.arenaTopLeft.x, manager.arenaBottemRight.y, manager.arenaTopLeft.z);
+
+        Rect arena = new Rect();
+        arena.xMin = manager.arenaTopLeft.z;
+        arena.yMin = manager.arenaTopLeft.y;
+        arena.xMax = arenaTopRight.z;
+        arena.yMax = arenaBottemLeft.y;
+
+        var playerPoint = new Vector3(transform.position.z, transform.position.y, 0);
+
+        if (!arena.Contains(playerPoint, true) && !healthController.death)
+        {
+            healthController.OnDeath();
+        }
+    }
+
+
 
     //dir -1 = right
     //dir 0 = left

@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
     private int hp = 250;
     private int lives = 3;
 
+    public bool death = false;
+
     private PlayerBase pb;
 
 
@@ -26,7 +28,7 @@ public class Health : MonoBehaviour
 
     public int Lives
     {
-        get { return lives;}
+        get { return lives; }
         set { lives = value; }
     }
 
@@ -41,6 +43,29 @@ public class Health : MonoBehaviour
         GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.All, dmg);
     }
 
+    public void OnDeath()
+    {
+        death = true;
+        transform.position = new Vector3(0, 5, 0);
+        GetComponent<PhotonView>().RPC("RPC_OnDeath", PhotonTargets.All);
+    }
+
+    [PunRPC]
+    public void RPC_OnDeath()
+    {
+        this.death = true;
+        this.lives--;
+        this.Damage = 0;
+        pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
+
+        if (this.lives <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+
+        this.death = false;
+    }
 
     [PunRPC]
     public void RPC_DealDamage(int dmg)
