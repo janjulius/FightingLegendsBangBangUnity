@@ -16,7 +16,7 @@ public class PlayerListing : MonoBehaviour
     {
         photonPlayer = phoPlayer;
         if (phoPlayer.IsMasterClient)
-            playerName.text = string.Format("{0} - OWNER", phoPlayer.NickName);
+            playerName.text = string.Format("{0} - HOST", phoPlayer.NickName);
         else
             playerName.text = string.Format("{0}", phoPlayer.NickName);
     }

@@ -8,6 +8,7 @@ public class PlayerBase : MonoBehaviour
     public Health healthController;
     public PhotonPlayer netPlayer;
     public GamePanelContainer gpc;
+    private GameObject pc;
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class PlayerBase : MonoBehaviour
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).playerBase = this;
 
         Game g = FindObjectOfType<Game>();
-        GameObject pc = Instantiate(g.characterModels[0],
+        pc = Instantiate(g.characterModels[0],
             new Vector3(transform.position.x, transform.position.y, transform.position.z) + g.characterPositionOffsets[0],
             Quaternion.identity);
 

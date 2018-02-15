@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private PhotonView photonViewer;
 
     private PlayerBase pb;
+    private Animator animator;
 
     // Use this for initialization
     void Start()
@@ -50,12 +51,17 @@ public class PlayerController : MonoBehaviour
 
         pb.CheckWithinArena();
         UpdateFaceDirection();
+        DoRunning();
 
         TrackGrounded();
+
+        animator.SetBool("IsGrounded", TrackGrounded());
 
         if ((grounded || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
         {
             jumping = true;
+            animator.SetTrigger("IsJumping");
+            photonViewer.RPC("DoJump", PhotonTargets.Others);
         }
 
         Debug.Log(Input.GetButtonDown("RegularAttack") + " " + Input.GetKey(KeyCode.W));
@@ -64,17 +70,20 @@ public class PlayerController : MonoBehaviour
             || Input.GetKey(KeyCode.S) && Input.GetButton("RegularAttack"))
         {
             pb.RegularAttack(2);
+            DoPunch(3);
         }
         else if (Input.GetButton("RegularAttack") && Input.GetKey(KeyCode.W)
             || Input.GetKey(KeyCode.W) && Input.GetButton("RegularAttack"))
         {
             pb.RegularAttack(1);
+            DoPunch(2);
         }
         else if (Input.GetButton("RegularAttack"))
         {
             int dir = lookDirection.y != 0 ? (int)lookDirection.y : (int)lookDirection.x;
 
             pb.RegularAttack(dir);
+            DoPunch(1);
         }
 
         if (Input.GetButton("SpecialAttack"))
@@ -166,7 +175,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void TrackGrounded()
+    bool TrackGrounded()
     {
         Ray rayLeft = new Ray(transform.position + new Vector3(0, -0.7f, -0.4f), Vector3.down);
         Ray rayRight = new Ray(transform.position + new Vector3(0, -0.7f, 0.4f), Vector3.down);
@@ -186,6 +195,7 @@ public class PlayerController : MonoBehaviour
         }
         Debug.DrawLine(rayLeft.origin, rayLeft.origin + new Vector3(0, -0.4f, 0), Color.red);
         Debug.DrawLine(rayRight.origin, rayRight.origin + new Vector3(0, -0.4f, 0), Color.red);
+        return grounded;
 
     }
 
@@ -196,6 +206,22 @@ public class PlayerController : MonoBehaviour
         return Mathf.Sqrt(2 * jumpHeight * gravity);
     }
 
+    [PunRPC]
+    public void DoJump()
+    {
+        animator.SetTrigger("IsJumping");
+    }
+
+    void DoRunning()
+    {
+        animator.SetBool("IsRunning", Mathf.Abs(body.velocity.z) > 0.1f);
+    }
+
+    void DoPunch(int a)
+    {
+        animator.SetInteger("AttackState", a);
+    }
+
     public GameObject PlayerBody
     {
         get { return playerBody; }
@@ -203,6 +229,7 @@ public class PlayerController : MonoBehaviour
         {
             playerBody.SetActive(false);
             playerBody = value;
+            animator = playerBody.GetComponent<Animator>();
         }
     }
 }
