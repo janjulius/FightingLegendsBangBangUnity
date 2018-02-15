@@ -13,9 +13,14 @@ public class CharacterLayoutGroup : MonoBehaviour
         int i = 0;
         foreach (Sprite head in GameManager.Instance.CharacterHeads)
         {
-            GameObject obj = Instantiate(charHead, transform, false);
-            obj.GetComponent<Image>().sprite = head;
-            obj.GetComponent<CharacterListing>().charId = i;
+            if (i != 0)
+            {
+
+                GameObject obj = Instantiate(charHead, transform, false);
+                obj.GetComponent<Image>().sprite = head;
+                obj.GetComponent<CharacterListing>().charId = i;
+            }
+
             i++;
         }
 

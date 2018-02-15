@@ -46,6 +46,24 @@ public class PlayerNetwork : MonoBehaviour
         photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient);
     }
 
+    void OnMasterClientSwitched(PhotonPlayer newMasterClient)
+    {
+        Kicked();
+    }
+
+
+    [PunRPC]
+    public void Kicking()
+    {
+        Kicked();
+    }
+
+    public void Kicked()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(1);
+    }
+
 
     [PunRPC]
     private void RPC_LoadGameOthers()
@@ -75,6 +93,9 @@ public class PlayerNetwork : MonoBehaviour
         GetComponent<Game>().LoadInterface();
 
         Debug.Log("!char id: "+ p.CustomProperties["charId"]);
+
+        string pre = GameManager.Instance.charPrefabs[(int) p.CustomProperties["charId"]];
+        Debug.Log(pre);
 
         Vector3 spawn = new Vector3(0, 5, 0);
         GameObject obj = PhotonNetwork.Instantiate("TestPlayer", spawn, Quaternion.identity, 0);

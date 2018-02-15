@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLayoutGroup : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerLayoutGroup : MonoBehaviour
 
     private void OnJoinedRoom()
     {
+
+        MainCanvasManager.Instance.CurrentRoomCanvas.playerNameText.text = PhotonNetwork.player.NickName;
 
         foreach (Transform child in transform)
         {
@@ -82,6 +85,15 @@ public class PlayerLayoutGroup : MonoBehaviour
 
         PhotonNetwork.room.IsOpen = !PhotonNetwork.room.IsOpen;
         PhotonNetwork.room.IsVisible = !PhotonNetwork.room.IsVisible;
+
+        if (!PhotonNetwork.room.IsOpen)
+        {
+            MainCanvasManager.Instance.CurrentRoomCanvas.lockButton.GetComponentInChildren<Text>().text = "Unlock room";
+        }
+        else
+        {
+            MainCanvasManager.Instance.CurrentRoomCanvas.lockButton.GetComponentInChildren<Text>().text = "Lock room";
+        }
     }
 
     public void OnClickLeaveRoom()

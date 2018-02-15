@@ -64,8 +64,6 @@ public class PlayerController : MonoBehaviour
             photonViewer.RPC("DoJump", PhotonTargets.Others);
         }
 
-        Debug.Log(Input.GetButtonDown("RegularAttack") + " " + Input.GetKey(KeyCode.W));
-
         if (Input.GetButton("RegularAttack") && Input.GetKey(KeyCode.S)
             || Input.GetKey(KeyCode.S) && Input.GetButton("RegularAttack"))
         {
