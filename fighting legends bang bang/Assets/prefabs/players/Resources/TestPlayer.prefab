@@ -416,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCharacter: {fileID: 114740901890252774}
   healthController: {fileID: 114234621756963480}
+  gpc: {fileID: 0}
 --- !u!114 &114343532647554658
 MonoBehaviour:
   m_ObjectHideFlags: 1

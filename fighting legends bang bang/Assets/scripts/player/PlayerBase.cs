@@ -16,7 +16,7 @@ public class PlayerBase : MonoBehaviour
         netPlayer = phov.owner;
         gpc = FindObjectOfType<GamePanelContainer>();
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).playerBase = this;
-
+        gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).UpdateUI();
         PhotonNetwork.player.TagObject = gameObject;
     }
 

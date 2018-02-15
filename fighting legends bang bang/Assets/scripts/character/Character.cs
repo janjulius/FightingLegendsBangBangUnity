@@ -75,6 +75,7 @@ public abstract class Character : MonoBehaviour
     {
         swingobject = GetComponentInChildren<SwingObject>();
         swingobject.Setup(basicAttackDamage);
+        swingobject.gameObject.SetActive(false);
     }
 
     public void Update()

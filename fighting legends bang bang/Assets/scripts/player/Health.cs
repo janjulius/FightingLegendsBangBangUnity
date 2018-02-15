@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     private int dmg = 0;
 
     private int hp = 250;
+    private int lives = 3;
 
     private PlayerBase pb;
 
@@ -21,6 +22,12 @@ public class Health : MonoBehaviour
     {
         get { return hp; }
         set { hp = value; }
+    }
+
+    public int Lives
+    {
+        get { return lives;}
+        set { lives = value; }
     }
 
     private void Awake()

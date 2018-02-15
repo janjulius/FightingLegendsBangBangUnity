@@ -10,7 +10,10 @@ public class PlayerPanel : MonoBehaviour {
     public PlayerBase playerBase;
 
     [SerializeField] private Text playerName;
+    [SerializeField] private GameObject LifesContainer;
+    [SerializeField] private GameObject Hearth;
     [SerializeField] private Image charImage;
+    [SerializeField] private Image borderImage;
     [SerializeField] private Text damageText;
     [SerializeField] private Text charText;
 
@@ -19,10 +22,21 @@ public class PlayerPanel : MonoBehaviour {
         photonPlayer = phoPlayer;
         playerName.text = phoPlayer.NickName;
         damageText.text = string.Format("{0}%", 0);
+
+        borderImage.color = PhotonNetwork.player == phoPlayer ? Color.green : Color.black;
     }
 
     public void UpdateUI()
     {
         damageText.text = string.Format("{0}%", playerBase.healthController.Damage);
+
+        foreach (Transform child in LifesContainer.transform)
+        {
+           Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < playerBase.healthController.Lives; i++)
+            Instantiate(Hearth, LifesContainer.transform, false);
+
     }
 }
