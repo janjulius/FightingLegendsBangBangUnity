@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
-    private bool right = false;
+    private bool right = true;
 
     private Vector2 lookDirection = new Vector2();
 
