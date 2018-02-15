@@ -239,7 +239,16 @@ MonoBehaviour:
   - Rocky
   - Willem
   - Paardman
-  charPrefabs: []
+  charPrefabs:
+  - 
+  - BerendPrefab
+  - BoomStronkPrefab
+  - FredPrefab
+  - JensPrefab
+  - KeesPrefab
+  - RockyPrefab
+  - WillemPrefab
+  - PaardManPrefab
 --- !u!114 &1371888473
 MonoBehaviour:
   m_ObjectHideFlags: 0

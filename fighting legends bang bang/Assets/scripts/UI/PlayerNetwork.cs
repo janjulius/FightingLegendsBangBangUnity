@@ -76,6 +76,9 @@ public class PlayerNetwork : MonoBehaviour
 
         Debug.Log("!char id: "+ p.CustomProperties["charId"]);
 
+        string pre = GameManager.Instance.charPrefabs[(int) p.CustomProperties["charId"]];
+        Debug.Log(pre);
+
         Vector3 spawn = new Vector3(0, 5, 0);
         GameObject obj = PhotonNetwork.Instantiate("TestPlayer", spawn, Quaternion.identity, 0);
         PlayerBase pBase = obj.GetComponent<PlayerBase>();
