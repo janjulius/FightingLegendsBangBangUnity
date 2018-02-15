@@ -14,6 +14,7 @@ public class PlayerPanel : MonoBehaviour {
     [SerializeField] private GameObject Hearth;
     [SerializeField] private Image charImage;
     [SerializeField] private Image borderImage;
+    [SerializeField] private Image innerImage;
     [SerializeField] private Text damageText;
     [SerializeField] private Text charText;
 
@@ -24,6 +25,9 @@ public class PlayerPanel : MonoBehaviour {
         damageText.text = string.Format("{0}%", 0);
 
         borderImage.color = PhotonNetwork.player == phoPlayer ? Color.green : Color.black;
+
+        Color c = new Color((float)photonPlayer.CustomProperties["pColorR"], (float)photonPlayer.CustomProperties["pColorG"], (float)photonPlayer.CustomProperties["pColorB"]);
+        innerImage.color = c;
     }
 
     public void UpdateUI()

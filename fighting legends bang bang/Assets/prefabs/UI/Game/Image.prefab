@@ -193,6 +193,7 @@ MonoBehaviour:
   Hearth: {fileID: 1463727921383442, guid: 33360e7085f7bf54a9f96930118d554a, type: 2}
   charImage: {fileID: 0}
   borderImage: {fileID: 114541369887465976}
+  innerImage: {fileID: 114819193430650708}
   damageText: {fileID: 114751764766250272}
   charText: {fileID: 0}
 --- !u!114 &114738918934738432
