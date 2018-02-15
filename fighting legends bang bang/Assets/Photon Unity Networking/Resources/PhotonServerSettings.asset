@@ -47,4 +47,5 @@ MonoBehaviour:
   - RPC_LoadGameOthers
   - RPC_CreatePlayer
   - RPC_DealDamage
+  - RPC_UpdateDirection
   DisableAutoOpenWizard: 1

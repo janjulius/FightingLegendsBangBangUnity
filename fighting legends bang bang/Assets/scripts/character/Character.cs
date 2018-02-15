@@ -98,7 +98,6 @@ public abstract class Character : MonoBehaviour
     public virtual void Attack(int dir)
     {
         swingobject.gameObject.SetActive(true);
-        Debug.Log(dir);
         switch (dir)
         {
             case -1:

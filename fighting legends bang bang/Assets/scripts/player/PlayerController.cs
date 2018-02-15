@@ -91,11 +91,10 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateFaceDirection()
     {
-        print(string.Format("horizontal: {0} , vertical: {1}", Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
-
         if (Input.GetAxis("Horizontal") > 0.5 && !right)
         {
             right = true;
+            photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, true);
             playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
             lookDirection.x = 0;
 
@@ -103,6 +102,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetAxis("Horizontal") < -0.5 && right)
         {
             right = false;
+            photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, false);
             playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
             lookDirection.x = -1;
 
@@ -120,6 +120,12 @@ public class PlayerController : MonoBehaviour
         {
             lookDirection.y = 0;
         }
+    }
+
+    [PunRPC]
+    public void RPC_UpdateDirection(bool dir)
+    {
+        playerBody.transform.eulerAngles = new Vector3(0, dir ? 180 : 0, 0);
     }
 
     void FixedUpdate()

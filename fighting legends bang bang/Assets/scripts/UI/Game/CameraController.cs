@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour {
+public class CameraController : MonoBehaviour
+{
 
     public Transform[] targets;
     public float boundingBoxPadding = 2f;
@@ -35,7 +36,9 @@ public class CameraController : MonoBehaviour {
         Transform lastTarget = null;
         foreach (PlayerBase t in GameManager.Instance.Players)
         {
-            Transform target = t.transform;
+            Transform target = null;
+            if (t != null)
+                target = t.transform;
 
             if (target != null)
             {
