@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Sprite[] CharacterHeads;
     public string[] charNames;
     public string[] charPrefabs;
+    public int[] charsNotImplemented;
 
 
     private void Awake()

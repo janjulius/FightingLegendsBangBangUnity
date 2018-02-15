@@ -13,7 +13,7 @@ public class CharacterLayoutGroup : MonoBehaviour
         int i = 0;
         foreach (Sprite head in GameManager.Instance.CharacterHeads)
         {
-            if (i != 0)
+            if (!GameManager.Instance.charsNotImplemented.Contains(i))
             {
 
                 GameObject obj = Instantiate(charHead, transform, false);

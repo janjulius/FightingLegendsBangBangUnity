@@ -249,6 +249,7 @@ MonoBehaviour:
   - RockyPrefab
   - WillemPrefab
   - PaardManPrefab
+  charsNotImplemented: 0000000001000000020000000300000004000000050000000700000008000000
 --- !u!114 &1371888473
 MonoBehaviour:
   m_ObjectHideFlags: 0
