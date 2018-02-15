@@ -64,7 +64,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1567466813334880
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -116,7 +116,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 4482204521357796}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 165.00002, z: -180.00002}
 --- !u!4 &4482204521357796
 Transform:
@@ -128,7 +128,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4823699328490536}
   - {fileID: 4333333704846328}
   - {fileID: 4572972270834952}
   m_Father: {fileID: 4701420828758280}
@@ -145,7 +144,7 @@ Transform:
   m_LocalScale: {x: 0.20000014, y: 0.19999999, z: 1.0000006}
   m_Children: []
   m_Father: {fileID: 4482204521357796}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -165.00002, z: 180.00002}
 --- !u!4 &4701420828758280
 Transform:
@@ -154,10 +153,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744854451071572}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10.877568, y: -4.387841, z: 0.10189736}
+  m_LocalPosition: {x: 184.60114, y: 53.03742, z: -712.6835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4482204521357796}
+  - {fileID: 4823699328490536}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -171,8 +171,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1.3731798, z: 1}
   m_Children: []
-  m_Father: {fileID: 4482204521357796}
-  m_RootOrder: 0
+  m_Father: {fileID: 4701420828758280}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23301173944090528
 MeshRenderer:
@@ -388,8 +388,8 @@ MonoBehaviour:
   - {fileID: 114633231217011644}
   - {fileID: 114739955347534688}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 1
+  instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114234621756963480
@@ -416,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCharacter: {fileID: 114740901890252774}
   healthController: {fileID: 114234621756963480}
+  gpc: {fileID: 0}
 --- !u!114 &114343532647554658
 MonoBehaviour:
   m_ObjectHideFlags: 1

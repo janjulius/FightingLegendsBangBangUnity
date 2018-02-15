@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             right = true;
             photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, true);
-            playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
+            playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
             lookDirection.x = 0;
 
         }
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         {
             right = false;
             photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, false);
-            playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
+            playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
             lookDirection.x = -1;
 
         }
@@ -192,5 +192,15 @@ public class PlayerController : MonoBehaviour
         // From the jump height and gravity we deduce the upwards speed 
         // for the character to reach at the apex.
         return Mathf.Sqrt(2 * jumpHeight * gravity);
+    }
+
+    public GameObject PlayerBody
+    {
+        get { return playerBody; }
+        set
+        {
+            playerBody.SetActive(false);
+            playerBody = value;
+        }
     }
 }

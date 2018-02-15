@@ -8,6 +8,17 @@ public class Game : MonoBehaviour
     private Canvas myCanvas;
     private GamePanelContainer gpc;
 
+    public GameObject[] characterModels;
+
+    [SerializeField]public Vector3[] characterPositionOffsets = new Vector3[]
+    {
+        new Vector3(0, -1, 0), 
+    };
+
+    [SerializeField] public Vector3[] characterRotationOffsets = new Vector3[]
+    {
+        new Vector3(0, 0, 0), 
+    };
 
     //game properties
     private bool gamePaused = false;

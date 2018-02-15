@@ -17,6 +17,15 @@ public class PlayerBase : MonoBehaviour
         gpc = FindObjectOfType<GamePanelContainer>();
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).playerBase = this;
 
+        Game g = FindObjectOfType<Game>();
+        GameObject pc = Instantiate(g.characterModels[0],
+            new Vector3(transform.position.x, transform.position.y, transform.position.z) + g.characterPositionOffsets[0],
+            Quaternion.identity);
+
+        pc.transform.parent = gameObject.transform;
+        GetComponent<PlayerController>().PlayerBody = pc;
+
+
         PhotonNetwork.player.TagObject = gameObject;
     }
 

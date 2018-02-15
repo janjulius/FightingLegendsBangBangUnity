@@ -1,0 +1,28 @@
+# Blender MTL File: 'Po.blend'
+# Material Count: 2
+
+newmtl body
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Po.png
+map_Ke Po Normals.png
+map_Ks Po Specular.png
+map_Ns Po Specular.png
+map_Ka Po Normals.png
+map_Disp Po Normals.png
+
+newmtl eyes
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Po eye.png
+map_Ke Po eye.png
