@@ -229,6 +229,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 267bd591d91bec7469c0c816f9d66c3e, type: 3}
   - {fileID: 21300000, guid: bce3bb89f1d54a94abc0288f655712e8, type: 3}
   - {fileID: 21300000, guid: cdadd3e8ec08aca4596a1082495d832b, type: 3}
+  charNames:
+  - 
+  - Berend
+  - Boom Stronk
+  - Fred
+  - Jens
+  - Kees
+  - Rocky
+  - Willem
+  - Paardman
+  charPrefabs: []
 --- !u!114 &1371888473
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public List<PlayerBase> Players = new List<PlayerBase>();
     public Sprite[] CharacterHeads;
+    public string[] charNames;
+    public string[] charPrefabs;
 
 
     private void Awake()
