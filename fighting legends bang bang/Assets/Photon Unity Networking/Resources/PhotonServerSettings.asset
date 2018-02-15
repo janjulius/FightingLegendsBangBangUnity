@@ -50,4 +50,5 @@ MonoBehaviour:
   - RPC_UpdateDirection
   - RPC_OnDeath
   - RPC_UpdateSelection
+  - Kicking
   DisableAutoOpenWizard: 1

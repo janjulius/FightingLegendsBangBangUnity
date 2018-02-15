@@ -46,6 +46,24 @@ public class PlayerNetwork : MonoBehaviour
         photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient);
     }
 
+    void OnMasterClientSwitched(PhotonPlayer newMasterClient)
+    {
+        Kicked();
+    }
+
+
+    [PunRPC]
+    public void Kicking()
+    {
+        Kicked();
+    }
+
+    public void Kicked()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(1);
+    }
+
 
     [PunRPC]
     private void RPC_LoadGameOthers()
