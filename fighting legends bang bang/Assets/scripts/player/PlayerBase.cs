@@ -24,8 +24,8 @@ public class PlayerBase : MonoBehaviour
 
         pc.transform.parent = gameObject.transform;
         GetComponent<PlayerController>().PlayerBody = pc;
-
-
+        
+        gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).UpdateUI();
         PhotonNetwork.player.TagObject = gameObject;
     }
 
