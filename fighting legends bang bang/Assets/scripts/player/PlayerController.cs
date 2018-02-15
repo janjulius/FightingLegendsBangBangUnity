@@ -210,6 +210,7 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("IsJumping");
     }
 
+    [PunRPC]
     void DoRunning()
     {
         animator.SetBool("IsRunning", Mathf.Abs(body.velocity.z) > 0.1f);
@@ -217,6 +218,7 @@ public class PlayerController : MonoBehaviour
 
     void DoPunch(int a)
     {
+        Debug.Log("punch anim "+ a);
         animator.SetInteger("AttackState", a);
     }
 

@@ -262,7 +262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4891592381292442}
   - component: {fileID: 95379080716531826}
-  - component: {fileID: 111082139908383928}
   m_Layer: 0
   m_Name: mixamo_raccoon
   m_TagString: Untagged
@@ -886,21 +885,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!111 &111082139908383928
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1624229440235608}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 62cde69e721acee4fa9406a472e17916, type: 3}
-  m_Animations:
-  - {fileID: 7400000, guid: 62cde69e721acee4fa9406a472e17916, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!137 &137462045633618166
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
