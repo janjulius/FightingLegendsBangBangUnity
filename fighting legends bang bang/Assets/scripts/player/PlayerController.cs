@@ -44,18 +44,28 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        print(string.Format("running: {0}, player: {1}", animator.GetBool("IsGrounded"), pb.netPlayer.NickName));
 
         if (!photonViewer.isMine)
             return;
 
 
+
+        if (Mathf.Abs(body.velocity.z) > 0.1f && !animator.GetBool("IsRunning"))
+            photonViewer.RPC("DoRunning", PhotonTargets.All);
+        else if (Mathf.Abs(body.velocity.z) < 0.1f && animator.GetBool("IsRunning"))
+            photonViewer.RPC("StopRunning", PhotonTargets.All);
+
+        if(animator.GetBool("IsGrounded") != grounded)
+            photonViewer.RPC("RPC_IsGrounded",PhotonTargets.All,grounded);
+
+
         pb.CheckWithinArena();
         UpdateFaceDirection();
-        DoRunning();
 
         TrackGrounded();
 
-        animator.SetBool("IsGrounded", TrackGrounded());
+        
 
         if ((grounded || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
         {
@@ -213,12 +223,24 @@ public class PlayerController : MonoBehaviour
     [PunRPC]
     void DoRunning()
     {
-        animator.SetBool("IsRunning", Mathf.Abs(body.velocity.z) > 0.1f);
+        animator.SetBool("IsRunning", true);
+    }
+
+    [PunRPC]
+    void StopRunning()
+    {
+        animator.SetBool("IsRunning", false);
+    }
+
+    [PunRPC]
+    void RPC_IsGrounded(bool g)
+    {
+        animator.SetBool("IsGrounded", g);
     }
 
     void DoPunch(int a)
     {
-        Debug.Log("punch anim "+ a);
+        Debug.Log("punch anim " + a);
         animator.SetInteger("AttackState", a);
     }
 

@@ -52,4 +52,6 @@ MonoBehaviour:
   - RPC_UpdateSelection
   - Kicking
   - DoRunning
+  - StopRunning
+  - RPC_IsGrounded
   DisableAutoOpenWizard: 1
