@@ -46,12 +46,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        print(string.Format("running: {0}, player: {1}", animator.GetBool("IsGrounded"), pb.netPlayer.NickName));
 
         if (!photonViewer.isMine)
             return;
 
-
+        TrackGrounded();
 
         if (Mathf.Abs(body.velocity.z) > 0.1f && !animator.GetBool("IsRunning"))
             photonViewer.RPC("DoRunning", PhotonTargets.All);
@@ -65,7 +64,7 @@ public class PlayerController : MonoBehaviour
         pb.CheckWithinArena();
         UpdateFaceDirection();
 
-        TrackGrounded();
+        
 
         
 
