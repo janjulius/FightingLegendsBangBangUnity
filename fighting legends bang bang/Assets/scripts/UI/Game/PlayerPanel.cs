@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerPanel : MonoBehaviour {
+public class PlayerPanel : MonoBehaviour
+{
 
 
     public PhotonPlayer photonPlayer;
@@ -34,9 +35,18 @@ public class PlayerPanel : MonoBehaviour {
     {
         damageText.text = string.Format("{0}%", playerBase.healthController.Damage);
 
+        float ratio = Mathf.Clamp((float)playerBase.healthController.Damage / 300f, 0, 1);
+
+        print(ratio);
+
+        damageText.color = Color.Lerp(Color.white, new Color(50, 0, 0), ratio);
+
+        charText.text = GameManager.Instance.charNames[(int)photonPlayer.CustomProperties["charId"]].ToUpper();
+        charImage.sprite = GameManager.Instance.CharacterHeads[(int)photonPlayer.CustomProperties["charId"]];
+
         foreach (Transform child in LifesContainer.transform)
         {
-           Destroy(child.gameObject);
+            Destroy(child.gameObject);
         }
 
         for (int i = 0; i < playerBase.healthController.Lives; i++)
