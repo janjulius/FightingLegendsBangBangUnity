@@ -38,7 +38,8 @@ public class RoomListing : MonoBehaviour
         RoomName = room.Name;
         roomNameText.text = RoomName;
 
-        string roomOwner = "";
+        print(room.CustomProperties["Owner"]);
+        string roomOwner = room.CustomProperties["Owner"] != null ? (string)room.CustomProperties["Owner"] : "";
         playerNameText.text = string.Format("owner: {0}", roomOwner);
 
         totalPlayersText.text = string.Format("players: {1}/{0}", room.MaxPlayers, room.PlayerCount);

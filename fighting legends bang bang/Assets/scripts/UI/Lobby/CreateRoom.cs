@@ -30,6 +30,13 @@ public class CreateRoom : MonoBehaviour
     private void OnCreatedRoom()
     {
         print("Room created successfully");
+        ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable();
+
+        properties["Owner"] = PhotonNetwork.player.NickName;
+
+        PhotonNetwork.room.SetCustomProperties(properties);
+
+        print(PhotonNetwork.room.CustomProperties["Owner"]);
     }
 
 }
