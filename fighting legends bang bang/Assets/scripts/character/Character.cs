@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Character : MonoBehaviour
 {
@@ -46,8 +47,8 @@ public abstract class Character : MonoBehaviour
     //timer properties
     private double blockTime;
     private double blockTimer;
-    private double blockCoolDownTimer;
-    private double blockCooldownTime;
+    private double blockDelay;
+    private double blockRemoveCooldown;
     private bool canBlock;
     private double swingDelay;
     private double swingRemoveCooldown;
@@ -72,12 +73,19 @@ public abstract class Character : MonoBehaviour
     private int TotalUltsUsed = 0;
 
     private SwingObject swingobject;
+    private BlockObject blockobject;
 
     public void Start()
     {
         swingobject = GetComponentInChildren<SwingObject>();
         swingobject.Setup(basicAttackDamage);
         swingobject.gameObject.SetActive(false);
+
+        blockobject = GetComponentInChildren<BlockObject>();
+        blockobject.gameObject.SetActive(false);
+
+        blockTime = 0.1;
+        
     }
 
     public void Update()
@@ -94,6 +102,23 @@ public abstract class Character : MonoBehaviour
         {
             swingobject.gameObject.SetActive(false);
             GetComponent<PlayerController>().DoPunch(-1);
+        }
+
+        //need to set timers
+        if (blockDelay >= 0)
+        {
+            blockDelay -= 1 * Time.deltaTime;
+            blocking = true;
+            blockobject.gameObject.SetActive(true);
+            if (blockDelay <= blockTime)
+            {
+                blocking = false;
+                blockobject.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            blockobject.gameObject.SetActive(false);
         }
     }
 
@@ -120,7 +145,8 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Block()
     {
-        
+        blockobject.gameObject.SetActive(true);
+        blockDelay = blockRemoveCooldown;
     }
 
     #endregion
@@ -178,6 +204,11 @@ public abstract class Character : MonoBehaviour
     public bool CanAttack()
     {
         return attackDelay <= 0;
+    }
+
+    public bool CanBlock()
+    {
+        return blockDelay <= 0;
     }
 
     public string GetFullName()

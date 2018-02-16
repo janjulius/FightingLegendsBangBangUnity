@@ -128,6 +128,12 @@ public class PlayerController : MonoBehaviour
         {
             pb.SpecialAttack();
         }
+
+        if (Input.GetButton("Block"))
+        {
+            pb.Block();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PhotonNetwork.LeaveRoom();

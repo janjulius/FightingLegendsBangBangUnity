@@ -64,6 +64,12 @@ public class PlayerBase : MonoBehaviour
             if (currentCharacter.SpecialReady())
                 currentCharacter.SpecialAttack();
     }
+    
+    public void Block()
+    {
+        if(currentCharacter.CanBlock())
+            currentCharacter.Block();
+    }
 
     public void AddKnockBack(Vector2 dir, float force)
     {
