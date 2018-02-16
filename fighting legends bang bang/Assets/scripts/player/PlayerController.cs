@@ -160,9 +160,9 @@ public class PlayerController : MonoBehaviour
         }
 
         if (KnockBack.x < 0 && Input.GetAxis("Horizontal") > 0)
-            KnockBack.x += (speed / 2) * Time.fixedDeltaTime;
+            KnockBack.x += (speed) * Time.deltaTime;
         if (KnockBack.x > 0 && Input.GetAxis("Horizontal") < 0)
-            KnockBack.x -= (speed / 2) * Time.fixedDeltaTime;
+            KnockBack.x -= (speed) * Time.deltaTime;
     }
 
     private void UpdateFaceDirection()
