@@ -1,15 +1,25 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class pingTest : MonoBehaviour {
 
     float deltaTime = 0.0f;
 
-    void Update()
+    void Awake()
     {
-        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        StartCoroutine(UpdateUI());
+    }
+
+    IEnumerator UpdateUI()
+    {
+        while (true)
+        {
+
+            deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        yield break;
     }
 
     void OnGUI()

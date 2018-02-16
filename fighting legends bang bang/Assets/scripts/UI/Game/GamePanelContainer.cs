@@ -8,6 +8,7 @@ public class GamePanelContainer : MonoBehaviour
 
     public List<PlayerPanel> playerPanels = new List<PlayerPanel>();
 
+
     public void PlayerJoinedInterface(PhotonPlayer photonPlayer)
     {
         if (photonPlayer == null)

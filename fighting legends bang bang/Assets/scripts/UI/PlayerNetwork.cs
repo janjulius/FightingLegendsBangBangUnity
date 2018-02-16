@@ -25,8 +25,10 @@ public class PlayerNetwork : MonoBehaviour
 
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        
         if (scene.name == "test")
         {
+            GetComponent<Game>().LoadInterface();
             playersInGame = 0;
             if (PhotonNetwork.isMasterClient)
                 MasterLoadedGame();
@@ -90,7 +92,6 @@ public class PlayerNetwork : MonoBehaviour
     [PunRPC]
     private void RPC_CreatePlayer(PhotonPlayer p)
     {
-        GetComponent<Game>().LoadInterface();
 
         Debug.Log("!char id: "+ p.CustomProperties["charId"]);
 

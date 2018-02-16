@@ -37,10 +37,11 @@ public class Health : MonoBehaviour
         pb = GetComponent<PlayerBase>();
     }
 
-    public void DealDamage(int dmg)
+    public void DealDamage(int dmg, Vector2 dir)
     {
         Debug.Log("damage");
-        GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.All, dmg);
+
+        GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.All, dmg, dir);
     }
 
     public void OnDeath()
@@ -68,9 +69,18 @@ public class Health : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_DealDamage(int dmg)
+    public void RPC_DealDamage(int dmg, Vector2 dir)
     {
         this.dmg = this.dmg + dmg;
+
+        if (GetComponent<PhotonView>().isMine)
+        {
+
+            pb.AddKnockBack(dir, this.dmg);
+
+            Debug.Log(dir);
+            Debug.Log(pb.playerController.KnockBack.x);
+        }
         Debug.Log("new health " + this.dmg);
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
     }

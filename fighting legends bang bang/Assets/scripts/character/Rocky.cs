@@ -12,7 +12,7 @@ public class Rocky : Character {
         SwingCooldown = 0.1;
         BasicAttackDamage = 10;
     }
-    public override void Attack(int dir)
+    public override void Attack(Vector2 dir)
     {
         base.Attack(dir);
     }

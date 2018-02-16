@@ -6,6 +6,7 @@ public class SwingObject : MonoBehaviour
 {
     private Collider col;
     private int dmg;
+    public Vector2 dir;
 
     public void Start()
     {
@@ -22,6 +23,6 @@ public class SwingObject : MonoBehaviour
         Debug.Log("hit someone");
 
         if (other.gameObject.GetComponent<Health>() != null)
-            other.gameObject.GetComponent<Health>().DealDamage(dmg);
+            other.gameObject.GetComponent<Health>().DealDamage(dmg, dir);
     }
 }
