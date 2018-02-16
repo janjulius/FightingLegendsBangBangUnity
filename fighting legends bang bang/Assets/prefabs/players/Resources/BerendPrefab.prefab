@@ -1228,7 +1228,7 @@ MonoBehaviour:
   name: Berend
   nameBefore: 
   nameAfter: the Yeti
-  rangeModifier: 0
+  rangeModifier: 1.5
 --- !u!136 &136758867928618958
 CapsuleCollider:
   m_ObjectHideFlags: 1
