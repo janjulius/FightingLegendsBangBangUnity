@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Berend : MonoBehaviour {
+public class Berend : Character {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Berend()
+    {
+        name = "Berend";
+        nameAfter = "the Yeti";
+        AttackCooldown = 0.5;
+        SwingCooldown = 0.1;
+        BasicAttackDamage = 10;
+    }
+    public override void Attack(Vector2 dir)
+    {
+        base.Attack(dir);
+    }
+
+    public override void SpecialAttack()
+    {
+        base.SpecialAttack();
+    }
 }

@@ -71,14 +71,18 @@ public class Health : MonoBehaviour
     [PunRPC]
     public void RPC_DealDamage(int dmg, Vector2 dir)
     {
-        this.dmg = this.dmg + dmg;
+        if (!GetComponent<Character>().IsInvulnerable)
+        {
+            this.dmg = this.dmg + dmg;
+        }
 
         if (GetComponent<PhotonView>().isMine)
         {
+            if (!GetComponent<Character>().IsKnockBackImmume) { 
+                pb.AddKnockBack(dir, this.dmg);
+            }
 
-            pb.AddKnockBack(dir, this.dmg);
-
-            Debug.Log(dir);
+        Debug.Log(dir);
             Debug.Log(pb.playerController.KnockBack.x);
         }
         Debug.Log("new health " + this.dmg);

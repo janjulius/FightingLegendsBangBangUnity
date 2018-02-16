@@ -37,6 +37,8 @@ public abstract class Character : MonoBehaviour
     private bool blocking;
     private bool alive;
     private bool stunned;
+    private bool invulnerable;
+    private bool knockbackImmume;
     private Vector3 knockBack;
     private double maxGravityVelocity;
     private double gravityVelocity;
@@ -164,6 +166,18 @@ public abstract class Character : MonoBehaviour
     {
         get { return swingRemoveCooldown; }
         set { swingRemoveCooldown = value; }
+    }
+
+    public bool IsKnockBackImmume
+    {
+        get { return knockbackImmume; }
+        set { knockbackImmume = value; }
+    }
+
+    public bool IsInvulnerable
+    {
+        get { return invulnerable; }
+        set { invulnerable = value; }
     }
 
     public bool SpecialReady()
