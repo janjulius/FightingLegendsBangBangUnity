@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 0cf055ca03ca8624ab5694e05db01162
+timeCreated: 1518813712
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Goblin_Rookie:Head
+    100002: Goblin_Rookie:HeadTop_End
+    100004: Goblin_Rookie:Hips
+    100006: Goblin_Rookie:Image096A9020_096D0AF0_png
+    100008: Goblin_Rookie:LeftArm
+    100010: Goblin_Rookie:LeftFoot
+    100012: Goblin_Rookie:LeftForeArm
+    100014: Goblin_Rookie:LeftHand
+    100016: Goblin_Rookie:LeftHandIndex1
+    100018: Goblin_Rookie:LeftHandIndex2
+    100020: Goblin_Rookie:LeftHandIndex3
+    100022: Goblin_Rookie:LeftHandIndex4
+    100024: Goblin_Rookie:LeftLeg
+    100026: Goblin_Rookie:LeftShoulder
+    100028: Goblin_Rookie:LeftToe_End
+    100030: Goblin_Rookie:LeftToeBase
+    100032: Goblin_Rookie:LeftUpLeg
+    100034: Goblin_Rookie:Neck
+    100036: Goblin_Rookie:Regroup11
+    100038: Goblin_Rookie:RightArm
+    100040: Goblin_Rookie:RightFoot
+    100042: Goblin_Rookie:RightForeArm
+    100044: Goblin_Rookie:RightHand
+    100046: Goblin_Rookie:RightHandIndex1
+    100048: Goblin_Rookie:RightHandIndex2
+    100050: Goblin_Rookie:RightHandIndex3
+    100052: Goblin_Rookie:RightHandIndex4
+    100054: Goblin_Rookie:RightLeg
+    100056: Goblin_Rookie:RightShoulder
+    100058: Goblin_Rookie:RightToe_End
+    100060: Goblin_Rookie:RightToeBase
+    100062: Goblin_Rookie:RightUpLeg
+    100064: Goblin_Rookie:Spine
+    100066: Goblin_Rookie:Spine1
+    100068: Goblin_Rookie:Spine2
+    100070: //RootNode
+    400000: Goblin_Rookie:Head
+    400002: Goblin_Rookie:HeadTop_End
+    400004: Goblin_Rookie:Hips
+    400006: Goblin_Rookie:Image096A9020_096D0AF0_png
+    400008: Goblin_Rookie:LeftArm
+    400010: Goblin_Rookie:LeftFoot
+    400012: Goblin_Rookie:LeftForeArm
+    400014: Goblin_Rookie:LeftHand
+    400016: Goblin_Rookie:LeftHandIndex1
+    400018: Goblin_Rookie:LeftHandIndex2
+    400020: Goblin_Rookie:LeftHandIndex3
+    400022: Goblin_Rookie:LeftHandIndex4
+    400024: Goblin_Rookie:LeftLeg
+    400026: Goblin_Rookie:LeftShoulder
+    400028: Goblin_Rookie:LeftToe_End
+    400030: Goblin_Rookie:LeftToeBase
+    400032: Goblin_Rookie:LeftUpLeg
+    400034: Goblin_Rookie:Neck
+    400036: Goblin_Rookie:Regroup11
+    400038: Goblin_Rookie:RightArm
+    400040: Goblin_Rookie:RightFoot
+    400042: Goblin_Rookie:RightForeArm
+    400044: Goblin_Rookie:RightHand
+    400046: Goblin_Rookie:RightHandIndex1
+    400048: Goblin_Rookie:RightHandIndex2
+    400050: Goblin_Rookie:RightHandIndex3
+    400052: Goblin_Rookie:RightHandIndex4
+    400054: Goblin_Rookie:RightLeg
+    400056: Goblin_Rookie:RightShoulder
+    400058: Goblin_Rookie:RightToe_End
+    400060: Goblin_Rookie:RightToeBase
+    400062: Goblin_Rookie:RightUpLeg
+    400064: Goblin_Rookie:Spine
+    400066: Goblin_Rookie:Spine1
+    400068: Goblin_Rookie:Spine2
+    400070: //RootNode
+    2100000: lambert4
+    2100002: lambert1
+    4300000: Goblin_Rookie:Image096A9020_096D0AF0_png
+    4300002: Goblin_Rookie:Regroup11
+    7400000: mixamo.com
+    9500000: //RootNode
+    13700000: Goblin_Rookie:Image096A9020_096D0AF0_png
+    13700002: Goblin_Rookie:Regroup11
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
