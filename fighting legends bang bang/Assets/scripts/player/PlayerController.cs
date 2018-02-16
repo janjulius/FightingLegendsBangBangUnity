@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private bool right = false;
 
-    private Vector2 lookDirection = new Vector2();
+    private Vector2 lookDirection = new Vector2(-1, 0);
 
     private bool jumping = false;
     private bool _jumping = false;
@@ -77,10 +77,17 @@ public class PlayerController : MonoBehaviour
             photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(Direction.Bottom));
 
 
-
-
         pb.CheckWithinArena();
         UpdateFaceDirection();
+
+        if (CheckSide(Direction.Right) && KnockBack.x > 0)
+            KnockBack.x = -KnockBack.x;
+        if (CheckSide(Direction.Left) && KnockBack.x < 0)
+            KnockBack.x = -KnockBack.x;
+        if (CheckSide(Direction.Top) && KnockBack.y > 0)
+            KnockBack.y = -KnockBack.y;
+        if (CheckSide(Direction.Bottom) && KnockBack.y < 0)
+            KnockBack.y = -KnockBack.y;
 
 
         VerticalVelocityMin = sliding ? gravity / 10 : gravity;
@@ -99,17 +106,19 @@ public class PlayerController : MonoBehaviour
             photonViewer.RPC("DoJump", PhotonTargets.Others);
         }
 
-        if (CheckSide(Direction.Bottom) && !jumping && !_jumping)
-            VerticalVelocity = 0;
-
-        if (VerticalVelocity > 0 && CheckSide(Direction.Top))
+        if ((CheckSide(Direction.Bottom) && !jumping && !_jumping) || (VerticalVelocity > 0 && CheckSide(Direction.Top)))
             VerticalVelocity = 0;
 
 
-
-            if (Input.GetButtonDown("RegularAttack"))
+        if (Input.GetButtonDown("RegularAttack"))
         {
-            int dir = lookDirection.y != 0 ? (int)lookDirection.y : (int)lookDirection.x;
+
+            Vector2 dir = new Vector2(lookDirection.y != 0 ? 0 : lookDirection.x, lookDirection.y);
+
+            foreach (PhotonPlayer player in PhotonNetwork.playerList)
+            {
+                print(player.TagObject);
+            }
 
             pb.RegularAttack(dir);
             DoPunch(1);
@@ -156,9 +165,9 @@ public class PlayerController : MonoBehaviour
         }
 
         if (KnockBack.x < 0 && Input.GetAxis("Horizontal") > 0)
-            KnockBack.x += speed * Time.fixedDeltaTime;
+            KnockBack.x += (speed/2) * Time.fixedDeltaTime;
         if (KnockBack.x > 0 && Input.GetAxis("Horizontal") < 0)
-            KnockBack.x -= speed * Time.fixedDeltaTime;
+            KnockBack.x -= (speed / 2) * Time.fixedDeltaTime;
     }
 
     private void UpdateFaceDirection()
@@ -168,7 +177,7 @@ public class PlayerController : MonoBehaviour
             right = true;
             photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, true);
             playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
-            lookDirection.x = 0;
+            lookDirection.x = 1;
 
         }
         else if (Input.GetAxis("Horizontal") < -0.2 && right)
@@ -186,7 +195,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetAxis("Vertical") < -0.2)
         {
-            lookDirection.y = 2;
+            lookDirection.y = -1;
         }
         else
         {
@@ -247,7 +256,6 @@ public class PlayerController : MonoBehaviour
     {
         return touchingSides[(int)dir];
     }
-
 
     void TrackGrounded()
     {

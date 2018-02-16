@@ -37,8 +37,6 @@ public class PlayerPanel : MonoBehaviour
 
         float ratio = Mathf.Clamp((float)playerBase.healthController.Damage / 500, 0, 1);
 
-        print(ratio);
-
         damageText.color = Color.Lerp(Color.white, new Color(1, 0, 0), ratio);
 
         charText.text = GameManager.Instance.charNames[(int)photonPlayer.CustomProperties["charId"]].ToUpper();

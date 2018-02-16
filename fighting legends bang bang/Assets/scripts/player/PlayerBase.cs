@@ -6,6 +6,7 @@ public class PlayerBase : MonoBehaviour
 {
     public Character currentCharacter;
     public Health healthController;
+    public PlayerController playerController;
     public PhotonPlayer netPlayer;
     public GamePanelContainer gpc;
     private GameObject pc;
@@ -17,7 +18,7 @@ public class PlayerBase : MonoBehaviour
         netPlayer = phov.owner;
         gpc = FindObjectOfType<GamePanelContainer>();
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).playerBase = this;
-
+        playerController = GetComponent<PlayerController>();
 
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).UpdateUI();
         PhotonNetwork.player.TagObject = gameObject;
@@ -50,7 +51,7 @@ public class PlayerBase : MonoBehaviour
     //dir 0 = left
     //dir 1 = up
     //dir 2 = down
-    public void RegularAttack(int dir)
+    public void RegularAttack(Vector2 dir)
     {
         if (!currentCharacter.isBlocking)
             if (currentCharacter.CanAttack())
@@ -62,6 +63,13 @@ public class PlayerBase : MonoBehaviour
         if (!currentCharacter.isBlocking)
             if (currentCharacter.SpecialReady())
                 currentCharacter.SpecialAttack();
+    }
+
+    public void AddKnockBack(Vector2 dir, float force)
+    {
+        force /= 2;
+
+        playerController.KnockBack = dir * force;
     }
 
     public void TakeDamage(int damage)
