@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 114559990949944618}
   - component: {fileID: 114505297858629350}
   - component: {fileID: 114453165791120432}
-  - component: {fileID: 114245553560637128}
+  - component: {fileID: 114768916115297568}
   m_Layer: 8
   m_Name: JensPrefab
   m_TagString: Untagged
@@ -1186,7 +1186,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1841259314528512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 155.89394, y: 155.89436, z: 155.89436}
   m_Children:
   - {fileID: 4244750475023412}
@@ -1891,6 +1891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 0}
+  capsule: {fileID: 0}
   touchingSides:
   - {fileID: 0}
   - {fileID: 0}
@@ -1990,20 +1991,6 @@ MonoBehaviour:
     InterpolateOption: 1
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &114245553560637128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568431707871774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc82efb144b44904f8ef14188e79c72e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Rocky
-  nameBefore: 
-  nameAfter: the Raccoon
 --- !u!114 &114453165791120432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2015,8 +2002,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab00a4dc71cdee4aab9481e7fcd205d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCharacter: {fileID: 114245553560637128}
+  currentCharacter: {fileID: 0}
   healthController: {fileID: 114505297858629350}
+  playerController: {fileID: 0}
   gpc: {fileID: 0}
 --- !u!114 &114505297858629350
 MonoBehaviour:
@@ -2054,6 +2042,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2d2e8c7782b584f9e75e0c09501ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dir: {x: 0, y: 0}
+--- !u!114 &114768916115297568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568431707871774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93916a6b3bf5c34084fb718817b5eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Jens
+  nameBefore: 
+  nameAfter: the Pirate Panda
+  rangeModifier: 1.3
 --- !u!136 &136719392773433360
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2063,8 +2067,8 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 80f643342bc52ff40bd11adf5848cc92, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.8
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137036150615784634

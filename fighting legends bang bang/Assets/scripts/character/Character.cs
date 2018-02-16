@@ -31,6 +31,7 @@ public abstract class Character : MonoBehaviour
     //damage
     private int basicAttackDamage;
     private int specialIncrease;
+    public float rangeModifier;
 
     //other properties
     private bool blocking;
@@ -39,7 +40,7 @@ public abstract class Character : MonoBehaviour
     private Vector3 knockBack;
     private double maxGravityVelocity;
     private double gravityVelocity;
-    private int[] touchingWalls = new[] {-1, -1, -1, -1};
+    private int[] touchingWalls = new[] { -1, -1, -1, -1 };
 
     //timer properties
     private double blockTime;
@@ -70,11 +71,13 @@ public abstract class Character : MonoBehaviour
     private int TotalUltsUsed = 0;
 
     private SwingObject swingobject;
+    private PlayerBase pb;
 
     public void Start()
     {
+        pb = GetComponent<PlayerBase>();
         swingobject = GetComponentInChildren<SwingObject>();
-        swingobject.Setup(basicAttackDamage);
+        swingobject.Setup(basicAttackDamage, GetComponent<CapsuleCollider>());
         swingobject.gameObject.SetActive(false);
     }
 
@@ -99,26 +102,31 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Attack(Vector2 dir)
     {
+        CapsuleCollider coll = pb.playerController.capsule;
+
+        float rangeside = coll.radius;
+        float rangeUpDown = coll.height / 3;
+
         swingobject.gameObject.SetActive(true);
         swingobject.dir = dir;
-        swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + dir.y, gameObject.transform.position.z + dir.x);
+        swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + dir.y * rangeUpDown * rangeModifier, gameObject.transform.position.z + dir.x * rangeside * rangeModifier);
         swingDelay = swingRemoveCooldown;
         attackDelay = attackRemoveCooldown;
     }
 
     public virtual void SpecialAttack()
     {
-        
+
     }
 
     public virtual void Jump()
     {
-        
+
     }
 
     public virtual void Block()
     {
-        
+
     }
 
     #endregion
@@ -135,7 +143,8 @@ public abstract class Character : MonoBehaviour
         set { this.specialCounter = value; }
     }
 
-    public bool isBlocking {
+    public bool isBlocking
+    {
         get { return blocking; }
         set { blocking = value; }
     }
@@ -151,10 +160,11 @@ public abstract class Character : MonoBehaviour
         get { return attackDelay; }
     }
 
-    public double SwingCooldown {
+    public double SwingCooldown
+    {
         get { return swingRemoveCooldown; }
         set { swingRemoveCooldown = value; }
-    } 
+    }
 
     public bool SpecialReady()
     {
