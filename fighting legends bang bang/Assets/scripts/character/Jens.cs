@@ -11,6 +11,7 @@ public class Jens : Character {
         AttackCooldown = 0.5;
         SwingCooldown = 0.1;
         BasicAttackDamage = 10;
+        rangeModifier = 1.3f;
     }
     public override void Attack(Vector2 dir)
     {

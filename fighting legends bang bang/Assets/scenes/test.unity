@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c937f52d5541844bd20212ad616c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arenaTopLeft: {x: 0, y: 30, z: -50}
+  arenaTopLeft: {x: 0, y: 40, z: -50}
   arenaBottemRight: {x: 0, y: -10, z: 20}
 --- !u!4 &2123111060
 Transform:

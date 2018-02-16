@@ -15,6 +15,7 @@ public class PlayerBase : MonoBehaviour
     {
         GameManager.Instance.Players.Add(this);
         PhotonView phov = GetComponent<PhotonView>();
+        currentCharacter = GetComponent<Character>();
         netPlayer = phov.owner;
         gpc = FindObjectOfType<GamePanelContainer>();
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).playerBase = this;

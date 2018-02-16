@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float jumpHeight = 15f;
     private float jumpsLeft = 1;
     private float maxJumps = 1;
-    private CapsuleCollider capsule;
+    public CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
     private bool right = false;
@@ -68,9 +68,9 @@ public class PlayerController : MonoBehaviour
         if (CheckSide(Direction.Bottom) && !CheckSide(Direction.Bottom))
             touchingSides[(int)Direction.Bottom] = null;
 
-        if (Mathf.Abs(body.velocity.z) > 0.1f && !animator.GetBool("IsRunning"))
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f && !animator.GetBool("IsRunning"))
             photonViewer.RPC("DoRunning", PhotonTargets.All);
-        else if (Mathf.Abs(body.velocity.z) < 0.1f && animator.GetBool("IsRunning"))
+        else if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.1f && animator.GetBool("IsRunning"))
             photonViewer.RPC("StopRunning", PhotonTargets.All);
 
         if (animator.GetBool("IsGrounded") != CheckSide(Direction.Bottom))
@@ -114,11 +114,6 @@ public class PlayerController : MonoBehaviour
         {
 
             Vector2 dir = new Vector2(lookDirection.y != 0 ? 0 : lookDirection.x, lookDirection.y);
-
-            foreach (PhotonPlayer player in PhotonNetwork.playerList)
-            {
-                print(player.TagObject);
-            }
 
             pb.RegularAttack(dir);
             DoPunch(1);
@@ -171,9 +166,9 @@ public class PlayerController : MonoBehaviour
         }
 
         if (KnockBack.x < 0 && Input.GetAxis("Horizontal") > 0)
-            KnockBack.x += (speed/2) * Time.fixedDeltaTime;
+            KnockBack.x += (speed) * Time.deltaTime;
         if (KnockBack.x > 0 && Input.GetAxis("Horizontal") < 0)
-            KnockBack.x -= (speed / 2) * Time.fixedDeltaTime;
+            KnockBack.x -= (speed) * Time.deltaTime;
     }
 
     private void UpdateFaceDirection()
@@ -266,10 +261,13 @@ public class PlayerController : MonoBehaviour
     void TrackGrounded()
     {
 
-        touchingSides[0] = castGround(new Vector3(0, 0.7f, -0.3f), Vector3.up, 0.4f, false);
-        touchingSides[1] = castGround(new Vector3(0, -0.6f, -0.3f), Vector3.down, 0.43f, false);
-        touchingSides[2] = castGround(new Vector3(0, 0.5f, -0.2f), -Vector3.forward, 0.35f, true);
-        touchingSides[3] = castGround(new Vector3(0, 0.5f, 0.2f), Vector3.forward, 0.35f, true);
+        float capsH = capsule.height / 2;
+        float radius = capsule.radius;
+
+        touchingSides[0] = castGround(new Vector3(0, capsH - 0.3f, -radius + 0.3f), Vector3.up, 0.4f, false);
+        touchingSides[1] = castGround(new Vector3(0, -capsH + 0.3f, -radius + 0.3f), Vector3.down, 0.43f, false);
+        touchingSides[2] = castGround(new Vector3(0, capsH * 0.5f, -radius + 0.3f), -Vector3.forward, 0.35f, true);
+        touchingSides[3] = castGround(new Vector3(0, capsH * 0.5f, radius - 0.3f), Vector3.forward, 0.35f, true);
 
 
     }
