@@ -6,21 +6,22 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody body;
     [SerializeField] private GameObject playerBody;
-    private float speed = 13.0f;
+    private float speed = 13f;
+    private float maxspeed = 13f;
     private float gravity = 35f;
     private float VerticalVelocityMin = 25f;
     private float gravityAcceleration = 25f;
 
     private float inAirControl = 0.8f;
-    private float maxVelocityChange = 10.0f;
     private bool canJump = true;
+    private bool sliding = false;
     private float jumpHeight = 15f;
     private float jumpsLeft = 1;
     private float maxJumps = 1;
     private CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
-    private bool right = true;
+    private bool right = false;
 
     private Vector2 lookDirection = new Vector2();
 
@@ -33,14 +34,16 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     public GameObject[] touchingSides = new GameObject[4];
+    public Vector2 KnockBack = new Vector2();
 
-    public enum HitDirection { None = -1, Top = 0, Bottom = 1, Left = 2, Right = 3 }
+    public enum Direction { Top = 0, Bottom = 1, Left = 2, Right = 3 }
 
     public float VerticalVelocity = 0;
 
     // Use this for initialization
     void Start()
     {
+
         body = GetComponent<Rigidbody>();
         capsule = GetComponent<CapsuleCollider>();
         body.freezeRotation = true;
@@ -51,31 +54,36 @@ public class PlayerController : MonoBehaviour
         playerBody = animator.transform.gameObject;
     }
 
+
     // Update is called once per frame
     void Update()
     {
 
-
         if (!photonViewer.isMine)
             return;
 
-        if (CheckSide(HitDirection.Bottom) && !CheckSide(HitDirection.Bottom))
-            touchingSides[(int)HitDirection.Bottom] = null;
+        LerpingKnockBack();
+        sliding = CheckSide(Direction.Left) || CheckSide(Direction.Right);
+
+        if (CheckSide(Direction.Bottom) && !CheckSide(Direction.Bottom))
+            touchingSides[(int)Direction.Bottom] = null;
 
         if (Mathf.Abs(body.velocity.z) > 0.1f && !animator.GetBool("IsRunning"))
             photonViewer.RPC("DoRunning", PhotonTargets.All);
         else if (Mathf.Abs(body.velocity.z) < 0.1f && animator.GetBool("IsRunning"))
             photonViewer.RPC("StopRunning", PhotonTargets.All);
 
-        if (animator.GetBool("IsGrounded") != CheckSide(HitDirection.Bottom))
-            photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(HitDirection.Bottom));
+        if (animator.GetBool("IsGrounded") != CheckSide(Direction.Bottom))
+            photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(Direction.Bottom));
+
+
 
 
         pb.CheckWithinArena();
         UpdateFaceDirection();
 
 
-        VerticalVelocityMin = CheckSide(HitDirection.Left) || CheckSide(HitDirection.Right) ? gravity / 10 : gravity;
+        VerticalVelocityMin = sliding ? gravity / 10 : gravity;
 
 
         if (VerticalVelocity > -VerticalVelocityMin)
@@ -84,32 +92,22 @@ public class PlayerController : MonoBehaviour
             VerticalVelocity = -VerticalVelocityMin;
 
 
-        if ((CheckSide(HitDirection.Bottom) || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
+        if ((CheckSide(Direction.Bottom) || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
         {
             jumping = true;
             animator.SetTrigger("IsJumping");
             photonViewer.RPC("DoJump", PhotonTargets.Others);
         }
 
-        if (CheckSide(HitDirection.Bottom) && !jumping && !_jumping)
+        if (CheckSide(Direction.Bottom) && !jumping && !_jumping)
             VerticalVelocity = 0;
 
-        _jumping = false;
+        if (VerticalVelocity > 0 && CheckSide(Direction.Top))
+            VerticalVelocity = 0;
 
 
-        if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.S)
-            || Input.GetKey(KeyCode.S) && Input.GetButtonDown("RegularAttack"))
-        {
-            pb.RegularAttack(2);
-            DoPunch(3);
-        }
-        else if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.W)
-            || Input.GetKey(KeyCode.W) && Input.GetButtonDown("RegularAttack"))
-        {
-            pb.RegularAttack(1);
-            DoPunch(2);
-        }
-        else if (Input.GetButtonDown("RegularAttack"))
+
+            if (Input.GetButtonDown("RegularAttack"))
         {
             int dir = lookDirection.y != 0 ? (int)lookDirection.y : (int)lookDirection.x;
 
@@ -126,9 +124,41 @@ public class PlayerController : MonoBehaviour
             PhotonNetwork.LeaveRoom();
             PhotonNetwork.LoadLevel(1);
         }
+    }
 
-        if (CheckSide(HitDirection.Bottom) || (CheckSide(HitDirection.Left) || CheckSide(HitDirection.Right)))
-            jumpsLeft = maxJumps;
+    private void LerpingKnockBack()
+    {
+        KnockBack = Vector2.Lerp(KnockBack, Vector2.zero, 2 * Time.deltaTime);
+
+        if (KnockBack.y < 4 && KnockBack.y > -4)
+            KnockBack.y = 0;
+
+        if (KnockBack.x < 0 && Input.GetAxis("Horizontal") > 0)
+        {
+            if (KnockBack.x < 4 && KnockBack.x > -4)
+                KnockBack.x = 0;
+        }
+        else if (KnockBack.x < 0 && Input.GetAxis("Horizontal") < 0)
+        {
+            if (KnockBack.x < speed && KnockBack.x > -speed)
+                KnockBack.x = 0;
+        }
+
+        if (KnockBack.x > 0 && Input.GetAxis("Horizontal") < 0)
+        {
+            if (KnockBack.x < 4 && KnockBack.x > -4)
+                KnockBack.x = 0;
+        }
+        else if (KnockBack.x > 0 && Input.GetAxis("Horizontal") > 0)
+        {
+            if (KnockBack.x < speed && KnockBack.x > -speed)
+                KnockBack.x = 0;
+        }
+
+        if (KnockBack.x < 0 && Input.GetAxis("Horizontal") > 0)
+            KnockBack.x += speed * Time.fixedDeltaTime;
+        if (KnockBack.x > 0 && Input.GetAxis("Horizontal") < 0)
+            KnockBack.x -= speed * Time.fixedDeltaTime;
     }
 
     private void UpdateFaceDirection()
@@ -179,42 +209,41 @@ public class PlayerController : MonoBehaviour
         TrackGrounded();
 
         // Calculate how fast we should be moving
-        Vector3 targetVelocity = new Vector3(0, 0, Input.GetAxis("Horizontal"));
-        targetVelocity = transform.TransformDirection(targetVelocity);
-        targetVelocity *= speed;
+        float MoveSpeed = Input.GetAxis("Horizontal") * speed;
 
-        // Apply a force that attempts to reach our target velocity
-        var velocity = body.velocity;
-        var velocityChange = (targetVelocity - velocity) + groundVelocity;
-        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-        velocityChange.y = 0;
-        body.AddForce(velocityChange, ForceMode.VelocityChange);
-
-
+        _jumping = false;
         // Jump
         if (jumping)
         {
-            if (!CheckSide(HitDirection.Bottom))
+            if (!CheckSide(Direction.Bottom) || (sliding && !CheckSide(Direction.Bottom)))
                 jumpsLeft--;
             VerticalVelocity = jumpHeight;
 
-            if (CheckSide(HitDirection.Left))
-                velocity.z += 40;
-            else if (CheckSide(HitDirection.Right))
-                velocity.z -= 40;
-            touchingSides[(int)HitDirection.Bottom] = null;
+            if (CheckSide(Direction.Left))
+                KnockBack.x += 15;
+            else if (CheckSide(Direction.Right))
+                KnockBack.x -= 15;
+            touchingSides[(int)Direction.Bottom] = null;
             jumping = false;
             _jumping = true;
         }
 
+        if (CheckSide(Direction.Bottom) || (sliding && !_jumping))
+            jumpsLeft = maxJumps;
+
+        float velocityY = 0;
+        float velocityZ = 0;
+
+        velocityY = KnockBack.y != 0 ? KnockBack.y : VerticalVelocity;
+        velocityZ = KnockBack.x != 0 ? KnockBack.x : MoveSpeed;
 
 
         // We apply gravity manually for more tuning control
-        body.velocity = new Vector3(velocity.x, VerticalVelocity, velocity.z);
+        body.velocity = new Vector3(0, velocityY, velocityZ);
 
     }
 
-    public bool CheckSide(HitDirection dir)
+    public bool CheckSide(Direction dir)
     {
         return touchingSides[(int)dir];
     }
@@ -225,8 +254,8 @@ public class PlayerController : MonoBehaviour
 
         touchingSides[0] = castGround(new Vector3(0, 0.7f, -0.3f), Vector3.up, 0.4f, false);
         touchingSides[1] = castGround(new Vector3(0, -0.6f, -0.3f), Vector3.down, 0.43f, false);
-        touchingSides[2] = castGround(new Vector3(0, 0.5f, -0.4f), -Vector3.forward, 0.4f, true);
-        touchingSides[3] = castGround(new Vector3(0, 0.5f, 0.4f), Vector3.forward, 0.4f, true);
+        touchingSides[2] = castGround(new Vector3(0, 0.5f, -0.2f), -Vector3.forward, 0.35f, true);
+        touchingSides[3] = castGround(new Vector3(0, 0.5f, 0.2f), Vector3.forward, 0.35f, true);
 
 
     }
