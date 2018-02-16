@@ -1050,6 +1050,7 @@ MonoBehaviour:
   name: Rocky
   nameBefore: 
   nameAfter: the Raccoon
+  rangeModifier: 1
 --- !u!114 &114558859395691068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1064,7 +1065,7 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
+    TeleportIfDistanceGreaterThan: 4
     InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 10
     InterpolateLerpSpeed: 18
@@ -1194,6 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 0}
+  capsule: {fileID: 0}
   touchingSides:
   - {fileID: 0}
   - {fileID: 0}
