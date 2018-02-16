@@ -7,14 +7,16 @@ public class PlayerController : MonoBehaviour
     private Rigidbody body;
     [SerializeField] private GameObject playerBody;
     private float speed = 13.0f;
-    private float gravity = 25;
+    private float gravity = 35f;
+    private float VerticalVelocityMin = 25f;
+    private float gravityAcceleration = 25f;
+
     private float inAirControl = 0.8f;
     private float maxVelocityChange = 10.0f;
     private bool canJump = true;
-    private float jumpHeight = 4.0f;
+    private float jumpHeight = 15f;
     private float jumpsLeft = 1;
     private float maxJumps = 1;
-    private bool grounded = false;
     private CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
@@ -23,11 +25,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookDirection = new Vector2();
 
     private bool jumping = false;
+    private bool _jumping = false;
 
     private PhotonView photonViewer;
 
     private PlayerBase pb;
     private Animator animator;
+
+    public GameObject[] touchingSides = new GameObject[4];
+
+    public enum HitDirection { None = -1, Top = 0, Bottom = 1, Left = 2, Right = 3 }
+
+    public float VerticalVelocity = 0;
 
     // Use this for initialization
     void Start()
@@ -50,30 +59,43 @@ public class PlayerController : MonoBehaviour
         if (!photonViewer.isMine)
             return;
 
-        TrackGrounded();
+        if (CheckSide(HitDirection.Bottom) && !CheckSide(HitDirection.Bottom))
+            touchingSides[(int)HitDirection.Bottom] = null;
 
         if (Mathf.Abs(body.velocity.z) > 0.1f && !animator.GetBool("IsRunning"))
             photonViewer.RPC("DoRunning", PhotonTargets.All);
         else if (Mathf.Abs(body.velocity.z) < 0.1f && animator.GetBool("IsRunning"))
             photonViewer.RPC("StopRunning", PhotonTargets.All);
 
-        if(animator.GetBool("IsGrounded") != grounded)
-            photonViewer.RPC("RPC_IsGrounded",PhotonTargets.All,grounded);
+        if (animator.GetBool("IsGrounded") != CheckSide(HitDirection.Bottom))
+            photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(HitDirection.Bottom));
 
 
         pb.CheckWithinArena();
         UpdateFaceDirection();
 
-        
 
-        
+        VerticalVelocityMin = CheckSide(HitDirection.Left) || CheckSide(HitDirection.Right) ? gravity / 10 : gravity;
 
-        if ((grounded || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
+
+        if (VerticalVelocity > -VerticalVelocityMin)
+            VerticalVelocity -= gravityAcceleration * Time.deltaTime;
+        else
+            VerticalVelocity = -VerticalVelocityMin;
+
+
+        if ((CheckSide(HitDirection.Bottom) || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
         {
             jumping = true;
             animator.SetTrigger("IsJumping");
             photonViewer.RPC("DoJump", PhotonTargets.Others);
         }
+
+        if (CheckSide(HitDirection.Bottom) && !jumping && !_jumping)
+            VerticalVelocity = 0;
+
+        _jumping = false;
+
 
         if (Input.GetButtonDown("RegularAttack") && Input.GetKey(KeyCode.S)
             || Input.GetKey(KeyCode.S) && Input.GetButtonDown("RegularAttack"))
@@ -105,7 +127,7 @@ public class PlayerController : MonoBehaviour
             PhotonNetwork.LoadLevel(1);
         }
 
-        if (grounded)
+        if (CheckSide(HitDirection.Bottom) || (CheckSide(HitDirection.Left) || CheckSide(HitDirection.Right)))
             jumpsLeft = maxJumps;
     }
 
@@ -154,6 +176,7 @@ public class PlayerController : MonoBehaviour
             return;
 
 
+        TrackGrounded();
 
         // Calculate how fast we should be moving
         Vector3 targetVelocity = new Vector3(0, 0, Input.GetAxis("Horizontal"));
@@ -171,48 +194,68 @@ public class PlayerController : MonoBehaviour
         // Jump
         if (jumping)
         {
-            if (!grounded)
+            if (!CheckSide(HitDirection.Bottom))
                 jumpsLeft--;
-            body.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+            VerticalVelocity = jumpHeight;
+
+            if (CheckSide(HitDirection.Left))
+                velocity.z += 40;
+            else if (CheckSide(HitDirection.Right))
+                velocity.z -= 40;
+            touchingSides[(int)HitDirection.Bottom] = null;
             jumping = false;
+            _jumping = true;
         }
 
-        grounded = false;
+
 
         // We apply gravity manually for more tuning control
-        body.AddForce(new Vector3(0, -gravity * body.mass, 0));
+        body.velocity = new Vector3(velocity.x, VerticalVelocity, velocity.z);
 
     }
 
-    bool TrackGrounded()
+    public bool CheckSide(HitDirection dir)
     {
-        Ray rayLeft = new Ray(transform.position + new Vector3(0, -0.7f, -0.4f), Vector3.down);
-        Ray rayRight = new Ray(transform.position + new Vector3(0, -0.7f, 0.4f), Vector3.down);
+        return touchingSides[(int)dir];
+    }
+
+
+    void TrackGrounded()
+    {
+
+        touchingSides[0] = castGround(new Vector3(0, 0.7f, -0.3f), Vector3.up, 0.4f, false);
+        touchingSides[1] = castGround(new Vector3(0, -0.6f, -0.3f), Vector3.down, 0.43f, false);
+        touchingSides[2] = castGround(new Vector3(0, 0.5f, -0.4f), -Vector3.forward, 0.4f, true);
+        touchingSides[3] = castGround(new Vector3(0, 0.5f, 0.4f), Vector3.forward, 0.4f, true);
+
+
+    }
+
+    private GameObject castGround(Vector3 pos, Vector3 dir, float lenght, bool s)
+    {
+        GameObject obj = null;
+
+        var pos1 = new Vector3(pos.x, pos.y, pos.z);
+        var pos2 = new Vector3(pos.x, s ? -pos.y : pos.y, !s ? -pos.z : pos.z);
+
+
+        Ray rayLeft = new Ray(transform.position + pos1, dir);
+        Ray rayRight = new Ray(transform.position + pos2, dir);
         RaycastHit hitLeft;
         RaycastHit hitRight;
 
-        if (Physics.Raycast(rayLeft, out hitLeft, 0.4f))
-        {
+        if (Physics.Raycast(rayLeft, out hitLeft, lenght))
             if (hitLeft.transform.gameObject.layer == 9)
-                grounded = true;
+                obj = hitLeft.transform.gameObject;
+            else if (Physics.Raycast(rayRight, out hitRight, lenght))
+                if (hitRight.transform.gameObject.layer == 9)
+                    obj = hitRight.transform.gameObject;
 
-        }
-        else if (Physics.Raycast(rayRight, out hitRight, 0.4f))
-        {
-            if (hitRight.transform.gameObject.layer == 9)
-                grounded = true;
-        }
-        Debug.DrawLine(rayLeft.origin, rayLeft.origin + new Vector3(0, -0.4f, 0), Color.red);
-        Debug.DrawLine(rayRight.origin, rayRight.origin + new Vector3(0, -0.4f, 0), Color.red);
-        return grounded;
 
-    }
+        Debug.DrawLine(rayLeft.origin, rayLeft.origin + dir * lenght, Color.red);
+        Debug.DrawLine(rayRight.origin, rayRight.origin + dir * lenght, Color.red);
 
-    float CalculateJumpVerticalSpeed()
-    {
-        // From the jump height and gravity we deduce the upwards speed 
-        // for the character to reach at the apex.
-        return Mathf.Sqrt(2 * jumpHeight * gravity);
+        return obj;
     }
 
     [PunRPC]
@@ -241,7 +284,6 @@ public class PlayerController : MonoBehaviour
 
     public void DoPunch(int a)
     {
-        Debug.Log("punch anim " + a);
         animator.SetInteger("AttackState", a);
     }
 
