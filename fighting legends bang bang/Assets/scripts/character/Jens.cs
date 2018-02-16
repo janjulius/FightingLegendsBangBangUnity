@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jens : MonoBehaviour {
+public class Jens : Character {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Jens()
+    {
+        name = "Jens";
+        nameAfter = "the Pirate Panda";
+        AttackCooldown = 0.5;
+        SwingCooldown = 0.1;
+        BasicAttackDamage = 10;
+    }
+    public override void Attack(int dir)
+    {
+        base.Attack(dir);
+    }
+
+    public override void SpecialAttack()
+    {
+        base.SpecialAttack();
+    }
 }
