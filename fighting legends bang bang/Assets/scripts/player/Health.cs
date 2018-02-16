@@ -73,7 +73,7 @@ public class Health : MonoBehaviour
     {
         if (!GetComponent<Character>().IsInvulnerable)
         {
-            if (GetComponent<Character>().isBlocking)
+            if (!GetComponent<Character>().isBlocking)
             {
                 this.dmg = this.dmg + dmg;
             }
