@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: e1e7454b08a203944b5c9ed5143f5a37
+timeCreated: 1518813719
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: pCube2
+    100004: polySurface16
+    100006: polySurface1_pCylinder4_polySurface3
+    100008: polySurface2_polySurface1_pCylinder4
+    100010: polySurface4
+    100012: polySurface51_polySurface55_polySurface58
+    100014: polySurface51_polySurface56_polySurface55
+    100016: polySurface54_polySurface51
+    100018: polySurface60
+    100020: polySurface61_polySurface9_Goblin_wristband:Wrist_band
+    100022: polySurface8_Goblin_shoulder_armor:Shoulder_armor
+    100024: polySurface9_Goblin_wristband:Wrist_band_polySurface62
+    400000: //RootNode
+    400002: pCube2
+    400004: polySurface16
+    400006: polySurface1_pCylinder4_polySurface3
+    400008: polySurface2_polySurface1_pCylinder4
+    400010: polySurface4
+    400012: polySurface51_polySurface55_polySurface58
+    400014: polySurface51_polySurface56_polySurface55
+    400016: polySurface54_polySurface51
+    400018: polySurface60
+    400020: polySurface61_polySurface9_Goblin_wristband:Wrist_band
+    400022: polySurface8_Goblin_shoulder_armor:Shoulder_armor
+    400024: polySurface9_Goblin_wristband:Wrist_band_polySurface62
+    2100000: lambert2SG
+    2100002: initialShadingGroup
+    2300000: pCube2
+    2300002: polySurface16
+    2300004: polySurface1_pCylinder4_polySurface3
+    2300006: polySurface2_polySurface1_pCylinder4
+    2300008: polySurface4
+    2300010: polySurface51_polySurface55_polySurface58
+    2300012: polySurface51_polySurface56_polySurface55
+    2300014: polySurface54_polySurface51
+    2300016: polySurface60
+    2300018: polySurface61_polySurface9_Goblin_wristband:Wrist_band
+    2300020: polySurface8_Goblin_shoulder_armor:Shoulder_armor
+    2300022: polySurface9_Goblin_wristband:Wrist_band_polySurface62
+    3300000: pCube2
+    3300002: polySurface16
+    3300004: polySurface1_pCylinder4_polySurface3
+    3300006: polySurface2_polySurface1_pCylinder4
+    3300008: polySurface4
+    3300010: polySurface51_polySurface55_polySurface58
+    3300012: polySurface51_polySurface56_polySurface55
+    3300014: polySurface54_polySurface51
+    3300016: polySurface60
+    3300018: polySurface61_polySurface9_Goblin_wristband:Wrist_band
+    3300020: polySurface8_Goblin_shoulder_armor:Shoulder_armor
+    3300022: polySurface9_Goblin_wristband:Wrist_band_polySurface62
+    4300000: pCube2
+    4300002: polySurface16
+    4300004: polySurface1_pCylinder4_polySurface3
+    4300006: polySurface2_polySurface1_pCylinder4
+    4300008: polySurface4
+    4300010: polySurface51_polySurface55_polySurface58
+    4300012: polySurface51_polySurface56_polySurface55
+    4300014: polySurface54_polySurface51
+    4300016: polySurface60
+    4300018: polySurface61_polySurface9_Goblin_wristband:Wrist_band
+    4300020: polySurface8_Goblin_shoulder_armor:Shoulder_armor
+    4300022: polySurface9_Goblin_wristband:Wrist_band_polySurface62
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

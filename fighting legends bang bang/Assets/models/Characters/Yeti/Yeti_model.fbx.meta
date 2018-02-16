@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: b4f2d7d66af2ae245b279d00448e65a0
+timeCreated: 1518813717
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Camera
+    100002: joint0
+    100004: joint1
+    100006: joint10
+    100008: joint10_end
+    100010: joint11
+    100012: joint12
+    100014: joint12_end
+    100016: joint13
+    100018: joint14
+    100020: joint14_end
+    100022: joint15
+    100024: joint15_end
+    100026: joint16
+    100028: joint17
+    100030: joint18
+    100032: joint19
+    100034: joint2
+    100036: joint20
+    100038: joint21
+    100040: joint21_end
+    100042: joint22
+    100044: joint23
+    100046: joint23_end
+    100048: joint24
+    100050: joint25
+    100052: joint25_end
+    100054: joint26
+    100056: joint27
+    100058: joint28
+    100060: joint29
+    100062: joint3
+    100064: joint30
+    100066: joint31
+    100068: joint31_end
+    100070: joint32
+    100072: joint33
+    100074: joint33_end
+    100076: joint34
+    100078: joint35
+    100080: joint35_end
+    100082: joint36
+    100084: joint36_end
+    100086: joint37
+    100088: joint37_end
+    100090: joint38
+    100092: joint38_end
+    100094: joint39
+    100096: joint4
+    100098: joint40
+    100100: joint41
+    100102: joint41_end
+    100104: joint42
+    100106: joint43
+    100108: joint44
+    100110: joint44_end
+    100112: joint5
+    100114: joint6
+    100116: joint7
+    100118: joint7_end
+    100120: joint8
+    100122: joint9
+    100124: Lamp
+    100126: yeti-dark-armature
+    100128: yeti-dark-model
+    100130: //RootNode
+    400000: Camera
+    400002: joint0
+    400004: joint1
+    400006: joint10
+    400008: joint10_end
+    400010: joint11
+    400012: joint12
+    400014: joint12_end
+    400016: joint13
+    400018: joint14
+    400020: joint14_end
+    400022: joint15
+    400024: joint15_end
+    400026: joint16
+    400028: joint17
+    400030: joint18
+    400032: joint19
+    400034: joint2
+    400036: joint20
+    400038: joint21
+    400040: joint21_end
+    400042: joint22
+    400044: joint23
+    400046: joint23_end
+    400048: joint24
+    400050: joint25
+    400052: joint25_end
+    400054: joint26
+    400056: joint27
+    400058: joint28
+    400060: joint29
+    400062: joint3
+    400064: joint30
+    400066: joint31
+    400068: joint31_end
+    400070: joint32
+    400072: joint33
+    400074: joint33_end
+    400076: joint34
+    400078: joint35
+    400080: joint35_end
+    400082: joint36
+    400084: joint36_end
+    400086: joint37
+    400088: joint37_end
+    400090: joint38
+    400092: joint38_end
+    400094: joint39
+    400096: joint4
+    400098: joint40
+    400100: joint41
+    400102: joint41_end
+    400104: joint42
+    400106: joint43
+    400108: joint44
+    400110: joint44_end
+    400112: joint5
+    400114: joint6
+    400116: joint7
+    400118: joint7_end
+    400120: joint8
+    400122: joint9
+    400124: Lamp
+    400126: yeti-dark-armature
+    400128: yeti-dark-model
+    400130: //RootNode
+    2000000: Camera
+    2100000: yeti-dark-material
+    4300000: yeti-dark-model
+    9500000: //RootNode
+    10800000: Lamp
+    13700000: yeti-dark-model
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
