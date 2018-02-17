@@ -1000,6 +1000,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2123111060}
   - component: {fileID: 2123111059}
+  - component: {fileID: 2123111062}
+  - component: {fileID: 2123111061}
   m_Layer: 0
   m_Name: AreaManager
   m_TagString: Untagged
@@ -1033,3 +1035,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2123111061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2123111058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 998
+  instantiationId: 998
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &2123111062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2123111058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb973cf716241b4bbb17fca24db7a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

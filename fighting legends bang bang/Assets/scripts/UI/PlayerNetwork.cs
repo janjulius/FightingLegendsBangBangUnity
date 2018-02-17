@@ -25,15 +25,46 @@ public class PlayerNetwork : MonoBehaviour
 
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        
-        if (scene.name == "test")
+
+        switch (scene.buildIndex)
         {
-            GetComponent<Game>().LoadInterface();
-            playersInGame = 0;
-            if (PhotonNetwork.isMasterClient)
-                MasterLoadedGame();
-            else
-                NonMasterLoadedGame();
+            case 1:
+                print("back to lobby");
+                if (PhotonNetwork.inRoom)
+                {
+                    PhotonNetwork.room.IsOpen = true;
+                    PhotonNetwork.room.IsVisible = true;
+
+                    var CRC = MainCanvasManager.Instance.CurrentRoomCanvas;
+
+                    MainCanvasManager.Instance.CurrentRoomCanvas.playerNameText.text = PhotonNetwork.player.NickName;
+
+                    foreach (Transform child in CRC.PlayerLayoutGroup.transform)
+                    {
+                        Destroy(child.gameObject);
+                    }
+
+                    MainCanvasManager.Instance.CurrentRoomCanvas.transform.SetAsLastSibling();
+
+                    PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
+                    for (int i = 0; i < photonPlayers.Length; i++)
+                    {
+                        CRC.PlayerLayoutGroup.PlayerJoinedRoom(photonPlayers[i]);
+                    }
+
+                    PlayerNetwork.Instance.photonView.RPC("RPC_UpdateSelection", PhotonTargets.AllBuffered, PhotonNetwork.player);
+                }
+
+                break;
+
+            case 2:
+                GetComponent<Game>().LoadInterface();
+                playersInGame = 0;
+                if (PhotonNetwork.isMasterClient)
+                    MasterLoadedGame();
+                else
+                    NonMasterLoadedGame();
+                break;
         }
     }
 
@@ -93,9 +124,9 @@ public class PlayerNetwork : MonoBehaviour
     private void RPC_CreatePlayer(PhotonPlayer p)
     {
 
-        Debug.Log("!char id: "+ p.CustomProperties["charId"]);
+        Debug.Log("!char id: " + p.CustomProperties["charId"]);
 
-        string pre = GameManager.Instance.charPrefabs[(int) p.CustomProperties["charId"]];
+        string pre = GameManager.Instance.charPrefabs[(int)p.CustomProperties["charId"]];
         Debug.Log(pre);
 
         Vector3 spawn = new Vector3(0, 5, 0);
@@ -107,7 +138,7 @@ public class PlayerNetwork : MonoBehaviour
     public void RPC_UpdateSelection(PhotonPlayer plr)
     {
         PlayerListing pl = MainCanvasManager.Instance.CurrentRoomCanvas.PlayerLayoutGroup.playerListings.Find(x => x.photonPlayer == plr);
-        if(pl)
+        if (pl)
             pl.UpdateUI();
     }
 }

@@ -51,7 +51,7 @@ public class PlayerLayoutGroup : MonoBehaviour
     }
 
 
-    private void PlayerJoinedRoom(PhotonPlayer phoPlayer)
+    internal void PlayerJoinedRoom(PhotonPlayer phoPlayer)
     {
 
         if (phoPlayer == null)

@@ -4,37 +4,38 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-    public Character currentCharacter;
-    public Health healthController;
-    public PlayerControls Keys;
-    public PlayerController playerController;
-    public PhotonPlayer netPlayer;
-    public GamePanelContainer gpc;
+    internal Character currentCharacter;
+    internal Health healthController;
+    internal PlayerControls Keys;
+    internal PlayerController playerController;
+    internal PhotonPlayer netPlayer;
+    internal GamePanelContainer gpc;
     public GameObject attackParticles;
-    private GameObject pc;
-    public Animator animator;
-    public GameObject playerBody;
-    public PhotonView photonViewer;
+    public GameObject swingObject;
+    internal Animator animator;
+    internal GameObject playerBody;
+    internal PhotonView photonViewer;
 
 
     private void Awake()
     {
         gameObject.AddComponent<PlayerControlsKeyBoard>();
-        playerBody = transform.Find("pivot").gameObject;
-
-        GameManager.Instance.Players.Add(this);
         photonViewer = GetComponent<PhotonView>();
         Keys = GetComponent<PlayerControls>();
         currentCharacter = GetComponent<Character>();
+        healthController = GetComponent<Health>();
+        playerController = GetComponent<PlayerController>();
+        animator = GetComponentInChildren<Animator>();
+
         netPlayer = photonViewer.owner;
         gpc = FindObjectOfType<GamePanelContainer>();
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).playerBase = this;
-        playerController = GetComponent<PlayerController>();
-        animator = GetComponentInChildren<Animator>();
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).UpdateUI();
-        PhotonNetwork.player.TagObject = gameObject;
+        playerBody = transform.Find("pivot").gameObject;
+        GameManager.Instance.Players.Add(this);
 
         attackParticles = Instantiate(attackParticles, playerBody.transform, false);
+        swingObject = Instantiate(swingObject, playerBody.transform, false);
 
     }
 
@@ -61,14 +62,13 @@ public class PlayerBase : MonoBehaviour
 
     private void Update()
     {
+        if (!photonViewer.isMine)
+            return;
+
         Keys.ControlUpdate();
         playerController.PlayerUpdate();
     }
 
-    //dir -1 = right
-    //dir 0 = left
-    //dir 1 = up
-    //dir 2 = down
     public void RegularAttack(Vector2 dir)
     {
         if (!currentCharacter.isBlocking)
@@ -107,10 +107,6 @@ public class PlayerBase : MonoBehaviour
     }
 
     #region playerRPCS
-
-
-
-
     [PunRPC]
     public void RPC_DoJump()
     {

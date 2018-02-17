@@ -55,9 +55,6 @@ public class PlayerController : MonoBehaviour
     public void PlayerUpdate()
     {
 
-        if (!pb.photonViewer.isMine)
-            return;
-
         LerpingKnockBack();
         sliding = CheckSide(Direction.Left) || CheckSide(Direction.Right);
 
@@ -102,7 +99,7 @@ public class PlayerController : MonoBehaviour
             pb.photonViewer.RPC("RPC_DoJump", PhotonTargets.Others);
         }
 
-        if ((CheckSide(Direction.Bottom) && !jumping && !_jumping) || (VerticalVelocity > 0 && CheckSide(Direction.Top)))
+        if ((CheckSide(Direction.Bottom) && !jumping && !_jumping) || (VerticalVelocity > 0 && CheckSide(Direction.Top)) || KnockBack.y != 0)
             VerticalVelocity = 0;
 
 
@@ -122,12 +119,6 @@ public class PlayerController : MonoBehaviour
         if (pb.Keys.BlockButton())
         {
             pb.Block();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PhotonNetwork.LeaveRoom();
-            PhotonNetwork.LoadLevel(1);
         }
     }
 
@@ -219,9 +210,9 @@ public class PlayerController : MonoBehaviour
             VerticalVelocity = jumpHeight;
 
             if (CheckSide(Direction.Left))
-                KnockBack.x += 15;
+                KnockBack.x += 10;
             else if (CheckSide(Direction.Right))
-                KnockBack.x -= 15;
+                KnockBack.x -= 10;
             touchingSides[(int)Direction.Bottom] = null;
             jumping = false;
             _jumping = true;
