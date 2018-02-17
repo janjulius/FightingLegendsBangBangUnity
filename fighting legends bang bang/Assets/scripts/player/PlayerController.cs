@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody body;
-    [SerializeField] private GameObject playerBody;
     private float speed = 13f;
     private float maxspeed = 13f;
     private float gravity = 35f;
@@ -28,10 +27,9 @@ public class PlayerController : MonoBehaviour
     private bool jumping = false;
     private bool _jumping = false;
 
-    private PhotonView photonViewer;
+    
 
     private PlayerBase pb;
-    private Animator animator;
 
     public GameObject[] touchingSides = new GameObject[4];
     public Vector2 KnockBack = new Vector2();
@@ -48,18 +46,16 @@ public class PlayerController : MonoBehaviour
         capsule = GetComponent<CapsuleCollider>();
         body.freezeRotation = true;
         body.useGravity = false;
-        photonViewer = GetComponent<PhotonView>();
         pb = GetComponent<PlayerBase>();
-        animator = GetComponentInChildren<Animator>();
-        playerBody = animator.transform.gameObject;
+        
     }
 
 
     // Update is called once per frame
-    void Update()
+    public void PlayerUpdate()
     {
 
-        if (!photonViewer.isMine)
+        if (!pb.photonViewer.isMine)
             return;
 
         LerpingKnockBack();
@@ -68,13 +64,13 @@ public class PlayerController : MonoBehaviour
         if (CheckSide(Direction.Bottom) && !CheckSide(Direction.Bottom))
             touchingSides[(int)Direction.Bottom] = null;
 
-        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f && !animator.GetBool("IsRunning"))
-            photonViewer.RPC("DoRunning", PhotonTargets.All);
-        else if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.1f && animator.GetBool("IsRunning"))
-            photonViewer.RPC("StopRunning", PhotonTargets.All);
+        if (Mathf.Abs(pb.Keys.Horizontal()) > 0.1f && !pb.animator.GetBool("IsRunning"))
+            pb.photonViewer.RPC("RPC_DoRunning", PhotonTargets.All);
+        else if (Mathf.Abs(pb.Keys.Horizontal()) < 0.1f && pb.animator.GetBool("IsRunning"))
+            pb.photonViewer.RPC("RPC_StopRunning", PhotonTargets.All);
 
-        if (animator.GetBool("IsGrounded") != CheckSide(Direction.Bottom))
-            photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(Direction.Bottom));
+        if (pb.animator.GetBool("IsGrounded") != CheckSide(Direction.Bottom))
+            pb.photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(Direction.Bottom));
 
 
         pb.CheckWithinArena();
@@ -99,32 +95,31 @@ public class PlayerController : MonoBehaviour
             VerticalVelocity = -VerticalVelocityMin;
 
 
-        if ((CheckSide(Direction.Bottom) || jumpsLeft > 0) && Input.GetButtonDown("Jump") && !jumping)
+        if ((CheckSide(Direction.Bottom) || jumpsLeft > 0) && pb.Keys.JumpButtonDown() && !jumping)
         {
             jumping = true;
-            animator.SetTrigger("IsJumping");
-            photonViewer.RPC("DoJump", PhotonTargets.Others);
+            pb.animator.SetTrigger("IsJumping");
+            pb.photonViewer.RPC("RPC_DoJump", PhotonTargets.Others);
         }
 
         if ((CheckSide(Direction.Bottom) && !jumping && !_jumping) || (VerticalVelocity > 0 && CheckSide(Direction.Top)))
             VerticalVelocity = 0;
 
 
-        if (Input.GetButtonDown("RegularAttack"))
+        if (pb.Keys.AttackButtonDown())
         {
 
             Vector2 dir = new Vector2(lookDirection.y != 0 ? 0 : lookDirection.x, lookDirection.y);
 
             pb.RegularAttack(dir);
-            DoPunch(1);
         }
 
-        if (Input.GetButton("SpecialAttack"))
+        if (pb.Keys.SpecialAttackButtonDown())
         {
             pb.SpecialAttack();
         }
 
-        if (Input.GetButton("Block"))
+        if (pb.Keys.BlockButton())
         {
             pb.Block();
         }
@@ -143,58 +138,58 @@ public class PlayerController : MonoBehaviour
         if (KnockBack.y < 4 && KnockBack.y > -4)
             KnockBack.y = 0;
 
-        if (KnockBack.x < 0 && Input.GetAxis("Horizontal") > 0)
+        if (KnockBack.x < 0 && pb.Keys.Horizontal() > 0)
         {
             if (KnockBack.x < 4 && KnockBack.x > -4)
                 KnockBack.x = 0;
         }
-        else if (KnockBack.x < 0 && Input.GetAxis("Horizontal") < 0)
+        else if (KnockBack.x < 0 && pb.Keys.Horizontal() < 0)
         {
             if (KnockBack.x < speed && KnockBack.x > -speed)
                 KnockBack.x = 0;
         }
 
-        if (KnockBack.x > 0 && Input.GetAxis("Horizontal") < 0)
+        if (KnockBack.x > 0 && pb.Keys.Horizontal() < 0)
         {
             if (KnockBack.x < 4 && KnockBack.x > -4)
                 KnockBack.x = 0;
         }
-        else if (KnockBack.x > 0 && Input.GetAxis("Horizontal") > 0)
+        else if (KnockBack.x > 0 && pb.Keys.Horizontal() > 0)
         {
             if (KnockBack.x < speed && KnockBack.x > -speed)
                 KnockBack.x = 0;
         }
 
-        if (KnockBack.x < 0 && Input.GetAxis("Horizontal") > 0)
+        if (KnockBack.x < 0 && pb.Keys.Horizontal() > 0)
             KnockBack.x += (speed) * Time.deltaTime;
-        if (KnockBack.x > 0 && Input.GetAxis("Horizontal") < 0)
+        if (KnockBack.x > 0 && pb.Keys.Horizontal() < 0)
             KnockBack.x -= (speed) * Time.deltaTime;
     }
 
     private void UpdateFaceDirection()
     {
-        if (Input.GetAxis("Horizontal") > 0.2 && !right)
+        if (pb.Keys.Horizontal() > 0.2 && !right)
         {
             right = true;
-            photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, true);
-            playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
+            pb.photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, true);
+            pb.playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
             lookDirection.x = 1;
 
         }
-        else if (Input.GetAxis("Horizontal") < -0.2 && right)
+        else if (pb.Keys.Horizontal() < -0.2 && right)
         {
             right = false;
-            photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, false);
-            playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
+            pb.photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, false);
+            pb.playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
             lookDirection.x = -1;
 
         }
-        if (Input.GetAxis("Vertical") > 0.2)
+        if (pb.Keys.Vertical() > 0.2)
         {
             lookDirection.y = 1;
 
         }
-        else if (Input.GetAxis("Vertical") < -0.2)
+        else if (pb.Keys.Vertical() < -0.2)
         {
             lookDirection.y = -1;
         }
@@ -204,22 +199,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    [PunRPC]
-    public void RPC_UpdateDirection(bool dir)
-    {
-        playerBody.transform.eulerAngles = new Vector3(0, dir ? 0 : 180, 0);
-    }
-
     void FixedUpdate()
     {
-        if (!photonViewer.isMine)
+        if (!pb.photonViewer.isMine)
             return;
 
 
         TrackGrounded();
 
         // Calculate how fast we should be moving
-        float MoveSpeed = Input.GetAxis("Horizontal") * speed;
+        float MoveSpeed = pb.Keys.Horizontal() * speed;
 
         _jumping = false;
         // Jump
@@ -286,56 +275,21 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitRight;
 
         if (Physics.Raycast(rayLeft, out hitLeft, lenght))
+        {
             if (hitLeft.transform.gameObject.layer == 9)
                 obj = hitLeft.transform.gameObject;
-            else if (Physics.Raycast(rayRight, out hitRight, lenght))
-                if (hitRight.transform.gameObject.layer == 9)
-                    obj = hitRight.transform.gameObject;
+        }
+        else if (Physics.Raycast(rayRight, out hitRight, lenght))
+        {
+            if (hitRight.transform.gameObject.layer == 9)
+                obj = hitRight.transform.gameObject;
+        }
 
 
         Debug.DrawLine(rayLeft.origin, rayLeft.origin + dir * lenght, Color.red);
-        Debug.DrawLine(rayRight.origin, rayRight.origin + dir * lenght, Color.red);
+        Debug.DrawLine(rayRight.origin, rayRight.origin + dir * lenght, Color.blue);
 
         return obj;
     }
 
-    [PunRPC]
-    public void DoJump()
-    {
-        animator.SetTrigger("IsJumping");
-    }
-
-    [PunRPC]
-    void DoRunning()
-    {
-        animator.SetBool("IsRunning", true);
-    }
-
-    [PunRPC]
-    void StopRunning()
-    {
-        animator.SetBool("IsRunning", false);
-    }
-
-    [PunRPC]
-    void RPC_IsGrounded(bool g)
-    {
-        animator.SetBool("IsGrounded", g);
-    }
-
-    public void DoPunch(int a)
-    {
-        animator.SetInteger("AttackState", a);
-    }
-
-    public GameObject PlayerBody
-    {
-        get { return playerBody; }
-        set
-        {
-            playerBody.SetActive(false);
-            playerBody = value;
-            animator = playerBody.GetComponent<Animator>();
-        }
-    }
 }

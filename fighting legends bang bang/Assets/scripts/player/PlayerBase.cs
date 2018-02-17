@@ -6,23 +6,36 @@ public class PlayerBase : MonoBehaviour
 {
     public Character currentCharacter;
     public Health healthController;
+    public PlayerControls Keys;
     public PlayerController playerController;
     public PhotonPlayer netPlayer;
     public GamePanelContainer gpc;
+    public GameObject attackParticles;
     private GameObject pc;
+    public Animator animator;
+    public GameObject playerBody;
+    public PhotonView photonViewer;
+
 
     private void Awake()
     {
+        gameObject.AddComponent<PlayerControlsKeyBoard>();
+        playerBody = transform.Find("pivot").gameObject;
+
         GameManager.Instance.Players.Add(this);
-        PhotonView phov = GetComponent<PhotonView>();
+        photonViewer = GetComponent<PhotonView>();
+        Keys = GetComponent<PlayerControls>();
         currentCharacter = GetComponent<Character>();
-        netPlayer = phov.owner;
+        netPlayer = photonViewer.owner;
         gpc = FindObjectOfType<GamePanelContainer>();
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).playerBase = this;
         playerController = GetComponent<PlayerController>();
-
+        animator = GetComponentInChildren<Animator>();
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).UpdateUI();
         PhotonNetwork.player.TagObject = gameObject;
+
+        attackParticles = Instantiate(attackParticles, playerBody.transform, false);
+
     }
 
     public void CheckWithinArena()
@@ -46,7 +59,11 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
-
+    private void Update()
+    {
+        Keys.ControlUpdate();
+        playerController.PlayerUpdate();
+    }
 
     //dir -1 = right
     //dir 0 = left
@@ -65,10 +82,10 @@ public class PlayerBase : MonoBehaviour
             if (currentCharacter.SpecialReady())
                 currentCharacter.SpecialAttack();
     }
-    
+
     public void Block()
     {
-        if(currentCharacter.CanBlock())
+        if (currentCharacter.CanBlock())
             currentCharacter.Block();
     }
 
@@ -89,9 +106,59 @@ public class PlayerBase : MonoBehaviour
         healthController.HealthPoints -= damage;
     }
 
-    public void AddKnockBack(Vector3 dir, double power)
-    {
+    #region playerRPCS
 
+
+
+
+    [PunRPC]
+    public void RPC_DoJump()
+    {
+        animator.SetTrigger("IsJumping");
     }
+
+    [PunRPC]
+    void RPC_DoRunning()
+    {
+        animator.SetBool("IsRunning", true);
+    }
+
+    [PunRPC]
+    void RPC_StopRunning()
+    {
+        animator.SetBool("IsRunning", false);
+    }
+
+    [PunRPC]
+    void RPC_IsGrounded(bool g)
+    {
+        animator.SetBool("IsGrounded", g);
+    }
+
+    [PunRPC]
+    public void RPC_DoPunch(int a, Vector2 dir)
+    {
+        if (a > -1)
+        {
+            Vector3 vec = new Vector3(0, dir.y, dir.x);
+            print(GetComponent<CapsuleCollider>().height * GetComponent<CapsuleCollider>().radius);
+            ParticleSystem sys = attackParticles.GetComponent<ParticleSystem>();
+            var mainModule = sys.main;
+            mainModule.startSpeedMultiplier = (playerController.capsule.height * playerController.capsule.radius)*0.8f* 7f;
+
+            attackParticles.transform.rotation = Quaternion.LookRotation(vec);
+            sys.Play();
+
+        }
+
+        animator.SetInteger("AttackState", a);
+    }
+
+    [PunRPC]
+    public void RPC_UpdateDirection(bool dir)
+    {
+        playerBody.transform.eulerAngles = new Vector3(0, dir ? 0 : 180, 0);
+    }
+    #endregion
 
 }

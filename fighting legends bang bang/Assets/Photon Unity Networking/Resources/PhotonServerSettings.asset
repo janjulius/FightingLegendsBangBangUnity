@@ -54,4 +54,8 @@ MonoBehaviour:
   - DoRunning
   - StopRunning
   - RPC_IsGrounded
+  - RPC_DoJump
+  - RPC_DoPunch
+  - RPC_DoRunning
+  - RPC_StopRunning
   DisableAutoOpenWizard: 1

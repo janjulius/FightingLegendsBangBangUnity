@@ -86,13 +86,16 @@ public abstract class Character : MonoBehaviour
 
         blockobject = GetComponentInChildren<BlockObject>();
         blockobject.gameObject.SetActive(false);
-
+        pb.RPC_DoPunch(-1, Vector2.zero);
         blockTime = 0.1;
-        
+
     }
 
     public void Update()
     {
+        if (!pb.photonViewer.isMine)
+            return;
+
         if (attackDelay >= 0)
         {
             attackDelay -= 1 * Time.deltaTime;
@@ -101,10 +104,12 @@ public abstract class Character : MonoBehaviour
         {
             swingDelay -= 1 * Time.deltaTime;
         }
-        else
+        else if(swingobject.gameObject.activeSelf)
         {
             swingobject.gameObject.SetActive(false);
-            GetComponent<PlayerController>().DoPunch(-1);
+            pb.RPC_DoPunch(-1, Vector2.zero);
+            GetComponent<PhotonView>().RPC("RPC_DoPunch", PhotonTargets.Others, -1, Vector2.zero);
+
         }
 
         //need to set timers
@@ -129,7 +134,11 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Attack(Vector2 dir)
     {
+        print("attack started");
         CapsuleCollider coll = pb.playerController.capsule;
+
+        pb.RPC_DoPunch(1, dir);
+        GetComponent<PhotonView>().RPC("RPC_DoPunch", PhotonTargets.Others, 1, dir);
 
         float rangeside = coll.radius;
         float rangeUpDown = coll.height / 3;
