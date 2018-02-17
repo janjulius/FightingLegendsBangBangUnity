@@ -42,10 +42,8 @@ public class PlayerControls : MonoBehaviour
         controls.specialAttackButton = controlsNew.specialAttackButton;
         controls.jumpButton = controlsNew.jumpButton;
         controls.blockButton = controlsNew.blockButtonDown;
-        controls.attackButtonDown =
-            controlsNew.attackButton && (controlsNew.attackButton != controlsOld.attackButton);
-        controls.specialAttackButtonDown = controlsNew.specialAttackButton &&
-                                           (controlsNew.specialAttackButton != controlsOld.specialAttackButton);
+        controls.attackButtonDown = controlsNew.attackButton && (controlsNew.attackButton != controlsOld.attackButton);
+        controls.specialAttackButtonDown = controlsNew.specialAttackButton && (controlsNew.specialAttackButton != controlsOld.specialAttackButton);
         controls.jumpButtonDown = controlsNew.jumpButton && (controlsNew.jumpButton != controlsOld.jumpButton);
         controls.blockButtonDown = controlsNew.blockButton && (controlsNew.blockButton != controlsOld.blockButton);
 

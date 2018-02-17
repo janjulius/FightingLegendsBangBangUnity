@@ -137,8 +137,16 @@ public abstract class Character : MonoBehaviour
         print("attack started");
         CapsuleCollider coll = pb.playerController.capsule;
 
-        pb.RPC_DoPunch(1, dir);
-        GetComponent<PhotonView>().RPC("RPC_DoPunch", PhotonTargets.Others, 1, dir);
+        int punchType = 1;
+
+        if (dir.y == 1)
+            punchType = 3;
+        if (dir.y == -1)
+            punchType = 2;
+
+        pb.RPC_DoPunch(punchType, dir);
+
+        GetComponent<PhotonView>().RPC("RPC_DoPunch", PhotonTargets.Others, punchType, dir);
 
         float rangeside = coll.radius;
         float rangeUpDown = coll.height / 3;

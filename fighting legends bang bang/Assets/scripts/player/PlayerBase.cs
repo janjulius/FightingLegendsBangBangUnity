@@ -141,7 +141,6 @@ public class PlayerBase : MonoBehaviour
         if (a > -1)
         {
             Vector3 vec = new Vector3(0, dir.y, dir.x);
-            print(GetComponent<CapsuleCollider>().height * GetComponent<CapsuleCollider>().radius);
             ParticleSystem sys = attackParticles.GetComponent<ParticleSystem>();
             var mainModule = sys.main;
             mainModule.startSpeedMultiplier = (playerController.capsule.height * playerController.capsule.radius)*0.8f* 7f;
