@@ -223,6 +223,12 @@ public abstract class Character : MonoBehaviour
         set { invulnerable = value; }
     }
 
+    public bool IsStunned
+    {
+        get { return stunned; }
+        set { stunned = value; }
+    }
+
     public bool SpecialReady()
     {
         return specialCounter >= specialCounterThreshHold;

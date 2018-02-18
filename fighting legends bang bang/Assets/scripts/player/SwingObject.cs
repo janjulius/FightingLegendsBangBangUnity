@@ -26,6 +26,6 @@ public class SwingObject : MonoBehaviour
         Debug.Log("hit someone");
 
         if (other.gameObject.GetComponent<Health>() != null)
-            other.gameObject.GetComponent<Health>().DealDamage(dmg, dir);
+            other.gameObject.GetComponent<Health>().DealDamage(dmg, dir, 0, PhotonNetwork.player);
     }
 }

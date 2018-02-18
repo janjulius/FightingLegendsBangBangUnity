@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     public bool death = false;
 
     private PlayerBase pb;
+    public PhotonPlayer LastHitBy;
 
 
     public int Damage
@@ -37,17 +38,19 @@ public class Health : MonoBehaviour
         pb = GetComponent<PlayerBase>();
     }
 
-    public void DealDamage(int dmg, Vector2 dir)
+    public void DealDamage(int dmg, Vector2 dir, int t, PhotonPlayer other)
     {
         Debug.Log("damage");
 
-        GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.All, dmg, dir);
+        GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.All, dmg, dir, t, other);
     }
 
     public void OnDeath()
     {
         death = true;
         transform.position = new Vector3(0, 5, 0);
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        ScoreManager.Instance.view.RPC("RPC_AddDeath", PhotonTargets.MasterClient, pb.netPlayer, LastHitBy);
         GetComponent<PhotonView>().RPC("RPC_OnDeath", PhotonTargets.All);
     }
 
@@ -69,13 +72,21 @@ public class Health : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_DealDamage(int dmg, Vector2 dir)
+    public void RPC_DealDamage(int dmg, Vector2 dir, int t, PhotonPlayer other)
     {
+        LastHitBy = other;
+
         if (!pb.currentCharacter.IsInvulnerable)
         {
             if (!pb.currentCharacter.isBlocking)
             {
+                ScoreManager.Instance.view.RPC("RPC_AddDamageTaken", PhotonTargets.MasterClient, pb.netPlayer, other, dmg, t);
                 this.dmg = this.dmg + dmg;
+            }
+            else
+            {
+                ScoreManager.Instance.view.RPC("RPC_AddDamageBlocked", PhotonTargets.MasterClient, pb.netPlayer, dmg);
+
             }
         }
 

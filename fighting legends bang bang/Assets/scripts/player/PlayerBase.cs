@@ -16,6 +16,9 @@ public class PlayerBase : MonoBehaviour
     internal GameObject playerBody;
     internal PhotonView photonViewer;
 
+    internal bool CanNotMove;
+    internal bool InMenus;
+
 
     private void Awake()
     {
@@ -66,6 +69,8 @@ public class PlayerBase : MonoBehaviour
     {
         if (!photonViewer.isMine)
             return;
+
+        CanNotMove = currentCharacter.IsStunned || InMenus;
 
         Keys.ControlUpdate();
         playerController.PlayerUpdate();

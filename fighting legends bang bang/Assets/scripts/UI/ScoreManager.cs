@@ -173,27 +173,26 @@ public class ScoreManager : MonoBehaviour
     #region RPC region
 
     [PunRPC]
-    public void RPC_AddKills(PhotonPlayer pp, int i)
+    public void RPC_AddDeath(PhotonPlayer pp, PhotonPlayer op)
     {
-        players.Find(x => x.phoPlayer == pp).kills += i;
+        players.Find(x => x.phoPlayer == pp).deaths++;
+        if (op != null) players.Find(x => x.phoPlayer == op).kills++;
     }
 
     [PunRPC]
-    public void RPC_AddDeath(PhotonPlayer pp, int i)
-    {
-        players.Find(x => x.phoPlayer == pp).deaths += i;
-    }
-
-    [PunRPC]
-    public void RPC_AddDamageTaken(PhotonPlayer pp, int i)
+    public void RPC_AddDamageTaken(PhotonPlayer pp, PhotonPlayer op, int i, int t)
     {
         players.Find(x => x.phoPlayer == pp).damageTaken += i;
-    }
+        switch (t)
+        {
+            case 0:
+                players.Find(x => x.phoPlayer == op).damageDone += i;
+                break;
+            case 1:
+                players.Find(x => x.phoPlayer == pp).damageDoneWithUlt += i;
+                break;
+        }
 
-    [PunRPC]
-    public void RPC_AddDamaDone(PhotonPlayer pp, int i)
-    {
-        players.Find(x => x.phoPlayer == pp).damageDone += i;
     }
 
     [PunRPC]
@@ -209,12 +208,6 @@ public class ScoreManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_AddDamageDoneWithUlt(PhotonPlayer pp, int i)
-    {
-        players.Find(x => x.phoPlayer == pp).damageDoneWithUlt += i;
-    }
-
-    [PunRPC]
     public void RPC_AddUltsUsed(PhotonPlayer pp, int i)
     {
         players.Find(x => x.phoPlayer == pp).ultsUsed += i;
@@ -224,6 +217,14 @@ public class ScoreManager : MonoBehaviour
     public void RPC_EndingGame(string s)
     {
         print("ending game");
+
+        foreach (PlayerBase p in GameManager.Instance.Players)
+        {
+            if (p)
+            {
+                p.InMenus = true;
+            }
+        }
 
         FindObjectOfType<ScoreLayoutGroup>().CreateScoreScreen(stringToList(s));
 
