@@ -49,8 +49,6 @@ public class PlayerListing : MonoBehaviour
             MainCanvasManager.Instance.CurrentRoomCanvas.startButton.SetActive(Ready);
         }
 
-
-        Debug.Log(photonPlayer.CustomProperties["charId"]);
         charImage.sprite = GameManager.Instance.CharacterHeads[(int)photonPlayer.CustomProperties["charId"]];
         Color c = new Color((float)photonPlayer.CustomProperties["pColorR"], (float)photonPlayer.CustomProperties["pColorG"], (float)photonPlayer.CustomProperties["pColorB"]);
         backGround.color = c;

@@ -22,6 +22,16 @@ public class CreateRoomCanvas : MonoBehaviour
 
         RoomOptions options = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = mPlayers };
 
+        options.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
+
+        options.CustomRoomProperties.Add("Owner", PhotonNetwork.playerName);
+
+        options.CustomRoomPropertiesForLobby = new[]
+        {
+            "Owner"
+        };
+
+
         if (PhotonNetwork.CreateRoom(rName, options, TypedLobby.Default))
         {
             print("create room send succesfully: " + rName);
@@ -40,11 +50,6 @@ public class CreateRoomCanvas : MonoBehaviour
     private void OnCreatedRoom()
     {
         print("Room created successfully");
-        ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable();
-
-        properties["Owner"] = PhotonNetwork.player.NickName;
-
-        PhotonNetwork.room.SetCustomProperties(properties);
 
         print(PhotonNetwork.room.CustomProperties["Owner"]);
     }
@@ -57,7 +62,7 @@ public class CreateRoomCanvas : MonoBehaviour
     public void OnMaxChange()
     {
         int mPlayers = 0;
-        if (int.TryParse(maxPlayers.text,out mPlayers))
+        if (int.TryParse(maxPlayers.text, out mPlayers))
         {
 
             mPlayers = Mathf.Clamp(mPlayers, 2, 8);
