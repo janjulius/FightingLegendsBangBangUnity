@@ -22,6 +22,6 @@ public class LobbyCanvas : MonoBehaviour
 
     public void OnClickLeaveLobby()
     {
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel(GameManager.Instance.GetSceneId("mainmenu"));
     }
 }

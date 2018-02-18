@@ -10,6 +10,7 @@ public class PlayerNetwork : MonoBehaviour
 
     public static PlayerNetwork Instance;
     public string PlayerName;
+    public int currentLevel;
     public PhotonView photonView;
     private int playersInGame = 0;
     public ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable();
@@ -73,7 +74,7 @@ public class PlayerNetwork : MonoBehaviour
     private void MasterLoadedGame()
     {
         photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient);
-        photonView.RPC("RPC_LoadGameOthers", PhotonTargets.Others);
+        photonView.RPC("RPC_LoadGameOthers", PhotonTargets.Others,currentLevel);
     }
 
     private void NonMasterLoadedGame()
@@ -96,14 +97,14 @@ public class PlayerNetwork : MonoBehaviour
     public void Kicked()
     {
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel(2);
+        PhotonNetwork.LoadLevel(GameManager.Instance.GetSceneId("lobby"));
     }
 
 
     [PunRPC]
-    private void RPC_LoadGameOthers()
+    private void RPC_LoadGameOthers(int lvl)
     {
-        PhotonNetwork.LoadLevel(3);
+        PhotonNetwork.LoadLevel(lvl);
     }
 
     [PunRPC]

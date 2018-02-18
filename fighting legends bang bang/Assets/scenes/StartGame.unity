@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4403d74f41507fe41a2a4eda6378be2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerName: 
   photonView: {fileID: 0}
 --- !u!114 &1371888468
 MonoBehaviour:
@@ -219,6 +220,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Players: []
+  SceneList:
+  - StartGame
+  - mainmenu
+  - lobby
+  - test
+  Levels:
+  - test
+  LevelsImage:
+  - {fileID: 21300000, guid: 7fedf08424f9d1a4db78aa4e4174a957, type: 3}
   CharacterHeads:
   - {fileID: 21300000, guid: 8a422aefc691f32458e3357b35c7725f, type: 3}
   - {fileID: 21300000, guid: 4d2b714a55e279a449b2322a469b6eec, type: 3}

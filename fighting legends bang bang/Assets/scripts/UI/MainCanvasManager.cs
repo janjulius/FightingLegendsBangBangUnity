@@ -7,6 +7,7 @@ public class MainCanvasManager : MonoBehaviour
     public LobbyCanvas lobbyCanvas;
     public CurrentRoomCanvas CurrentRoomCanvas;
     public CreateRoomCanvas CreateRoomCanvas;
+    public LevelSelectCanvas LevelSelectCanvas;
 
     public static MainCanvasManager Instance;
 
