@@ -38,8 +38,8 @@ public class LobbySystem : MonoBehaviour
         print("Joined lobby.");
         GameManager.Instance.Players.Clear();
 
+                if (!PhotonNetwork.inRoom && MainCanvasManager.Instance)
+                    MainCanvasManager.Instance.lobbyCanvas.transform.SetAsLastSibling();
 
-        if (!PhotonNetwork.inRoom)
-            MainCanvasManager.Instance.lobbyCanvas.transform.SetAsLastSibling();
     }
 }

@@ -258,14 +258,22 @@ public class PlayerController : MonoBehaviour
 
         var pos1 = new Vector3(pos.x, pos.y, pos.z);
         var pos2 = new Vector3(pos.x, s ? -pos.y : pos.y, !s ? -pos.z : pos.z);
+        var pos3 = new Vector3(pos.x, s ? 0 : pos.y, !s ? 0 : pos.z);
 
 
         Ray rayLeft = new Ray(transform.position + pos1, dir);
         Ray rayRight = new Ray(transform.position + pos2, dir);
+        Ray rayMiddel = new Ray(transform.position + pos3, dir);
         RaycastHit hitLeft;
         RaycastHit hitRight;
+        RaycastHit hitMiddel;
 
-        if (Physics.Raycast(rayLeft, out hitLeft, lenght))
+        if (Physics.Raycast(rayMiddel, out hitMiddel, lenght))
+        {
+            if (hitMiddel.transform.gameObject.layer == 9)
+                obj = hitMiddel.transform.gameObject;
+        }
+        else if (Physics.Raycast(rayLeft, out hitLeft, lenght))
         {
             if (hitLeft.transform.gameObject.layer == 9)
                 obj = hitLeft.transform.gameObject;
@@ -279,6 +287,7 @@ public class PlayerController : MonoBehaviour
 
         Debug.DrawLine(rayLeft.origin, rayLeft.origin + dir * lenght, Color.red);
         Debug.DrawLine(rayRight.origin, rayRight.origin + dir * lenght, Color.blue);
+        Debug.DrawLine(rayMiddel.origin, rayMiddel.origin + dir * lenght, Color.green);
 
         return obj;
     }

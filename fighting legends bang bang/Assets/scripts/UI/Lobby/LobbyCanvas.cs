@@ -19,4 +19,9 @@ public class LobbyCanvas : MonoBehaviour
             print("joining failed");
         }
     }
+
+    public void OnClickLeaveLobby()
+    {
+        PhotonNetwork.LoadLevel(1);
+    }
 }

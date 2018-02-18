@@ -29,7 +29,7 @@ public class CurrentGameManager : MonoBehaviour
             if (!PhotonNetwork.isMasterClient)
             {
                 PhotonNetwork.LeaveRoom();
-                PhotonNetwork.LoadLevel(1);
+                PhotonNetwork.LoadLevel(2);
             }
             else
             {
@@ -41,6 +41,6 @@ public class CurrentGameManager : MonoBehaviour
     [PunRPC]
     public void RPC_ReturnToRoom()
     {
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel(2);
     }
 }

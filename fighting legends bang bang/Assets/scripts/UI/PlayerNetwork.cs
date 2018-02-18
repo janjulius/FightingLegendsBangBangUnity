@@ -9,7 +9,7 @@ public class PlayerNetwork : MonoBehaviour
 {
 
     public static PlayerNetwork Instance;
-    public string PlayerName { get; private set; }
+    public string PlayerName;
     public PhotonView photonView;
     private int playersInGame = 0;
     public ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable();
@@ -18,7 +18,6 @@ public class PlayerNetwork : MonoBehaviour
     {
         Instance = this;
         photonView = GetComponent<PhotonView>();
-        PlayerName = "Player#" + Random.Range(1000, 9999);
 
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
     }
@@ -26,9 +25,9 @@ public class PlayerNetwork : MonoBehaviour
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
 
-        switch (scene.buildIndex)
+        switch (scene.name)
         {
-            case 1:
+            case "lobby":
                 print("back to lobby");
                 if (PhotonNetwork.inRoom)
                 {
@@ -57,7 +56,7 @@ public class PlayerNetwork : MonoBehaviour
 
                 break;
 
-            case 2:
+            case "test":
                 GetComponent<Game>().LoadInterface();
                 playersInGame = 0;
                 if (PhotonNetwork.isMasterClient)
@@ -94,14 +93,14 @@ public class PlayerNetwork : MonoBehaviour
     public void Kicked()
     {
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel(2);
     }
 
 
     [PunRPC]
     private void RPC_LoadGameOthers()
     {
-        PhotonNetwork.LoadLevel(2);
+        PhotonNetwork.LoadLevel(3);
     }
 
     [PunRPC]
