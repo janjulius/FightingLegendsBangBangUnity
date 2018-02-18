@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 1371888471}
   - component: {fileID: 1371888472}
   - component: {fileID: 1371888473}
+  - component: {fileID: 1371888474}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -146,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerName: 
+  currentLevel: 0
   photonView: {fileID: 0}
 --- !u!114 &1371888468
 MonoBehaviour:
@@ -278,3 +280,15 @@ MonoBehaviour:
   - {x: 0, y: -1, z: 0}
   characterRotationOffsets:
   - {x: 0, y: 0, z: 0}
+--- !u!114 &1371888474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1371888466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3641ed6c7b5750645856a3493a1d90f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 0}

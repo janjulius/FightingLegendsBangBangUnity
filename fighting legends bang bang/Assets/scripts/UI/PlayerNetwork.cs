@@ -61,6 +61,7 @@ public class PlayerNetwork : MonoBehaviour
                 break;
 
             case "test":
+                ScoreManager.Instance.players.Clear();
                 GetComponent<Game>().LoadInterface();
                 playersInGame = 0;
                 if (PhotonNetwork.isMasterClient)

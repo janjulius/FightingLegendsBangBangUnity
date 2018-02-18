@@ -33,6 +33,8 @@ public class PlayerBase : MonoBehaviour
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).UpdateUI();
         playerBody = transform.Find("pivot").gameObject;
         GameManager.Instance.Players.Add(this);
+        if (PhotonNetwork.isMasterClient)
+            ScoreManager.Instance.AddPlayer(netPlayer, this);
 
         attackParticles = Instantiate(attackParticles, playerBody.transform, false);
         swingObject = Instantiate(swingObject, playerBody.transform, false);
@@ -96,14 +98,10 @@ public class PlayerBase : MonoBehaviour
         playerController.KnockBack = dir * force;
     }
 
-    public void TakeDamage(int damage)
+    public void OnDestroy()
     {
-        healthController.Damage += damage;
-    }
-
-    public void TakeHealth(int damage)
-    {
-        healthController.HealthPoints -= damage;
+        if (PhotonNetwork.isMasterClient)
+            ScoreManager.Instance.PlayerLost(netPlayer);
     }
 
     #region playerRPCS
@@ -139,7 +137,7 @@ public class PlayerBase : MonoBehaviour
             Vector3 vec = new Vector3(0, dir.y, dir.x);
             ParticleSystem sys = attackParticles.GetComponent<ParticleSystem>();
             var mainModule = sys.main;
-            mainModule.startSpeedMultiplier = (playerController.capsule.height * playerController.capsule.radius)*0.8f* 7f;
+            mainModule.startSpeedMultiplier = (playerController.capsule.height * playerController.capsule.radius) * 0.8f * 7f;
 
             attackParticles.transform.rotation = Quaternion.LookRotation(vec);
             sys.Play();

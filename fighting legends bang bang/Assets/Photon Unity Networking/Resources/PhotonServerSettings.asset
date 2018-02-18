@@ -59,4 +59,14 @@ MonoBehaviour:
   - RPC_DoRunning
   - RPC_StopRunning
   - RPC_ReturnToRoom
+  - RPC_AddDamaDone
+  - RPC_AddDamageBlocked
+  - RPC_AddDamageDoneWithUlt
+  - RPC_AddDamageHealed
+  - RPC_AddDamageTaken
+  - RPC_AddDeath
+  - RPC_AddKills
+  - RPC_AddUltsUsed
+  - RPC_EndingGame
+  - RPC_SetPlayerReady
   DisableAutoOpenWizard: 1

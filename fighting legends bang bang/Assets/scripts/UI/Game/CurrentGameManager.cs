@@ -6,7 +6,7 @@ public class CurrentGameManager : MonoBehaviour
 {
 
     public static CurrentGameManager Instance;
-    private PhotonView phoView;
+    public PhotonView phoView;
 
     private void Awake()
     {
