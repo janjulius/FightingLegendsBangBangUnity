@@ -49,6 +49,8 @@ public class Health : MonoBehaviour
     {
         death = true;
         transform.position = new Vector3(0, 5, 0);
+        print(GetComponent<Rigidbody>().velocity);
+        pb.playerController.KnockBack = Vector2.zero;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         ScoreManager.Instance.view.RPC("RPC_AddDeath", PhotonTargets.MasterClient, pb.netPlayer, LastHitBy);
         GetComponent<PhotonView>().RPC("RPC_OnDeath", PhotonTargets.All);
@@ -61,7 +63,7 @@ public class Health : MonoBehaviour
         this.lives--;
         this.Damage = 0;
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
-
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
         if (this.lives <= 0)
         {
             Destroy(gameObject);
@@ -80,12 +82,14 @@ public class Health : MonoBehaviour
         {
             if (!pb.currentCharacter.isBlocking)
             {
-                ScoreManager.Instance.view.RPC("RPC_AddDamageTaken", PhotonTargets.MasterClient, pb.netPlayer, other, dmg, t);
+                if (PhotonNetwork.isMasterClient)
+                    ScoreManager.Instance.view.RPC("RPC_AddDamageTaken", PhotonTargets.MasterClient, pb.netPlayer, other, dmg, t);
                 this.dmg = this.dmg + dmg;
             }
             else
             {
-                ScoreManager.Instance.view.RPC("RPC_AddDamageBlocked", PhotonTargets.MasterClient, pb.netPlayer, dmg);
+                if (PhotonNetwork.isMasterClient)
+                    ScoreManager.Instance.view.RPC("RPC_AddDamageBlocked", PhotonTargets.MasterClient, pb.netPlayer, dmg);
 
             }
         }
@@ -96,11 +100,7 @@ public class Health : MonoBehaviour
             {
                 pb.AddKnockBack(dir, 10 + this.dmg);
             }
-
-            Debug.Log(dir);
-            Debug.Log(pb.playerController.KnockBack.x);
         }
-        Debug.Log("new health " + this.dmg);
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
     }
 }

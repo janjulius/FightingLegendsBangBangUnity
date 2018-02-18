@@ -182,6 +182,8 @@ public class ScoreManager : MonoBehaviour
     [PunRPC]
     public void RPC_AddDamageTaken(PhotonPlayer pp, PhotonPlayer op, int i, int t)
     {
+        print(i);
+
         players.Find(x => x.phoPlayer == pp).damageTaken += i;
         switch (t)
         {
