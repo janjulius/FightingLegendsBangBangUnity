@@ -53,6 +53,9 @@ public class PlayerNetwork : MonoBehaviour
 
                     PlayerNetwork.Instance.photonView.RPC("RPC_UpdateSelection", PhotonTargets.AllBuffered, PhotonNetwork.player);
                 }
+                
+                MainCanvasManager.Instance.lobbyCanvas.roomLayoutGroup.OnReceivedRoomListUpdate();
+
 
                 break;
 

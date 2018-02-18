@@ -9,34 +9,9 @@ public class CreateRoom : MonoBehaviour
 
     public void OnClickCreateRoom()
     {
-        RoomOptions options = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 4 };
-
-        string nam = "ROOM#" + Random.Range(1000, 9999);
-        if (PhotonNetwork.CreateRoom(nam, options, TypedLobby.Default))
-        {
-            print("create room send succesfully: " + nam);
-        }
-        else
-        {
-            print("Create room send failed");
-        }
+        MainCanvasManager.Instance.CreateRoomCanvas.transform.SetAsLastSibling();
     }
 
-    private void OnPhotonCreateRoomFailed(object[] codeAndMessage)
-    {
-        print("create room failed: " + codeAndMessage[1]);
-    }
-
-    private void OnCreatedRoom()
-    {
-        print("Room created successfully");
-        ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable();
-
-        properties["Owner"] = PhotonNetwork.player.NickName;
-
-        PhotonNetwork.room.SetCustomProperties(properties);
-
-        print(PhotonNetwork.room.CustomProperties["Owner"]);
-    }
+    
 
 }

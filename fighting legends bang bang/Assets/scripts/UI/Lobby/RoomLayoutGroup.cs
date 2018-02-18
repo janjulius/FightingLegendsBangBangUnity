@@ -9,7 +9,7 @@ public class RoomLayoutGroup : MonoBehaviour
 
     private List<RoomListing> roomListingButtons = new List<RoomListing>();
 
-    private void OnReceivedRoomListUpdate()
+    public void OnReceivedRoomListUpdate()
     {
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
 

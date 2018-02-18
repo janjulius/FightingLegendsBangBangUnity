@@ -5,7 +5,7 @@ using UnityEngine;
 public class LobbyCanvas : MonoBehaviour
 {
 
-    [SerializeField] private RoomLayoutGroup roomLayoutGroup;
+    public RoomLayoutGroup roomLayoutGroup;
 
     public void OnClickJoinRoom(string roomName)
     {
