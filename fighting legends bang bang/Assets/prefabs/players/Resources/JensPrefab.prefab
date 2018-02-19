@@ -2036,6 +2036,8 @@ MonoBehaviour:
     type: 2}
   swingObject: {fileID: 1154622516679632, guid: bbf09a3279f512947837048739e5aa39,
     type: 2}
+  hollowObject: {fileID: 1757029547438904, guid: 7606dbf201728a24ebf5ff81cbfc7647,
+    type: 2}
 --- !u!114 &114505297858629350
 MonoBehaviour:
   m_ObjectHideFlags: 1

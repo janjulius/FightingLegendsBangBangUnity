@@ -16,6 +16,7 @@ public class PlayerBase : MonoBehaviour
     internal GameObject playerBody;
     internal PhotonView photonViewer;
     internal Vector3 SpawnPoint;
+    public GameObject hollowObject;
 
     internal bool CanNotMove;
     internal bool InMenus;
@@ -42,6 +43,8 @@ public class PlayerBase : MonoBehaviour
 
         attackParticles = Instantiate(attackParticles, playerBody.transform, false);
         swingObject = Instantiate(swingObject, playerBody.transform, false);
+        //hollowObject = Instantiate(hollowObject, transform, false);
+        //hollowObject.transform.localPosition = new Vector3(0, (-GetComponent<CapsuleCollider>().height / 2) - 0.1f, 0);
 
     }
 
@@ -72,6 +75,7 @@ public class PlayerBase : MonoBehaviour
             return;
 
         CanNotMove = currentCharacter.IsStunned || InMenus;
+
 
         Keys.ControlUpdate();
         playerController.PlayerUpdate();

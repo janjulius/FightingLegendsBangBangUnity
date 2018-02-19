@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool jumping = false;
     private bool _jumping = false;
 
-    
+
 
     private PlayerBase pb;
 
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         body.freezeRotation = true;
         body.useGravity = false;
         pb = GetComponent<PlayerBase>();
-        
+
     }
 
 
@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
 
         if (pb.animator.GetBool("IsGrounded") != CheckSide(Direction.Bottom))
             pb.photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(Direction.Bottom));
+
+        //pb.hollowObject.SetActive(!(body.velocity.y > 0 || pb.Keys.Vertical() < -0.2));
 
 
         pb.CheckWithinArena();
@@ -231,7 +233,7 @@ public class PlayerController : MonoBehaviour
         // We apply gravity manually for more tuning control
         body.velocity = new Vector3(0, velocityY, velocityZ);
 
-        if(pb.CanNotMove)
+        if (pb.CanNotMove)
             body.velocity = Vector3.zero;
     }
 
