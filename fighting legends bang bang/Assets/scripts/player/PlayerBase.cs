@@ -160,6 +160,12 @@ public class PlayerBase : MonoBehaviour
     }
 
     [PunRPC]
+    public void RPC_DoBlock(bool a)
+    {
+        blockObject.SetActive(a);
+    }
+
+    [PunRPC]
     public void RPC_UpdateDirection(bool dir)
     {
         playerBody.transform.eulerAngles = new Vector3(0, dir ? 0 : 180, 0);

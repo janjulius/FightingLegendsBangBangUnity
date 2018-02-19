@@ -96,7 +96,10 @@ public class Health : MonoBehaviour
         {
             if (!pb.currentCharacter.IsKnockBackImmume)
             {
-                pb.AddKnockBack(dir, 10 + this.dmg);
+                if (!pb.currentCharacter.isBlocking)
+                {
+                    pb.AddKnockBack(dir, 10 + this.dmg);
+                }
             }
         }
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();

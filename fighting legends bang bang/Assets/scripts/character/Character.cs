@@ -46,10 +46,10 @@ public abstract class Character : MonoBehaviour
     private int[] touchingWalls = new[] { -1, -1, -1, -1 };
 
     //timer properties
-    private const double blockCooldownTimer = 2; //time for the block to be able to be used again
+    private const double blockCooldownTimer = 0.7; //time for the block to be able to be used again
     private double blockDelay;
     private double blockCooldownTime;
-    private const double blockRemoveCooldown = 1; //how long a block lasts for
+    private const double blockRemoveCooldown = 0.3; //how long a block lasts for
     private bool canBlock;
     private double swingDelay;
     private double swingRemoveCooldown;
@@ -134,6 +134,7 @@ public abstract class Character : MonoBehaviour
             {
                 blockobject.gameObject.SetActive(false);
                 blocking = false;
+                GetComponent<PhotonView>().RPC("RPC_DoBlock", PhotonTargets.Others, false);
             }
         }
     }
@@ -172,6 +173,7 @@ public abstract class Character : MonoBehaviour
         blockDelay = blockRemoveCooldown;
         blockCooldownTime = blockCooldownTimer;
         blocking = true;
+        GetComponent<PhotonView>().RPC("RPC_DoBlock", PhotonTargets.Others, true);
     }
 
     public virtual void SpecialAttack()
