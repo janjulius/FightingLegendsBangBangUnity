@@ -48,8 +48,7 @@ public class Health : MonoBehaviour
     public void OnDeath()
     {
         death = true;
-        transform.position = new Vector3(0, 5, 0);
-        print(GetComponent<Rigidbody>().velocity);
+        StartCoroutine(CurrentGameManager.Instance.RespawnPlayer(gameObject, pb.SpawnPoint));
         pb.playerController.KnockBack = Vector2.zero;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         ScoreManager.Instance.view.RPC("RPC_AddDeath", PhotonTargets.MasterClient, pb.netPlayer, LastHitBy);
@@ -63,7 +62,6 @@ public class Health : MonoBehaviour
         this.lives--;
         this.Damage = 0;
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
         if (this.lives <= 0)
         {
             Destroy(gameObject);

@@ -222,13 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Players: []
-  SceneList:
-  - StartGame
-  - mainmenu
-  - lobby
-  - test
-  Levels:
-  - test
+  GameUI: {fileID: 1636699539760068, guid: 84248ea1bd759fb4c8256a2208f5b50d, type: 2}
   LevelsImage:
   - {fileID: 21300000, guid: 7fedf08424f9d1a4db78aa4e4174a957, type: 3}
   CharacterHeads:
@@ -292,3 +286,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 0}
+  scoreLayout: {fileID: 0}

@@ -134,7 +134,6 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Attack(Vector2 dir)
     {
-        print("attack started");
         CapsuleCollider coll = pb.playerController.capsule;
 
         int punchType = 1;

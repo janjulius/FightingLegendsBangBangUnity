@@ -15,6 +15,7 @@ public class PlayerBase : MonoBehaviour
     internal Animator animator;
     internal GameObject playerBody;
     internal PhotonView photonViewer;
+    internal Vector3 SpawnPoint;
 
     internal bool CanNotMove;
     internal bool InMenus;
