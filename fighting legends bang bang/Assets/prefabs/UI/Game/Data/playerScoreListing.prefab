@@ -251,6 +251,7 @@ MonoBehaviour:
   name: {fileID: 114243943923469998}
   character: {fileID: 114085351170233380}
   ready: {fileID: 114415324857020548}
+  id: 0
 --- !u!114 &114724937749427716
 MonoBehaviour:
   m_ObjectHideFlags: 1
