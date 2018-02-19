@@ -46,10 +46,10 @@ public abstract class Character : MonoBehaviour
     private int[] touchingWalls = new[] { -1, -1, -1, -1 };
 
     //timer properties
-    private double blockTime;
-    private double blockTimer;
+    private const double blockCooldownTimer = 2; //time for the block to be able to be used again
     private double blockDelay;
-    private double blockRemoveCooldown;
+    private double blockCooldownTime;
+    private const double blockRemoveCooldown = 1; //how long a block lasts for
     private bool canBlock;
     private double swingDelay;
     private double swingRemoveCooldown;
@@ -86,8 +86,8 @@ public abstract class Character : MonoBehaviour
 
         blockobject = GetComponentInChildren<BlockObject>();
         blockobject.gameObject.SetActive(false);
+
         pb.RPC_DoPunch(-1, Vector2.zero);
-        blockTime = 0.1;
 
     }
 
@@ -104,7 +104,7 @@ public abstract class Character : MonoBehaviour
         {
             swingDelay -= 1 * Time.deltaTime;
         }
-        else if(swingobject.gameObject.activeSelf)
+        else if (swingobject.gameObject.activeSelf)
         {
             swingobject.gameObject.SetActive(false);
             pb.RPC_DoPunch(-1, Vector2.zero);
@@ -112,21 +112,29 @@ public abstract class Character : MonoBehaviour
 
         }
 
-        //need to set timers
-        if (blockDelay >= 0)
+        if (blockCooldownTime > 0)
+        {
+            blockCooldownTime -= 1 * Time.deltaTime;
+            canBlock = false;
+        }
+
+        if (blockCooldownTime <= 0)
+        {
+         Debug.Log("player can now block again");   canBlock = true;
+            blockobject.gameObject.SetActive(false);
+        }
+
+        if (blockDelay > 0)
         {
             blockDelay -= 1 * Time.deltaTime;
-            blocking = true;
-            blockobject.gameObject.SetActive(true);
-            if (blockDelay <= blockTime)
-            {
-                blocking = false;
-                blockobject.gameObject.SetActive(false);
-            }
         }
-        else
+        if (blockDelay <= 0)
         {
-            blockobject.gameObject.SetActive(false);
+            if (blocking)
+            {
+                blockobject.gameObject.SetActive(false);
+                blocking = false;
+            }
         }
     }
 
@@ -157,6 +165,15 @@ public abstract class Character : MonoBehaviour
         attackDelay = attackRemoveCooldown;
     }
 
+
+    public virtual void Block()
+    {
+        blockobject.gameObject.SetActive(true);
+        blockDelay = blockRemoveCooldown;
+        blockCooldownTime = blockCooldownTimer;
+        blocking = true;
+    }
+
     public virtual void SpecialAttack()
     {
 
@@ -165,12 +182,6 @@ public abstract class Character : MonoBehaviour
     public virtual void Jump()
     {
 
-    }
-
-    public virtual void Block()
-    {
-        blockobject.gameObject.SetActive(true);
-        blockDelay = blockRemoveCooldown;
     }
 
     #endregion
@@ -240,7 +251,7 @@ public abstract class Character : MonoBehaviour
 
     public bool CanBlock()
     {
-        return blockDelay <= 0;
+        return canBlock;
     }
 
     public string GetFullName()

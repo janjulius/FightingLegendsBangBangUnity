@@ -118,8 +118,9 @@ public class PlayerController : MonoBehaviour
             pb.SpecialAttack();
         }
 
-        if (pb.Keys.BlockButton())
+        if (pb.Keys.BlockButtonDown())
         {
+            Debug.Log("attempting to block ( button presed )");
             pb.Block();
         }
     }

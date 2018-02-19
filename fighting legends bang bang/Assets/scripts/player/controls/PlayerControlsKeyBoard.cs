@@ -12,6 +12,7 @@ public class PlayerControlsKeyBoard : PlayerControls
         controlsNew.attackButton = Input.GetButton("RegularAttack");
         controlsNew.specialAttackButton = Input.GetButton("SpecialAttack");
         controlsNew.jumpButton = Input.GetButton("Jump");
+        controlsNew.blockButton = Input.GetButton("Block");
 
         base.ControlUpdate();
     }

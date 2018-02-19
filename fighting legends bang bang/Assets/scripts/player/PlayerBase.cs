@@ -12,6 +12,7 @@ public class PlayerBase : MonoBehaviour
     internal GamePanelContainer gpc;
     public GameObject attackParticles;
     public GameObject swingObject;
+    public GameObject blockObject;
     internal Animator animator;
     internal GameObject playerBody;
     internal PhotonView photonViewer;
@@ -43,9 +44,9 @@ public class PlayerBase : MonoBehaviour
 
         attackParticles = Instantiate(attackParticles, playerBody.transform, false);
         swingObject = Instantiate(swingObject, playerBody.transform, false);
+        blockObject = Instantiate(blockObject, playerBody.transform, false);
         //hollowObject = Instantiate(hollowObject, transform, false);
         //hollowObject.transform.localPosition = new Vector3(0, (-GetComponent<CapsuleCollider>().height / 2) - 0.1f, 0);
-
     }
 
     public void CheckWithinArena()
@@ -97,6 +98,7 @@ public class PlayerBase : MonoBehaviour
 
     public void Block()
     {
+        Debug.Log("Blocking playerbase");
         if (currentCharacter.CanBlock())
             currentCharacter.Block();
     }
