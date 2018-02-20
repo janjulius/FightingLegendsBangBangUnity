@@ -70,4 +70,5 @@ MonoBehaviour:
   - RPC_EndingGame
   - RPC_SetPlayerReady
   - RPC_CreateAllPlayers
+  - RPC_DoBlock
   DisableAutoOpenWizard: 1
