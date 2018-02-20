@@ -193,7 +193,7 @@ public class ScoreManager : MonoBehaviour
                 players.Find(x => x.phoPlayer == op).damageDone += i;
                 break;
             case 1:
-                players.Find(x => x.phoPlayer == pp).damageDoneWithUlt += i;
+                players.Find(x => x.phoPlayer == op).damageDoneWithUlt += i;
                 break;
         }
 
