@@ -197,7 +197,7 @@ public abstract class Character : MonoBehaviour
     public int SpecialCounter
     {
         get { return this.specialCounter; }
-        set { this.specialCounter = value; }
+        set { this.specialCounter = Mathf.Clamp(value, 0, 150); }
     }
 
     public bool isBlocking

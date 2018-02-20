@@ -49,6 +49,13 @@ public class Health : MonoBehaviour
         StartCoroutine(CurrentGameManager.Instance.RespawnPlayer(gameObject, pb.SpawnPoint));
         pb.playerController.KnockBack = Vector2.zero;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        if (pb.currentCharacter.SpecialCounter > 50)
+        {
+            int spec = 50 + (pb.currentCharacter.SpecialCounter - 50) / 2;
+            pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, spec);
+        }
+
         ScoreManager.Instance.view.RPC("RPC_AddDeath", PhotonTargets.MasterClient, pb.netPlayer, LastHitBy);
         GetComponent<PhotonView>().RPC("RPC_OnDeath", PhotonTargets.All);
     }
@@ -59,6 +66,7 @@ public class Health : MonoBehaviour
         this.death = true;
         this.lives--;
         this.Damage = 0;
+
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
         if (this.lives <= 0)
         {
@@ -72,7 +80,7 @@ public class Health : MonoBehaviour
     [PunRPC]
     public void RPC_AddSpecial(int spec)
     {
-        pb.currentCharacter.SpecialCounter += spec;
+        pb.currentCharacter.SpecialCounter = spec;
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
 
     }

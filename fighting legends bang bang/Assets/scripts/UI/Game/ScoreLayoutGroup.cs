@@ -43,7 +43,6 @@ public class ScoreLayoutGroup : MonoBehaviour
             scorel.AddData(String.Format("Total ults used: {0}", score.ultsUsed));
             scorel.AddData(String.Format("Total ult damage done: {0}", score.damageDoneWithUlt));
             scorel.AddData(String.Format("Total damage blocked: {0}", score.damageBlocked));
-            scorel.AddData(String.Format("Total damage blocked: {0}", score.damageHealed));
             scorel.AddData(String.Format("Total damage healed: {0}", score.damageHealed));
             scorel.AddData(String.Format("Total damage taken: {0}", score.damageTaken));
             scorel.id = score.id;
