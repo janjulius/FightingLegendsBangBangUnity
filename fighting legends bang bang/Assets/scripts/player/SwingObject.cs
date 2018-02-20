@@ -29,7 +29,7 @@ public class SwingObject : MonoBehaviour
         if (opb)
         {
             pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, dmg);
-            opb.photonViewer.RPC("RPC_GotAttacked", pb.netPlayer, dmg, dir, 0, PhotonNetwork.player);
+            opb.photonViewer.RPC("RPC_GotAttacked", opb.netPlayer, dmg, dir, 0, PhotonNetwork.player);
         }
 
         //other.gameObject.GetComponent<Health>().DealDamage(dmg, dir, 0, PhotonNetwork.player);
