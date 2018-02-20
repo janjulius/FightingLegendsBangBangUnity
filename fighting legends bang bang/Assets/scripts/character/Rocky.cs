@@ -27,7 +27,7 @@ public class Rocky : Character
         print("special pogchamp");
         PlayerBase ultTarget = null;
         List<PlayerBase> ultTargets = GameManager.Instance.Players.FindAll(x =>
-            x.gameObject != null &&
+            x != null &&
             Vector3.Distance(x.transform.position, transform.position) < 500 &&
             !x.healthController.death &&
             x.netPlayer != PhotonNetwork.player);
