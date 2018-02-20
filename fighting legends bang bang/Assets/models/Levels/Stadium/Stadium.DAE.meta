@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: 88968bd466ddfeb44917d6e720cd45f4
+timeCreated: 1519132893
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: polygon0
+    100002: polygon1
+    100004: polygon10
+    100006: polygon116
+    100008: polygon122
+    100010: polygon2
+    100012: polygon24
+    100014: polygon3
+    100016: polygon37
+    100018: polygon39
+    100020: polygon4
+    100022: polygon40
+    100024: polygon45
+    100026: polygon48
+    100028: polygon5
+    100030: polygon51
+    100032: polygon52
+    100034: polygon53
+    100036: polygon54
+    100038: polygon59
+    100040: polygon62
+    100042: polygon63
+    100044: polygon65
+    100046: polygon66
+    100048: polygon67
+    100050: polygon7
+    100052: polygon70
+    100054: polygon90
+    100056: polygon92
+    100058: polygon95
+    100060: polygon97
+    100062: //RootNode
+    100064: vAdvStadium010_static
+    400000: polygon0
+    400002: polygon1
+    400004: polygon10
+    400006: polygon116
+    400008: polygon122
+    400010: polygon2
+    400012: polygon24
+    400014: polygon3
+    400016: polygon37
+    400018: polygon39
+    400020: polygon4
+    400022: polygon40
+    400024: polygon45
+    400026: polygon48
+    400028: polygon5
+    400030: polygon51
+    400032: polygon52
+    400034: polygon53
+    400036: polygon54
+    400038: polygon59
+    400040: polygon62
+    400042: polygon63
+    400044: polygon65
+    400046: polygon66
+    400048: polygon67
+    400050: polygon7
+    400052: polygon70
+    400054: polygon90
+    400056: polygon92
+    400058: polygon95
+    400060: polygon97
+    400062: //RootNode
+    400064: vAdvStadium010_static
+    2100000: A02_saku1-fx
+    2100002: pipe03-fx
+    2100004: konkuri8-fx
+    2100006: konkuri9-fx
+    2100008: tetu01-fx
+    2100010: tetu02-fx
+    2100012: A04_ami01-fx
+    2100014: etc01-fx
+    2100016: A05_cloud02-fx
+    2100018: A01_window-fx
+    2100020: konkuri5-fx
+    2100022: kayku_in-fx
+    2100024: konkuri4-fx
+    2100026: kankyaku2-fx
+    2100028: kankyaku1-fx
+    2100030: gate-fx
+    2100032: A01_yane_Lenz-fx
+    2100034: pipe01-fx
+    2100036: A06_frea01-fx
+    2100038: A06_frea02-fx
+    2100040: pipe02-fx
+    2100042: light04-fx
+    2100044: komkuri3-fx
+    2100046: konkuri6-fx
+    2100048: duct01-fx
+    2100050: tetu03-fx
+    2100052: green01-fx
+    2100054: konkuri7-fx
+    2100056: kaidan-fx
+    2100058: konkuri1-fx
+    2100060: A03_saku2-fx
+    4300000: polygon66
+    4300002: polygon67
+    4300004: polygon1
+    4300006: polygon3
+    4300008: polygon4
+    4300010: polygon7
+    4300012: polygon10
+    4300014: polygon37
+    4300016: polygon45
+    4300018: polygon48
+    4300020: polygon51
+    4300022: polygon53
+    4300024: polygon62
+    4300026: polygon63
+    4300028: polygon65
+    4300030: polygon70
+    4300032: polygon90
+    4300034: polygon92
+    4300036: polygon95
+    4300038: polygon97
+    4300040: polygon116
+    4300042: polygon122
+    4300044: polygon0
+    4300046: polygon2
+    4300048: polygon5
+    4300050: polygon24
+    4300052: polygon39
+    4300054: polygon40
+    4300056: polygon52
+    4300058: polygon54
+    4300060: polygon59
+    9500000: //RootNode
+    13700000: polygon0
+    13700002: polygon1
+    13700004: polygon10
+    13700006: polygon116
+    13700008: polygon122
+    13700010: polygon2
+    13700012: polygon24
+    13700014: polygon3
+    13700016: polygon37
+    13700018: polygon39
+    13700020: polygon4
+    13700022: polygon40
+    13700024: polygon45
+    13700026: polygon48
+    13700028: polygon5
+    13700030: polygon51
+    13700032: polygon52
+    13700034: polygon53
+    13700036: polygon54
+    13700038: polygon59
+    13700040: polygon62
+    13700042: polygon63
+    13700044: polygon65
+    13700046: polygon66
+    13700048: polygon67
+    13700050: polygon7
+    13700052: polygon70
+    13700054: polygon90
+    13700056: polygon92
+    13700058: polygon95
+    13700060: polygon97
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/Levels/level_HyruleCastle.unity
     guid: 38cbf6cfa73a8174693dd07b7894bfce
+  - enabled: 1
+    path: Assets/scenes/Levels/level_FinalDestination.unity
+    guid: f44622d13eeabb045b8c595d973581b6
