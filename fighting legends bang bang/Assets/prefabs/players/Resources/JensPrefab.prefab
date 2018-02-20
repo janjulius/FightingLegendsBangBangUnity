@@ -1950,6 +1950,8 @@ MonoBehaviour:
     type: 2}
   blockObject: {fileID: 1508325045089318, guid: 6a8d7ed18783f444b8028fd78b9e7985,
     type: 2}
+  PlayerNameObject: {fileID: 1055657689792608, guid: 45815f75258d8424099ef74d80cadebb,
+    type: 2}
   hollowObject: {fileID: 1757029547438904, guid: 7606dbf201728a24ebf5ff81cbfc7647,
     type: 2}
 --- !u!114 &114505297858629350

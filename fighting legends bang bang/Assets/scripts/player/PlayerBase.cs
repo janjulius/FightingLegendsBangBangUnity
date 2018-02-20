@@ -13,6 +13,7 @@ public class PlayerBase : MonoBehaviour
     public GameObject attackParticles;
     public GameObject swingObject;
     public GameObject blockObject;
+    public GameObject PlayerNameObject;
     internal Animator animator;
     internal GameObject playerBody;
     internal PhotonView photonViewer;
@@ -31,6 +32,7 @@ public class PlayerBase : MonoBehaviour
         currentCharacter = GetComponent<Character>();
         healthController = GetComponent<Health>();
         playerController = GetComponent<PlayerController>();
+
         animator = GetComponentInChildren<Animator>();
 
         netPlayer = photonViewer.owner;
@@ -45,6 +47,11 @@ public class PlayerBase : MonoBehaviour
         attackParticles = Instantiate(attackParticles, playerBody.transform, false);
         swingObject = Instantiate(swingObject, playerBody.transform, false);
         blockObject = Instantiate(blockObject, playerBody.transform, false);
+        PlayerNameObject = Instantiate(PlayerNameObject);
+
+        Color c = new Color((float)photonViewer.owner.CustomProperties["pColorR"], (float)photonViewer.owner.CustomProperties["pColorG"], (float)photonViewer.owner.CustomProperties["pColorB"]);
+
+        PlayerNameObject.GetComponent<PlayerName>().SetTarget(this, c);
         //hollowObject = Instantiate(hollowObject, transform, false);
         //hollowObject.transform.localPosition = new Vector3(0, (-GetComponent<CapsuleCollider>().height / 2) - 0.1f, 0);
     }
