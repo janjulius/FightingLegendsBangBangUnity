@@ -28,7 +28,7 @@ public class SwingObject : MonoBehaviour
 
         if (opb)
         {
-            pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, dmg);
+            pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, pb.currentCharacter.SpecialCounter + dmg);
             opb.photonViewer.RPC("RPC_GotAttacked", opb.netPlayer, dmg, dir, 0, PhotonNetwork.player);
         }
 

@@ -9,24 +9,24 @@ public abstract class Character : MonoBehaviour
 {
 
     public string name = "", nameBefore = "", nameAfter = "";
-    private string specialAttackName;
+    protected string specialAttackName;
 
     private int id;
     private int cid;
 
     //attack range and speed
-    private double speed;
-    private double attackRange;
-    private double attackWidth;
+    protected double speed;
+    protected double attackRange;
+    protected double attackWidth;
 
     //jumping
-    private int totalJump;
-    private int jumpsLeft;
-    private double jumpForce;
+    protected int totalJump;
+    protected int jumpsLeft;
+    protected double jumpForce;
 
     //special attacking
     private int specialCounter;
-    private int specialCounterThreshHold;
+    protected int specialCounterThreshHold;
     private bool specialExists;
 
     //damage
@@ -75,7 +75,7 @@ public abstract class Character : MonoBehaviour
 
     private SwingObject swingobject;
     private BlockObject blockobject;
-    private PlayerBase pb;
+    protected PlayerBase pb;
 
     public void Start()
     {
@@ -197,7 +197,7 @@ public abstract class Character : MonoBehaviour
     public int SpecialCounter
     {
         get { return this.specialCounter; }
-        set { this.specialCounter = value; }
+        set { this.specialCounter = Mathf.Clamp(value, 0, 150); }
     }
 
     public bool isBlocking

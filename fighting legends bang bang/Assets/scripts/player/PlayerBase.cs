@@ -23,6 +23,8 @@ public class PlayerBase : MonoBehaviour
     internal bool CanNotMove;
     internal bool InMenus;
 
+    private float stunDuration;
+
 
     private void Awake()
     {
@@ -84,8 +86,15 @@ public class PlayerBase : MonoBehaviour
 
         CanNotMove = currentCharacter.IsStunned || InMenus;
 
+        if (stunDuration > 0 && currentCharacter.IsStunned)
+            stunDuration -= Time.deltaTime;
 
-        Keys.ControlUpdate();
+        if (stunDuration <= 0 && currentCharacter.IsStunned)
+            currentCharacter.IsStunned = false;
+
+            if (!CanNotMove)
+            Keys.ControlUpdate();
+
         playerController.PlayerUpdate();
     }
 
@@ -175,7 +184,15 @@ public class PlayerBase : MonoBehaviour
     [PunRPC]
     public void RPC_UpdateDirection(bool dir)
     {
+        playerController.right = dir;
         playerBody.transform.eulerAngles = new Vector3(0, dir ? 0 : 180, 0);
+    }
+
+    [PunRPC]
+    public void RPC_Stun(float dur)
+    {
+        stunDuration = dur;
+        currentCharacter.IsStunned = true;
     }
     #endregion
 

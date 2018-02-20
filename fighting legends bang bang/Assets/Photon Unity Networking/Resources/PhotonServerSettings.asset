@@ -73,4 +73,5 @@ MonoBehaviour:
   - RPC_DoBlock
   - RPC_GotAttacked
   - RPC_AddSpecial
+  - RPC_Stun
   DisableAutoOpenWizard: 1
