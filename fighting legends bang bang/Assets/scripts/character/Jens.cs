@@ -7,6 +7,8 @@ public class Jens : Character
 {
 
     public GameObject CannonBallGameObject;
+    public int ultDamage = 50;
+    public int ultImpactDamage = 100;
 
     public Jens()
     {
@@ -33,10 +35,11 @@ public class Jens : Character
 
             PlayerBase target = GameManager.Instance.Players[r.Next(0, GameManager.Instance.Players.Count)];
             Vector3 targetPos = target.gameObject.transform.position;
-            PhotonView.Instantiate(CannonBallGameObject, 
-                new Vector3(target.gameObject.transform.position.x, target.gameObject.transform.position.y + 1200, target.gameObject.transform.position.z), Quaternion.identity).
-                GetComponent<CannonBall>().TargetPos = target.gameObject.transform.position;
-
+            PhotonView.Instantiate(CannonBallGameObject,
+                    new Vector3(target.gameObject.transform.position.x, target.gameObject.transform.position.y + 20,
+                        target.gameObject.transform.position.z), Quaternion.identity)
+                .GetComponent<CannonBall>().Setup(target.gameObject.transform.position, 50, 100, 7, 10, 0.1f);
+            pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, 0);
         }
     }
 }
