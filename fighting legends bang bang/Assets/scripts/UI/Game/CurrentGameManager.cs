@@ -50,7 +50,6 @@ public class CurrentGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!PhotonNetwork.isMasterClient)
@@ -63,7 +62,6 @@ public class CurrentGameManager : MonoBehaviour
                 phoView.RPC("RPC_ReturnToRoom", PhotonTargets.All);
             }
         }
-        */
     }
 
     private void OnDrawGizmos()

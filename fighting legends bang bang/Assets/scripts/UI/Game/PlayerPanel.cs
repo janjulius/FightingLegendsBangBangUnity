@@ -18,6 +18,8 @@ public class PlayerPanel : MonoBehaviour
     [SerializeField] private Image innerImage;
     [SerializeField] private Text damageText;
     [SerializeField] private Text charText;
+    [SerializeField] private Slider specSlider;
+    [SerializeField] private Text specText;
 
     public void ApplyPhotonPlayer(PhotonPlayer phoPlayer)
     {
@@ -25,15 +27,18 @@ public class PlayerPanel : MonoBehaviour
         playerName.text = phoPlayer.NickName;
         damageText.text = string.Format("{0}%", 0);
 
-        borderImage.color = PhotonNetwork.player == phoPlayer ? Color.green : Color.black;
+        //borderImage.color = PhotonNetwork.player == phoPlayer ? Color.green : Color.black;
 
         Color c = new Color((float)photonPlayer.CustomProperties["pColorR"], (float)photonPlayer.CustomProperties["pColorG"], (float)photonPlayer.CustomProperties["pColorB"]);
-        innerImage.color = c;
+        borderImage.color = c;
     }
 
     public void UpdateUI()
     {
         damageText.text = string.Format("{0}%", playerBase.healthController.Damage);
+
+        specSlider.value = playerBase.currentCharacter.SpecialCounter;
+        specText.text = playerBase.currentCharacter.SpecialCounter + "%";
 
         float ratio = Mathf.Clamp((float)playerBase.healthController.Damage / 500, 0, 1);
 
