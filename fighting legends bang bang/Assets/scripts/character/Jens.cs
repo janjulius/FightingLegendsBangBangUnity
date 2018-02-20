@@ -18,7 +18,8 @@ public class Jens : Character
         SwingCooldown = 0.1;
         BasicAttackDamage = 10;
         rangeModifier = 1.3f;
-        SpecialCounter = 1000;
+        specialCounterThreshHold = 100;
+        //SpecialCounter = 1000;
     }
     public override void Attack(Vector2 dir)
     {
