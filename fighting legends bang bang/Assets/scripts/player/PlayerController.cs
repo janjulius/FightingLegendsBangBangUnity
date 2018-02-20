@@ -94,6 +94,9 @@ public class PlayerController : MonoBehaviour
             VerticalVelocity = -VerticalVelocityMin;
 
 
+        if(pb.CanNotMove)
+            return;
+
         if ((CheckSide(Direction.Bottom) || jumpsLeft > 0) && pb.Keys.JumpButtonDown() && !jumping)
         {
             jumping = true;
@@ -161,6 +164,9 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateFaceDirection()
     {
+        if(pb.CanNotMove)
+            return;
+
         if (pb.Keys.Horizontal() > 0.2 && !right)
         {
             right = true;
@@ -233,6 +239,7 @@ public class PlayerController : MonoBehaviour
         // We apply gravity manually for more tuning control
         body.velocity = new Vector3(0, velocityY, velocityZ);
 
+        print(pb.CanNotMove);
         if (pb.CanNotMove)
             body.velocity = Vector3.zero;
     }
