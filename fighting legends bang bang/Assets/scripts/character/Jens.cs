@@ -16,7 +16,7 @@ public class Jens : Character
         SwingCooldown = 0.1;
         BasicAttackDamage = 10;
         rangeModifier = 1.3f;
-        //SpecialCounter = 1000;
+        SpecialCounter = 1000;
     }
     public override void Attack(Vector2 dir)
     {
@@ -25,13 +25,18 @@ public class Jens : Character
 
     public override void SpecialAttack()
     {
+        Debug.Log("Jens ulting");
         if (SpecialReady())
         {
             List<PlayerBase> possibleTargets = GameManager.Instance.Players;
             Random r = new Random();
 
             PlayerBase target = GameManager.Instance.Players[r.Next(0, GameManager.Instance.Players.Count)];
-            Instantiate(CannonBallGameObject).GetComponent<CannonBall>().Send(target.transform.position);
+            Vector3 targetPos = target.gameObject.transform.position;
+            PhotonView.Instantiate(CannonBallGameObject, 
+                new Vector3(target.gameObject.transform.position.x, target.gameObject.transform.position.y + 1200, target.gameObject.transform.position.z), Quaternion.identity).
+                GetComponent<CannonBall>().TargetPos = target.gameObject.transform.position;
+
         }
     }
 }

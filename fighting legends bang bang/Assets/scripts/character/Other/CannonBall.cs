@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonBall : MonoBehaviour
+
+
 {
+    private Vector3 targetpos;
     public AudioClip audio;
 
-    public void Send(Vector3 targetPosition)
+    void Update()
     {
-
-        while (gameObject.transform.position.y > targetPosition.y)
+        Debug.Log("Canjnonballl spawned");
+        if (gameObject.transform.position.y > targetpos.y)
         {
-            gameObject.transform.position += Vector3.down * 1;
+            Debug.Log("Falling");
+            gameObject.transform.position += Vector3.down * 1 * Time.deltaTime;
         }
 
-        Destroy(gameObject);
+        if (gameObject.transform.position.y <= targetpos.y)
+            Destroy(gameObject);
+    }
+
+    public Vector3 TargetPos
+    {
+        set { targetpos = value; }
     }
 }
