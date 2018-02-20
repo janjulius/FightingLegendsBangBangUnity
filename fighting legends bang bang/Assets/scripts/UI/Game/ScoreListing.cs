@@ -11,13 +11,15 @@ public class ScoreListing : MonoBehaviour
     public Text name;
     public Text character;
     public Text ready;
+    public Text place;
     public int id;
 
-	
-    public void SetText(string n,string c,Color col)
+
+    public void SetText(string n, string c, int p, Color col)
     {
         name.text = n;
         character.text = c;
+        place.text = p.ToString();
         GetComponent<Image>().color = col;
     }
 

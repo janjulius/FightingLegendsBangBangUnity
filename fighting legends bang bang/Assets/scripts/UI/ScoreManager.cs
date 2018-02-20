@@ -153,6 +153,8 @@ public class ScoreManager : MonoBehaviour
 
         if (placesLeft == 1)
         {
+            players.Find(x => x.place == 0).place = 1;
+
             foreach (Score player in players)
             {
                 if (PhotonNetwork.playerList.Contains(player.phoPlayer))

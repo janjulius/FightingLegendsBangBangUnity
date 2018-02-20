@@ -10,6 +10,7 @@ public class ScoreLayoutGroup : MonoBehaviour
     public GameObject playerListingGroup;
     public GameObject playerListing;
     public List<ScoreListing> listings = new List<ScoreListing>();
+    private bool ready;
 
     // Use this for initialization
     void Start()
@@ -20,8 +21,11 @@ public class ScoreLayoutGroup : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && !ready)
+        {
+            ready = true;
             ScoreManager.Instance.view.RPC("RPC_SetPlayerReady", PhotonTargets.All, PhotonNetwork.player);
+        }
     }
 
     public void CreateScoreScreen(List<ScoreManager.Score> scores)
@@ -32,7 +36,7 @@ public class ScoreLayoutGroup : MonoBehaviour
         {
             var obj = Instantiate(playerListing, playerListingGroup.transform, false);
             ScoreListing scorel = obj.GetComponent<ScoreListing>();
-            scorel.SetText(score.Name, score.CharName, score.color);
+            scorel.SetText(score.Name, score.CharName, score.place, score.color);
             scorel.AddData(String.Format("Total kills: {0}", score.kills));
             scorel.AddData(String.Format("Total deaths: {0}", score.deaths));
             scorel.AddData(String.Format("Total damage done: {0}", score.damageDone));

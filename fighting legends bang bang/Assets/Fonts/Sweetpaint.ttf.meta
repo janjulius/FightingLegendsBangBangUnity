@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 7d0d451f086b59f4bae793430a66d201
+timeCreated: 1519130295
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sweetpaint
+  fontNames:
+  - Sweetpaint
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6a2f624a9e15784479889c09cd9b4f89, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
