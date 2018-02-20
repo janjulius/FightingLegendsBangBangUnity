@@ -36,9 +36,9 @@ public class Jens : Character
 
             PlayerBase target = GameManager.Instance.Players[r.Next(0, GameManager.Instance.Players.Count)];
             Vector3 targetPos = target.gameObject.transform.position;
-            PhotonView.Instantiate(CannonBallGameObject,
+            PhotonNetwork.Instantiate("Cannonball",
                     new Vector3(target.gameObject.transform.position.x, target.gameObject.transform.position.y + 20,
-                        target.gameObject.transform.position.z), Quaternion.identity)
+                        target.gameObject.transform.position.z), Quaternion.identity, 0)
                 .GetComponent<CannonBall>().Setup(target.gameObject.transform.position, 50, 100, 7, 10, 0.1f);
             pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, 0);
         }
