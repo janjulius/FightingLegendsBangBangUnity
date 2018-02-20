@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Rocky : Character
 {
-    private int ultHitDamage = 12;
-    private int ultLastHitDamage = 17;
+    private int ultHitDamage = 20;
+    private int ultLastHitDamage = 25;
 
     public Rocky()
     {
