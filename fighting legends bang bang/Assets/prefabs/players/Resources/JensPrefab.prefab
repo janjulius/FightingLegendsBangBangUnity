@@ -1000,7 +1000,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568431707871774}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 21.920242, y: 59.92269, z: -10.510475}
+  m_LocalPosition: {x: -0.657928, y: 0.69405675, z: 2.726304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4141995349005090}
@@ -1864,8 +1864,8 @@ MonoBehaviour:
   - {fileID: 114245238652928790}
   - {fileID: 114559990949944618}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 1
+  instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114245238652928790
@@ -1994,6 +1994,8 @@ MonoBehaviour:
   nameBefore: 
   nameAfter: the Pirate Panda
   rangeModifier: 1.5
+  CannonBallGameObject: {fileID: 1134109681518098, guid: 5f84423c1fca21047a5995bf82524aff,
+    type: 2}
 --- !u!136 &136719392773433360
 CapsuleCollider:
   m_ObjectHideFlags: 1

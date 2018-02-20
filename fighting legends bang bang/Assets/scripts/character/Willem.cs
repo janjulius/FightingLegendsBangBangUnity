@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Willem : MonoBehaviour {
+public class Willem : Character {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Willem()
+    {
+        name = "Willem";
+        nameAfter = "the Snowman";
+        AttackCooldown = 0.5;
+        SwingCooldown = 0.1;
+        BasicAttackDamage = 10;
+        rangeModifier = 1;
+    }
+    public override void SpecialAttack()
+    {
+        base.SpecialAttack();
+    }
 }

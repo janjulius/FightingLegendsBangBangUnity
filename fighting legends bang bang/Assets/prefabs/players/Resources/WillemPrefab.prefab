@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 114910192705001132}
   - component: {fileID: 114340406112013242}
   - component: {fileID: 114317621530628296}
-  - component: {fileID: 114283891402350322}
+  - component: {fileID: 114938964916689998}
   m_Layer: 8
   m_Name: WillemPrefab
   m_TagString: Untagged
@@ -956,7 +956,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1772335115984234}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.076, y: 0, z: 0}
+  m_LocalPosition: {x: 0.3593302, y: -0.5840888, z: 4.4339166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4285514528133890}
@@ -1423,21 +1423,6 @@ MonoBehaviour:
     InterpolateOption: 1
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &114283891402350322
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772335115984234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc82efb144b44904f8ef14188e79c72e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Rocky
-  nameBefore: 
-  nameAfter: the Raccoon
-  rangeModifier: 1
 --- !u!114 &114317621530628296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1454,6 +1439,8 @@ MonoBehaviour:
   swingObject: {fileID: 1154622516679632, guid: bbf09a3279f512947837048739e5aa39,
     type: 2}
   blockObject: {fileID: 1508325045089318, guid: 6a8d7ed18783f444b8028fd78b9e7985,
+    type: 2}
+  PlayerNameObject: {fileID: 1055657689792608, guid: 45815f75258d8424099ef74d80cadebb,
     type: 2}
   hollowObject: {fileID: 1757029547438904, guid: 7606dbf201728a24ebf5ff81cbfc7647,
     type: 2}
@@ -1492,8 +1479,8 @@ MonoBehaviour:
   - {fileID: 114252454971203714}
   - {fileID: 114910192705001132}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 1
+  instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114740176509437718
@@ -1528,6 +1515,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 0
   m_SynchronizeAngularVelocity: 0
+--- !u!114 &114938964916689998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772335115984234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bceafd11ed43f7c40b3ee00243b30920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Willem
+  nameBefore: 
+  nameAfter: the Snowman
+  rangeModifier: 1
 --- !u!136 &136233743149595206
 CapsuleCollider:
   m_ObjectHideFlags: 1
