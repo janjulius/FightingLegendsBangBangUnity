@@ -71,4 +71,5 @@ MonoBehaviour:
   - RPC_SetPlayerReady
   - RPC_CreateAllPlayers
   - RPC_DoBlock
+  - RPC_GotAttacked
   DisableAutoOpenWizard: 1

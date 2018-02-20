@@ -120,7 +120,7 @@ public abstract class Character : MonoBehaviour
 
         if (blockCooldownTime <= 0)
         {
-         Debug.Log("player can now block again");   canBlock = true;
+            canBlock = true;
             blockobject.gameObject.SetActive(false);
         }
 

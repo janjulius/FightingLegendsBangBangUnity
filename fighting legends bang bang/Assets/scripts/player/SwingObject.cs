@@ -23,8 +23,10 @@ public class SwingObject : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        PlayerBase pb = other.gameObject.GetComponent<PlayerBase>();
 
-        if (other.gameObject.GetComponent<Health>() != null)
-            other.gameObject.GetComponent<Health>().DealDamage(dmg, dir, 0, PhotonNetwork.player);
+        if (pb)
+            pb.photonViewer.RPC("RPC_GotAttacked", pb.netPlayer, dmg, dir, 0, PhotonNetwork.player);
+        //other.gameObject.GetComponent<Health>().DealDamage(dmg, dir, 0, PhotonNetwork.player);
     }
 }

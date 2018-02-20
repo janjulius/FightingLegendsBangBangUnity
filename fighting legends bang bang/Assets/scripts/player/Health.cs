@@ -41,8 +41,6 @@ public class Health : MonoBehaviour
     public void DealDamage(int dmg, Vector2 dir, int t, PhotonPlayer other)
     {
         Debug.Log("damage");
-
-        GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.All, dmg, dir, t, other);
     }
 
     public void OnDeath()
@@ -72,36 +70,42 @@ public class Health : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_DealDamage(int dmg, Vector2 dir, int t, PhotonPlayer other)
+    public void RPC_GotAttacked(int dmg, Vector2 dir, int t, PhotonPlayer other)
     {
+        bool isBlocking = pb.currentCharacter.isBlocking;
+        bool isInvulnerable = pb.currentCharacter.IsInvulnerable;
+        bool isKnockBackImmune = pb.currentCharacter.IsKnockBackImmume;
         LastHitBy = other;
 
-        if (!pb.currentCharacter.IsInvulnerable)
+        if (!isInvulnerable)
         {
-            if (!pb.currentCharacter.isBlocking)
+            if (!isBlocking)
             {
-                if (PhotonNetwork.isMasterClient)
-                    ScoreManager.Instance.view.RPC("RPC_AddDamageTaken", PhotonTargets.MasterClient, pb.netPlayer, other, dmg, t);
+                ScoreManager.Instance.view.RPC("RPC_AddDamageTaken", PhotonTargets.MasterClient, pb.netPlayer, other, dmg, t);
+                GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.Others, dmg);
+
                 this.dmg = this.dmg + dmg;
-            }
-            else
-            {
-                if (PhotonNetwork.isMasterClient)
-                    ScoreManager.Instance.view.RPC("RPC_AddDamageBlocked", PhotonTargets.MasterClient, pb.netPlayer, dmg);
-
-            }
-        }
-
-        if (GetComponent<PhotonView>().isMine)
-        {
-            if (!pb.currentCharacter.IsKnockBackImmume)
-            {
-                if (!pb.currentCharacter.isBlocking)
+                if (!isKnockBackImmune)
                 {
                     pb.AddKnockBack(dir, 10 + this.dmg);
                 }
             }
+            else
+            {
+                ScoreManager.Instance.view.RPC("RPC_AddDamageBlocked", PhotonTargets.MasterClient, pb.netPlayer, dmg);
+            }
         }
+        pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
+    }
+
+
+
+    [PunRPC]
+    public void RPC_DealDamage(int dmg)
+    {
+
+        this.dmg = this.dmg + dmg;
+
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
     }
 }
