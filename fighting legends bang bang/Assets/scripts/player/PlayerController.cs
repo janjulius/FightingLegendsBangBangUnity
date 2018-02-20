@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
-    private bool right = false;
+    internal bool right = false;
 
     private Vector2 lookDirection = new Vector2(-1, 0);
 
@@ -120,7 +120,6 @@ public class PlayerController : MonoBehaviour
 
         if (pb.Keys.BlockButtonDown())
         {
-            Debug.Log("attempting to block ( button presed )");
             pb.Block();
         }
     }
