@@ -228,6 +228,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 511d4b326a88151418d2c48be12173ba, type: 3}
   - {fileID: 21300000, guid: 83f1000937bbaa541b00b14d8b773765, type: 3}
   - {fileID: 21300000, guid: 679b08d60c3f26d42b52e604d48e9617, type: 3}
+  - {fileID: 21300000, guid: 43c5538dac23f6e4b810d8fd1087df3a, type: 3}
   CharacterHeads:
   - {fileID: 21300000, guid: 8a422aefc691f32458e3357b35c7725f, type: 3}
   - {fileID: 21300000, guid: 4d2b714a55e279a449b2322a469b6eec, type: 3}
