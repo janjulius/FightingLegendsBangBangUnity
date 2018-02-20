@@ -81,7 +81,7 @@ public abstract class Character : MonoBehaviour
     {
         pb = GetComponent<PlayerBase>();
         swingobject = GetComponentInChildren<SwingObject>();
-        swingobject.Setup(basicAttackDamage, GetComponent<CapsuleCollider>());
+        swingobject.Setup(basicAttackDamage, GetComponent<CapsuleCollider>(), pb);
         swingobject.gameObject.SetActive(false);
 
         blockobject = GetComponentInChildren<BlockObject>();
