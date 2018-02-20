@@ -23,7 +23,7 @@ public class PlayerBase : MonoBehaviour
     internal bool CanNotMove;
     internal bool InMenus;
 
-    private float stunDuration;
+    internal float stunDuration;
 
 
     private void Awake()
@@ -92,8 +92,7 @@ public class PlayerBase : MonoBehaviour
         if (stunDuration <= 0 && currentCharacter.IsStunned)
             currentCharacter.IsStunned = false;
 
-            if (!CanNotMove)
-            Keys.ControlUpdate();
+        Keys.ControlUpdate();
 
         playerController.PlayerUpdate();
     }
@@ -191,6 +190,7 @@ public class PlayerBase : MonoBehaviour
     [PunRPC]
     public void RPC_Stun(float dur)
     {
+        print("getstunnend");
         stunDuration = dur;
         currentCharacter.IsStunned = true;
     }

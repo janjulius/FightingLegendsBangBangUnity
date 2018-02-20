@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Rocky : Character
 {
+    private int ultHitDamage = 12;
+    private int ultLastHitDamage = 17;
 
     public Rocky()
     {
@@ -50,7 +52,7 @@ public class Rocky : Character
             }
         }
 
-        //StartCoroutine(Leaping(ultTarget));
+        StartCoroutine(Leaping(ultTarget));
 
         print(ultTarget.transform.position.z < transform.position.z ? "left" : "right");
 
@@ -60,14 +62,56 @@ public class Rocky : Character
 
     IEnumerator Leaping(PlayerBase ultTarget)
     {
+        pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, 0);
         IsStunned = true;
+        pb.stunDuration = 10;
+        bool left = ultTarget.transform.position.z < transform.position.z;
 
         Vector3 prepPos = new Vector3();
-        //prepPos.y = transform.position.y + ()
+        prepPos.z = transform.position.z + (left ? -5 : 5);
+        prepPos.y = transform.position.y + 5;
+
+        print(Vector3.Distance(transform.position, prepPos));
+        while (Vector3.Distance(transform.position, prepPos) > 0.5f)
+        {
+            print("lul");
+            transform.position = Vector3.Lerp(transform.position, prepPos, 5 * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        var pos = transform.position;
+        pos.x = 50000;
+
+        transform.position = pos;
+        yield return new WaitForSeconds(1f);
+        pos.x = 0;
+        //transform.position = pos;
+
+        ultTarget.photonViewer.RPC("RPC_Stun", ultTarget.netPlayer, 100f);
+
+        var targetpos = ultTarget.transform.position;
+        targetpos.z += left ? (ultTarget.GetComponent<CapsuleCollider>().radius + pb.playerController.capsule.radius) :
+            -(ultTarget.GetComponent<CapsuleCollider>().radius + pb.playerController.capsule.radius);
+
+        transform.position = targetpos;
+        yield return new WaitForSeconds(0.2f);
+
+        Vector2 dir = new Vector2(left ? -1 : 1, 1);
+
+        for (int i = 0; i < 2; i++)
+        {
+            ultTarget.photonViewer.RPC("RPC_GotAttacked", ultTarget.netPlayer, ultHitDamage, dir, 1, PhotonNetwork.player);
+            print("lol");
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        ultTarget.photonViewer.RPC("RPC_GotAttacked", ultTarget.netPlayer, ultLastHitDamage, dir, 1, PhotonNetwork.player);
+        yield return new WaitForSeconds(0.2f);
 
 
+        ultTarget.photonViewer.RPC("RPC_Stun", ultTarget.netPlayer, 0f);
 
-        ultTarget.photonViewer.RPC("RPC_Stun", ultTarget.netPlayer, 2);
+        pb.stunDuration = 0;
         yield break;
     }
 }
