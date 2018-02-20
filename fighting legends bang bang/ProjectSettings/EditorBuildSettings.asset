@@ -26,3 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/Levels/level_FinalDestination.unity
     guid: f44622d13eeabb045b8c595d973581b6
+  - enabled: 1
+    path: Assets/scenes/Levels/level_Temple.unity
+    guid: 9cac60501cf62ad4da4a0dde9abd17b6
