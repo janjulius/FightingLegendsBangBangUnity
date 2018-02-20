@@ -68,8 +68,8 @@ public class Rocky : Character
         bool left = ultTarget.transform.position.z < transform.position.z;
 
         Vector3 prepPos = new Vector3();
-        prepPos.z = transform.position.z + (left ? -5 : 5);
-        prepPos.y = transform.position.y + 5;
+        prepPos.z = transform.position.z + (left ? -3 : 3);
+        prepPos.y = transform.position.y + 3;
 
         print(Vector3.Distance(transform.position, prepPos));
         while (Vector3.Distance(transform.position, prepPos) > 0.5f)
