@@ -26,7 +26,11 @@ public class SwingObject : MonoBehaviour
         PlayerBase pb = other.gameObject.GetComponent<PlayerBase>();
 
         if (pb)
+        {
+            GameManager.Instance.Players.Find(x => x.netPlayer == PhotonNetwork.player).photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, dmg);
             pb.photonViewer.RPC("RPC_GotAttacked", pb.netPlayer, dmg, dir, 0, PhotonNetwork.player);
+        }
+
         //other.gameObject.GetComponent<Health>().DealDamage(dmg, dir, 0, PhotonNetwork.player);
     }
 }

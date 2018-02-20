@@ -70,6 +70,14 @@ public class Health : MonoBehaviour
     }
 
     [PunRPC]
+    public void RPC_AddSpecial(int spec)
+    {
+        pb.currentCharacter.SpecialCounter += spec;
+        pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
+
+    }
+
+    [PunRPC]
     public void RPC_GotAttacked(int dmg, Vector2 dir, int t, PhotonPlayer other)
     {
         bool isBlocking = pb.currentCharacter.isBlocking;
