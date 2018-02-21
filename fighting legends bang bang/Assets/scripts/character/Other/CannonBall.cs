@@ -8,6 +8,7 @@ public class CannonBall : MonoBehaviour
 {
     private Vector3 targetpos;
     public AudioClip audio;
+    private List<PlayerBase> possibleTargets;
 
     private float fallSpeed = 10;
     private float speedIncr = 0.1f;
@@ -29,7 +30,7 @@ public class CannonBall : MonoBehaviour
         if (gameObject.transform.position.y <= targetpos.y)
         {
             Destroy(gameObject);
-            List<PlayerBase> targets = GameManager.Instance.Players.FindAll(x =>
+            List<PlayerBase> targets = possibleTargets.FindAll(x =>
                 x.gameObject != null &&
                 Vector3.Distance(x.transform.position, transform.position) < impactDistance &&
                 !x.healthController.death);
@@ -52,7 +53,7 @@ public class CannonBall : MonoBehaviour
         return new Vector2(otherpos.z < gameObject.transform.position.z ? -1 : 1, 1);
     }
 
-    public void Setup(Vector3 targetPos, int damage, int impactdamage, float distance, float fallspeed, float speedincr)
+    public void Setup(Vector3 targetPos, List<PlayerBase> targets, int damage, int impactdamage, float distance, float fallspeed, float speedincr)
     {
         this.targetpos = targetPos;
         this.dmg = damage;
@@ -60,5 +61,6 @@ public class CannonBall : MonoBehaviour
         this.impactDistance = distance;
         this.fallSpeed = fallspeed;
         this.speedIncr = speedincr;
+        this.possibleTargets = targets;
     }
 }
