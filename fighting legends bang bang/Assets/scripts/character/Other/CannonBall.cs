@@ -47,7 +47,7 @@ public class CannonBall : MonoBehaviour
 
             foreach (var t in targets)
             {
-                t.photonViewer.RPC("RPC_GotAttacked", t.netPlayer, impactDmg, FindBlastDirection(t.gameObject.transform.position), 0, PhotonNetwork.player);
+                t.photonViewer.RPC("RPC_GotAttacked", t.netPlayer, impactDmg, FindBlastDirection(t.gameObject.transform.position), 1, PhotonNetwork.player);
             }
         }
     }
@@ -55,7 +55,7 @@ public class CannonBall : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         other.GetComponent<PlayerBase>().photonViewer.RPC("RPC_GotAttacked", other.GetComponent<PlayerBase>().netPlayer,
-            dmg, FindBlastDirection(other.gameObject.transform.position), 0, PhotonNetwork.player);
+            dmg, FindBlastDirection(other.gameObject.transform.position), 1, PhotonNetwork.player);
     }
 
     public Vector2 FindBlastDirection(Vector3 otherpos)
