@@ -43,7 +43,7 @@ public class CurrentGameManager : MonoBehaviour
     public IEnumerator RespawnPlayer(GameObject player, Vector3 spawn)
     {
         Vector3 deathPos = player.transform.position;
-        player.transform.position = new Vector3(0, 50000, 0);
+        player.transform.position = new Vector3(50000, 0, 0);
 
         yield return new WaitForSeconds(1);
 

@@ -40,9 +40,9 @@ public class PlayerPanel : MonoBehaviour
         specSlider.value = playerBase.currentCharacter.SpecialCounter;
         specText.text = playerBase.currentCharacter.SpecialCounter + "%";
 
-        float ratio = Mathf.Clamp((float)playerBase.healthController.Damage / 500, 0, 1);
+        float ratio = Mathf.Clamp((float)playerBase.healthController.Damage / 300, 0, 1);
 
-        damageText.color = Color.Lerp(Color.white, new Color(1, 0, 0), ratio);
+        damageText.color = Color.Lerp(Color.white, new Color(0.5f, 0, 0), ratio);
 
         charText.text = GameManager.Instance.charNames[(int)photonPlayer.CustomProperties["charId"]].ToUpper();
         charImage.sprite = GameManager.Instance.CharacterHeads[(int)photonPlayer.CustomProperties["charId"]];

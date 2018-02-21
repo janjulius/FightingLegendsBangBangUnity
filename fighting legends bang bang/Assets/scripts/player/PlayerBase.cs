@@ -23,6 +23,7 @@ public class PlayerBase : MonoBehaviour
     internal Color myColor;
     internal bool CanNotMove;
     internal bool InMenus;
+    internal bool frozen;
 
     internal float stunDuration;
 
@@ -83,7 +84,7 @@ public class PlayerBase : MonoBehaviour
         if (!photonViewer.isMine)
             return;
 
-        CanNotMove = currentCharacter.IsStunned || InMenus || healthController.death;
+        CanNotMove = currentCharacter.IsStunned || InMenus || healthController.death || frozen;
 
         if (stunDuration > 0 && currentCharacter.IsStunned)
             stunDuration -= Time.deltaTime;
@@ -158,7 +159,7 @@ public class PlayerBase : MonoBehaviour
     [PunRPC]
     public void RPC_DoPunch(int a, Vector2 dir)
     {
-        if (a > -1)
+        if (a > -1 && a <= 3)
         {
             Vector3 vec = new Vector3(0, dir.y, dir.x);
             ParticleSystem sys = attackParticles.GetComponent<ParticleSystem>();

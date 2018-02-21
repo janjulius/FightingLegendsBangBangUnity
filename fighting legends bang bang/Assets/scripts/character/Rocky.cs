@@ -104,12 +104,10 @@ public class Rocky : Character
             print("lol");
             yield return new WaitForSeconds(0.3f);
         }
+        ultTarget.photonViewer.RPC("RPC_Stun", ultTarget.netPlayer, 0f);
 
         ultTarget.photonViewer.RPC("RPC_GotAttacked", ultTarget.netPlayer, ultLastHitDamage, dir, 1, PhotonNetwork.player);
-        yield return new WaitForSeconds(0.2f);
 
-
-        ultTarget.photonViewer.RPC("RPC_Stun", ultTarget.netPlayer, 0f);
 
         pb.stunDuration = 0;
         yield break;

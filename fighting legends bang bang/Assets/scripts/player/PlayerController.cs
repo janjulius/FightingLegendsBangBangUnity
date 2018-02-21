@@ -58,16 +58,19 @@ public class PlayerController : MonoBehaviour
         LerpingKnockBack();
         sliding = CheckSide(Direction.Left) || CheckSide(Direction.Right);
 
-        if (CheckSide(Direction.Bottom) && !CheckSide(Direction.Bottom))
-            touchingSides[(int)Direction.Bottom] = null;
 
-        if (Mathf.Abs(pb.Keys.Horizontal()) > 0.1f && !pb.animator.GetBool("IsRunning"))
-            pb.photonViewer.RPC("RPC_DoRunning", PhotonTargets.All);
-        else if (Mathf.Abs(pb.Keys.Horizontal()) < 0.1f && pb.animator.GetBool("IsRunning"))
-            pb.photonViewer.RPC("RPC_StopRunning", PhotonTargets.All);
+        var hor = Mathf.Abs(pb.Keys.Horizontal());
+        if (pb.CanNotMove)
+            hor = 0;
 
-        if (pb.animator.GetBool("IsGrounded") != CheckSide(Direction.Bottom))
-            pb.photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(Direction.Bottom));
+
+            if (hor > 0.1f && !pb.animator.GetBool("IsRunning"))
+                pb.photonViewer.RPC("RPC_DoRunning", PhotonTargets.All);
+            else if (hor < 0.1f && pb.animator.GetBool("IsRunning"))
+                pb.photonViewer.RPC("RPC_StopRunning", PhotonTargets.All);
+
+            if (pb.animator.GetBool("IsGrounded") != CheckSide(Direction.Bottom))
+                pb.photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(Direction.Bottom));
 
         //pb.hollowObject.SetActive(!(body.velocity.y > 0 || pb.Keys.Vertical() < -0.2));
 
@@ -75,14 +78,7 @@ public class PlayerController : MonoBehaviour
         pb.CheckWithinArena();
         UpdateFaceDirection();
 
-        if (CheckSide(Direction.Right) && KnockBack.x > 0)
-            KnockBack.x = -KnockBack.x;
-        if (CheckSide(Direction.Left) && KnockBack.x < 0)
-            KnockBack.x = -KnockBack.x;
-        if (CheckSide(Direction.Top) && KnockBack.y > 0)
-            KnockBack.y = -KnockBack.y;
-        if (CheckSide(Direction.Bottom) && KnockBack.y < 0)
-            KnockBack.y = -KnockBack.y;
+        
 
 
         VerticalVelocityMin = sliding ? gravity / 10 : gravity;
@@ -94,8 +90,14 @@ public class PlayerController : MonoBehaviour
             VerticalVelocity = -VerticalVelocityMin;
 
 
-        if(pb.CanNotMove)
+        controlUpdate();
+    }
+
+    private void controlUpdate()
+    {
+        if (pb.CanNotMove)
             return;
+
 
         if ((CheckSide(Direction.Bottom) || jumpsLeft > 0) && pb.Keys.JumpButtonDown() && !jumping)
         {
@@ -160,6 +162,15 @@ public class PlayerController : MonoBehaviour
             KnockBack.x += (speed) * Time.deltaTime;
         if (KnockBack.x > 0 && pb.Keys.Horizontal() < 0)
             KnockBack.x -= (speed) * Time.deltaTime;
+
+        if (CheckSide(Direction.Right) && KnockBack.x > 0)
+            KnockBack.x = -KnockBack.x;
+        if (CheckSide(Direction.Left) && KnockBack.x < 0)
+            KnockBack.x = -KnockBack.x;
+        if (CheckSide(Direction.Top) && KnockBack.y > 0)
+            KnockBack.y = -KnockBack.y;
+        if (CheckSide(Direction.Bottom) && KnockBack.y < 0)
+            KnockBack.y = -KnockBack.y;
     }
 
     private void UpdateFaceDirection()

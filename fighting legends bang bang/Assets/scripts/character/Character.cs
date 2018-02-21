@@ -137,9 +137,14 @@ public abstract class Character : MonoBehaviour
                 GetComponent<PhotonView>().RPC("RPC_DoBlock", PhotonTargets.Others, false);
             }
         }
+        charUpdate();
     }
 
     #region overridable methods
+
+    public virtual void charUpdate()
+    {
+    }
 
     public virtual void Attack(Vector2 dir)
     {
