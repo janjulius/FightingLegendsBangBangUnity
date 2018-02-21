@@ -31,7 +31,14 @@ public class Jens : Character
         Debug.Log("Jens ulting");
         if (SpecialReady())
         {
-            List<PlayerBase> possibleTargets = GameManager.Instance.Players;
+            List<PlayerBase> possibleTargets = GameManager.Instance.Players.FindAll(x =>
+                x != null &&
+                Vector3.Distance(x.transform.position, transform.position) < 500 &&
+                !x.healthController.death &&
+                x.netPlayer != PhotonNetwork.player);
+
+            if (possibleTargets.Count == 0)
+                return;
             Random r = new Random();
 
             PlayerBase target = GameManager.Instance.Players[r.Next(0, GameManager.Instance.Players.Count)];
