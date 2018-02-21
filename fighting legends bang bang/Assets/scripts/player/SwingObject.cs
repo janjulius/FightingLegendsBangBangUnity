@@ -5,8 +5,9 @@ using UnityEngine;
 public class SwingObject : MonoBehaviour
 {
     private Collider col;
-    private int dmg;
+    public int dmg;
     public Vector2 dir;
+    public int type = 0;
     private PlayerBase pb;
 
     public void Start()
@@ -29,7 +30,7 @@ public class SwingObject : MonoBehaviour
         if (opb)
         {
             pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, pb.currentCharacter.SpecialCounter + dmg);
-            opb.photonViewer.RPC("RPC_GotAttacked", opb.netPlayer, dmg, dir, 0, PhotonNetwork.player);
+            opb.photonViewer.RPC("RPC_GotAttacked", opb.netPlayer, dmg, dir, type, PhotonNetwork.player);
         }
 
         //other.gameObject.GetComponent<Health>().DealDamage(dmg, dir, 0, PhotonNetwork.player);

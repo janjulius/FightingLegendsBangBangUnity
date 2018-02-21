@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int dmg = 0;
+    private float dmg = 0;
 
     private int hp = 250;
     private int lives = 3;
@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
     public PhotonPlayer LastHitBy;
 
 
-    public int Damage
+    public float Damage
     {
         get { return dmg; }
         set { dmg = value; }
@@ -98,6 +98,7 @@ public class Health : MonoBehaviour
         bool isInvulnerable = pb.currentCharacter.IsInvulnerable;
         bool isKnockBackImmune = pb.currentCharacter.IsKnockBackImmume;
         LastHitBy = other;
+        dmg =  (int)(dmg/pb.currentCharacter.armor);
 
         if (!isInvulnerable)
         {

@@ -15,14 +15,13 @@ public abstract class Character : MonoBehaviour
     private int cid;
 
     //attack range and speed
-    protected double speed;
+    internal float speed = 13f;
     protected double attackRange;
     protected double attackWidth;
 
     //jumping
-    protected int totalJump;
-    protected int jumpsLeft;
-    protected double jumpForce;
+    internal int maxJumps = 1;
+    internal float jumpForce = 15f;
 
     //special attacking
     private int specialCounter;
@@ -33,6 +32,7 @@ public abstract class Character : MonoBehaviour
     private int basicAttackDamage;
     private int specialIncrease;
     public float rangeModifier;
+    internal float armor = 1;
 
     //other properties
     private bool blocking;
@@ -46,35 +46,24 @@ public abstract class Character : MonoBehaviour
     private int[] touchingWalls = new[] { -1, -1, -1, -1 };
 
     //timer properties
-    private const double blockCooldownTimer = 0.7; //time for the block to be able to be used again
-    private double blockDelay;
-    private double blockCooldownTime;
-    private const double blockRemoveCooldown = 0.3; //how long a block lasts for
-    private bool canBlock;
-    private double swingDelay;
-    private double swingRemoveCooldown;
-    private double attackRemoveCooldown;
-    private double attackDelay;
-    private double respawnDelay;
-    private double respawnTimer;
-    private double specialTimer;
-    private bool chargeAttack;
+    protected const float blockCooldownTimer = 0.7f; //time for the block to be able to be used again
+    protected float blockDelay;
+    protected float blockCooldownTime;
+    protected const float blockRemoveCooldown = 0.3f; //how long a block lasts for
+    protected bool canBlock;
+    protected float swingDelay;
+    protected float swingRemoveCooldown;
+    protected float attackRemoveCooldown;
+    protected float attackDelay;
+    protected float respawnDelay;
+    protected float respawnTimer;
+    protected float specialTimer;
+    protected bool chargeAttack;
 
-    //tracking data
-    private int Tplace = -1;
-    // TODO SET TO PLAYER OBJECT private double TLastPerson = -1;
-    private double TDamageDone = 0;
-    private double TDamageTaken = 0;
-    private double TDamageHealed = 0;
-    private double THighestDamageSurvived = 0;
-    private int TKills = 0;
-    private int TDeaths = 0;
-    private double TDamageBlocked = 0;
-    private double TDamageDoneWithUlt = 0;
-    private int TotalUltsUsed = 0;
 
-    private SwingObject swingobject;
-    private BlockObject blockobject;
+
+    protected SwingObject swingobject;
+    protected BlockObject blockobject;
     protected PlayerBase pb;
 
     public void Start()
@@ -167,6 +156,8 @@ public abstract class Character : MonoBehaviour
         swingobject.gameObject.SetActive(true);
         swingobject.dir = dir;
         swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + dir.y * rangeUpDown * rangeModifier, gameObject.transform.position.z + dir.x * rangeside * rangeModifier);
+        swingobject.dmg = basicAttackDamage;
+        swingobject.type = 0;
         swingDelay = swingRemoveCooldown;
         attackDelay = attackRemoveCooldown;
     }
@@ -211,18 +202,18 @@ public abstract class Character : MonoBehaviour
         set { blocking = value; }
     }
 
-    public double AttackCooldown
+    public float AttackCooldown
     {
         get { return attackRemoveCooldown; }
         set { attackRemoveCooldown = value; }
     }
 
-    public double AttackDelay
+    public float AttackDelay
     {
         get { return attackDelay; }
     }
 
-    public double SwingCooldown
+    public float SwingCooldown
     {
         get { return swingRemoveCooldown; }
         set { swingRemoveCooldown = value; }

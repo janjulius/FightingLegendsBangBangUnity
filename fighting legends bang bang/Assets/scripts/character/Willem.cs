@@ -14,8 +14,8 @@ public class Willem : Character
     {
         name = "Willem";
         nameAfter = "the Snowman";
-        AttackCooldown = 0.5;
-        SwingCooldown = 0.1;
+        AttackCooldown = 0.5f;
+        SwingCooldown = 0.1f;
         BasicAttackDamage = 10;
         rangeModifier = 1;
         specialCounterThreshHold = 100;
@@ -40,6 +40,7 @@ public class Willem : Character
 
     IEnumerator StartSpecial()
     {
+        ScoreManager.Instance.view.RPC("RPC_AddUltsUsed", PhotonTargets.MasterClient, pb.netPlayer, 1);
         Ulted = true;
         pb.RPC_DoPunch(4, Vector2.zero);
         pb.photonViewer.RPC("RPC_DoPunch", PhotonTargets.Others, 4, Vector2.zero);

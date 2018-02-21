@@ -5,18 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody body;
-    private float speed = 13f;
-    private float maxspeed = 13f;
     private float gravity = 35f;
     private float VerticalVelocityMin = 25f;
     private float gravityAcceleration = 25f;
 
-    private float inAirControl = 0.8f;
     private bool canJump = true;
     private bool sliding = false;
-    private float jumpHeight = 15f;
     private float jumpsLeft = 1;
-    private float maxJumps = 1;
     public CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
@@ -143,7 +138,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (KnockBack.x < 0 && pb.Keys.Horizontal() < 0)
         {
-            if (KnockBack.x < speed && KnockBack.x > -speed)
+            if (KnockBack.x < pb.currentCharacter.speed && KnockBack.x > -pb.currentCharacter.speed)
                 KnockBack.x = 0;
         }
 
@@ -154,14 +149,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (KnockBack.x > 0 && pb.Keys.Horizontal() > 0)
         {
-            if (KnockBack.x < speed && KnockBack.x > -speed)
+            if (KnockBack.x < pb.currentCharacter.speed && KnockBack.x > -pb.currentCharacter.speed)
                 KnockBack.x = 0;
         }
 
         if (KnockBack.x < 0 && pb.Keys.Horizontal() > 0)
-            KnockBack.x += (speed) * Time.deltaTime;
+            KnockBack.x += (pb.currentCharacter.speed) * Time.deltaTime;
         if (KnockBack.x > 0 && pb.Keys.Horizontal() < 0)
-            KnockBack.x -= (speed) * Time.deltaTime;
+            KnockBack.x -= (pb.currentCharacter.speed) * Time.deltaTime;
 
         if (CheckSide(Direction.Right) && KnockBack.x > 0)
             KnockBack.x = -KnockBack.x;
@@ -218,7 +213,7 @@ public class PlayerController : MonoBehaviour
         TrackGrounded();
 
         // Calculate how fast we should be moving
-        float MoveSpeed = pb.Keys.Horizontal() * speed;
+        float MoveSpeed = pb.Keys.Horizontal() * pb.currentCharacter.speed;
 
         _jumping = false;
         // Jump
@@ -226,7 +221,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!CheckSide(Direction.Bottom) || (sliding && !CheckSide(Direction.Bottom)))
                 jumpsLeft--;
-            VerticalVelocity = jumpHeight;
+            VerticalVelocity = pb.currentCharacter.jumpForce;
 
             if (CheckSide(Direction.Left))
                 KnockBack.x += 10;
@@ -238,7 +233,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (CheckSide(Direction.Bottom) || (sliding && !_jumping))
-            jumpsLeft = maxJumps;
+            jumpsLeft = pb.currentCharacter.maxJumps;
 
         float velocityY = 0;
         float velocityZ = 0;
