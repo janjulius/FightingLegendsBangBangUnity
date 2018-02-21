@@ -18,6 +18,11 @@ public class CannonBall : MonoBehaviour
     private int impactDmg = 100;
     private float impactDistance = 10;
 
+    void Awake()
+    {
+        phoview = GetComponent<PhotonView>();
+    }
+
     void Update()
     {
         if (!phoview.isMine)
@@ -67,6 +72,5 @@ public class CannonBall : MonoBehaviour
         this.fallSpeed = fallspeed;
         this.speedIncr = speedincr;
         this.possibleTargets = targets;
-        phoview = GetComponent<PhotonView>();
     }
 }
