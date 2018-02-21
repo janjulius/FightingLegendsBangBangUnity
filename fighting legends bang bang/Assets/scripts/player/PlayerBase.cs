@@ -20,6 +20,7 @@ public class PlayerBase : MonoBehaviour
     internal Vector3 SpawnPoint;
     public GameObject hollowObject;
 
+    internal Color myColor;
     internal bool CanNotMove;
     internal bool InMenus;
 
@@ -34,9 +35,9 @@ public class PlayerBase : MonoBehaviour
         currentCharacter = GetComponent<Character>();
         healthController = GetComponent<Health>();
         playerController = GetComponent<PlayerController>();
-
         animator = GetComponentInChildren<Animator>();
 
+        myColor = new Color((float)photonViewer.owner.CustomProperties["pColorR"], (float)photonViewer.owner.CustomProperties["pColorG"], (float)photonViewer.owner.CustomProperties["pColorB"]);
         netPlayer = photonViewer.owner;
         gpc = FindObjectOfType<GamePanelContainer>();
         gpc.playerPanels.Find(x => x.photonPlayer == netPlayer).playerBase = this;
@@ -51,9 +52,7 @@ public class PlayerBase : MonoBehaviour
         blockObject = Instantiate(blockObject, playerBody.transform, false);
         PlayerNameObject = Instantiate(PlayerNameObject);
 
-        Color c = new Color((float)photonViewer.owner.CustomProperties["pColorR"], (float)photonViewer.owner.CustomProperties["pColorG"], (float)photonViewer.owner.CustomProperties["pColorB"]);
-
-        PlayerNameObject.GetComponent<PlayerName>().SetTarget(this, c);
+        PlayerNameObject.GetComponent<PlayerName>().SetTarget(this, myColor);
         //hollowObject = Instantiate(hollowObject, transform, false);
         //hollowObject.transform.localPosition = new Vector3(0, (-GetComponent<CapsuleCollider>().height / 2) - 0.1f, 0);
     }
@@ -84,7 +83,7 @@ public class PlayerBase : MonoBehaviour
         if (!photonViewer.isMine)
             return;
 
-        CanNotMove = currentCharacter.IsStunned || InMenus;
+        CanNotMove = currentCharacter.IsStunned || InMenus || healthController.death;
 
         if (stunDuration > 0 && currentCharacter.IsStunned)
             stunDuration -= Time.deltaTime;

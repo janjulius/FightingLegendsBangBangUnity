@@ -239,7 +239,6 @@ public class PlayerController : MonoBehaviour
         // We apply gravity manually for more tuning control
         body.velocity = new Vector3(0, velocityY, velocityZ);
 
-        print(pb.CanNotMove);
         if (pb.CanNotMove)
             body.velocity = Vector3.zero;
     }

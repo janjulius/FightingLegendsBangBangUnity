@@ -42,13 +42,16 @@ public class CameraController : MonoBehaviour
 
             if (target != null)
             {
-                lastTarget = target;
-                Vector3 position = target.position;
+                if (!t.healthController.death)
+                {
+                    lastTarget = target;
+                    Vector3 position = target.position;
 
-                minX = Mathf.Min(minX, position.z);
-                minY = Mathf.Min(minY, position.y);
-                maxX = Mathf.Max(maxX, position.z);
-                maxY = Mathf.Max(maxY, position.y);
+                    minX = Mathf.Min(minX, position.z);
+                    minY = Mathf.Min(minY, position.y);
+                    maxX = Mathf.Max(maxX, position.z);
+                    maxY = Mathf.Max(maxY, position.y);
+                }
             }
         }
         if (lastTarget == null)

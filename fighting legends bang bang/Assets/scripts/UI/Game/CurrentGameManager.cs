@@ -10,6 +10,7 @@ public class CurrentGameManager : MonoBehaviour
     public PhotonView phoView;
     public Vector3[] SpawnPoints;
     private List<Vector3> SpawnPointsLeft;
+    public GameObject playerGhost;
 
 
 
@@ -41,7 +42,26 @@ public class CurrentGameManager : MonoBehaviour
 
     public IEnumerator RespawnPlayer(GameObject player, Vector3 spawn)
     {
+        Vector3 deathPos = player.transform.position;
+        player.transform.position = new Vector3(0, 50000, 0);
+
+        yield return new WaitForSeconds(1);
+
+        Vector3 targetDir = spawn - deathPos;
+
+        var gobj = PhotonNetwork.Instantiate("Ghost", deathPos, Quaternion.LookRotation(targetDir), 0);
+
+        while (Vector3.Distance(gobj.transform.position, spawn) > 0.5f)
+        {
+            gobj.transform.position = Vector3.Lerp(gobj.transform.position, spawn, 2 * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        PhotonNetwork.Destroy(gobj);
+
         player.transform.position = spawn;
+
+        player.GetComponent<PhotonView>().RPC("RPC_alliveAgain", PhotonTargets.All);
 
         yield break;
     }

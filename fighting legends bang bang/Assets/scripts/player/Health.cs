@@ -72,9 +72,15 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-
+    [PunRPC]
+    public void RPC_alliveAgain()
+    {
         this.death = false;
+        pb.playerController.KnockBack = Vector2.zero;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        pb.playerController.VerticalVelocity = 0;
     }
 
     [PunRPC]
