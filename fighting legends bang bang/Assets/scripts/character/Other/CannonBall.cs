@@ -20,9 +20,9 @@ public class CannonBall : MonoBehaviour
 
     void Update()
     {
-        if(!phoview.isMine)
+        if (!phoview.isMine)
             return;
-        
+
 
         Debug.Log("Canjnonballl spawned");
         if (gameObject.transform.position.y > targetpos.y)
@@ -67,6 +67,6 @@ public class CannonBall : MonoBehaviour
         this.fallSpeed = fallspeed;
         this.speedIncr = speedincr;
         this.possibleTargets = targets;
-        phoview.GetComponent<PhotonView>();
+        phoview = GetComponent<PhotonView>();
     }
 }
