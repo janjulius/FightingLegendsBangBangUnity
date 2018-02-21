@@ -8,6 +8,8 @@ public class SnowBall : MonoBehaviour
     private Rigidbody body;
     public int damage = 150;
 
+    List<PlayerBase> alreadyHit = new List<PlayerBase>();
+
 
     private void Start()
     {
@@ -25,11 +27,11 @@ public class SnowBall : MonoBehaviour
         if (opb && pho.owner == PhotonNetwork.player)
         {
 
-            if (opb.netPlayer != pho.owner)
+            if (opb.netPlayer != pho.owner && !alreadyHit.Contains(opb))
             {
                 var norm = Vector3.Normalize(GetComponent<Rigidbody>().velocity);
                 var dir = new Vector2(norm.z, 1);
-
+                alreadyHit.Add(opb);
 
                 opb.photonViewer.RPC("RPC_GotAttacked", opb.netPlayer, damage, dir, 1, PhotonNetwork.player);
             }
