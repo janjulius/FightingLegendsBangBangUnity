@@ -9,6 +9,7 @@ public class CannonBall : MonoBehaviour
     private Vector3 targetpos;
     public AudioClip audio;
     private List<PlayerBase> possibleTargets;
+    private PhotonView phoview;
 
     private float fallSpeed = 10;
     private float speedIncr = 0.1f;
@@ -19,6 +20,10 @@ public class CannonBall : MonoBehaviour
 
     void Update()
     {
+        if(!phoview.isMine)
+            return;
+        
+
         Debug.Log("Canjnonballl spawned");
         if (gameObject.transform.position.y > targetpos.y)
         {
@@ -29,7 +34,7 @@ public class CannonBall : MonoBehaviour
 
         if (gameObject.transform.position.y <= targetpos.y)
         {
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
             List<PlayerBase> targets = possibleTargets.FindAll(x =>
                 x.gameObject != null &&
                 Vector3.Distance(x.transform.position, transform.position) < impactDistance &&
@@ -62,5 +67,6 @@ public class CannonBall : MonoBehaviour
         this.fallSpeed = fallspeed;
         this.speedIncr = speedincr;
         this.possibleTargets = targets;
+        phoview.GetComponent<PhotonView>();
     }
 }
