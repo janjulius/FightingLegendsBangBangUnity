@@ -66,11 +66,16 @@ public class Health : MonoBehaviour
         this.death = true;
         this.lives--;
         this.Damage = 0;
+        
 
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
         if (this.lives <= 0)
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            pb.photonViewer.RPC("RPC_Stun", PhotonTargets.All, 0f);
         }
     }
 

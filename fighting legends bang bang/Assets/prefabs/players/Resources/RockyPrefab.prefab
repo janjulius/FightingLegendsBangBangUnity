@@ -215,7 +215,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4846519267926362}
-  - component: {fileID: 95980218842983792}
   m_Layer: 0
   m_Name: RockyPrefab
   m_TagString: Untagged
@@ -418,17 +417,18 @@ GameObject:
   - component: {fileID: 114844540406028610}
   - component: {fileID: 114839148004467998}
   - component: {fileID: 114558859395691068}
-  - component: {fileID: 114583819235966834}
   - component: {fileID: 114678590267210144}
   - component: {fileID: 114598752956111944}
   - component: {fileID: 114382993503150452}
+  - component: {fileID: 95367163002352146}
+  - component: {fileID: 114625013767142938}
   m_Layer: 8
   m_Name: RockyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1957559195482388
 GameObject:
   m_ObjectHideFlags: 1
@@ -950,13 +950,13 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 114
   m_CollisionDetection: 2
---- !u!95 &95980218842983792
+--- !u!95 &95367163002352146
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1472750970704102}
+  m_GameObject: {fileID: 1948190211358620}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0a7e982060ebccd4eae8a3a17da179d0, type: 3}
   m_Controller: {fileID: 9100000, guid: d02b030acaad2e744b978cb8737b2626, type: 2}
@@ -1047,19 +1047,6 @@ MonoBehaviour:
     InterpolateOption: 1
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &114583819235966834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1948190211358620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 0
-  m_SynchronizeAngularVelocity: 0
 --- !u!114 &114598752956111944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1081,6 +1068,38 @@ MonoBehaviour:
     type: 2}
   hollowObject: {fileID: 1757029547438904, guid: 7606dbf201728a24ebf5ff81cbfc7647,
     type: 2}
+--- !u!114 &114625013767142938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948190211358620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsRunning
+  - Type: 9
+    SynchronizeType: 1
+    Name: IsJumping
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsGrounded
+  - Type: 3
+    SynchronizeType: 1
+    Name: ClawState
+  - Type: 3
+    SynchronizeType: 1
+    Name: AttackState
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!114 &114678590267210144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1114,7 +1133,7 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114558859395691068}
-  - {fileID: 114583819235966834}
+  - {fileID: 114625013767142938}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

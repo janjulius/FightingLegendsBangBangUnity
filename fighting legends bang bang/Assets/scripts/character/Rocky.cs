@@ -76,7 +76,6 @@ public class Rocky : Character
         print(Vector3.Distance(transform.position, prepPos));
         while (Vector3.Distance(transform.position, prepPos) > 0.5f)
         {
-            print("lul");
             transform.position = Vector3.Lerp(transform.position, prepPos, 5 * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }

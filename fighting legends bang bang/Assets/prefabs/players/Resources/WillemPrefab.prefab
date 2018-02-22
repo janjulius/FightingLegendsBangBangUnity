@@ -550,10 +550,11 @@ GameObject:
   - component: {fileID: 114740176509437718}
   - component: {fileID: 114588992081831488}
   - component: {fileID: 114252454971203714}
-  - component: {fileID: 114910192705001132}
   - component: {fileID: 114340406112013242}
   - component: {fileID: 114317621530628296}
   - component: {fileID: 114938964916689998}
+  - component: {fileID: 95076027617210136}
+  - component: {fileID: 114949575744293482}
   m_Layer: 8
   m_Name: WillemPrefab
   m_TagString: Untagged
@@ -569,7 +570,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4092229950082314}
-  - component: {fileID: 95862224037797744}
   m_Layer: 0
   m_Name: Idle
   m_TagString: Untagged
@@ -1341,13 +1341,13 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 114
   m_CollisionDetection: 2
---- !u!95 &95862224037797744
+--- !u!95 &95076027617210136
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1788004333828544}
+  m_GameObject: {fileID: 1772335115984234}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 10323a4dcc3cbbd45b6fd5f8f708563b, type: 3}
   m_Controller: {fileID: 9100000, guid: b1256169e31b2fb44b47bad737cdc088, type: 2}
@@ -1477,7 +1477,7 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114252454971203714}
-  - {fileID: 114910192705001132}
+  - {fileID: 114949575744293482}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -1502,19 +1502,6 @@ MonoBehaviour:
   - {fileID: 0}
   KnockBack: {x: 0, y: 0}
   VerticalVelocity: 0
---- !u!114 &114910192705001132
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772335115984234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 0
-  m_SynchronizeAngularVelocity: 0
 --- !u!114 &114938964916689998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1530,6 +1517,35 @@ MonoBehaviour:
   nameBefore: 
   nameAfter: the Snowman
   rangeModifier: 1
+--- !u!114 &114949575744293482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772335115984234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsRunning
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsGrounded
+  - Type: 9
+    SynchronizeType: 1
+    Name: IsJumping
+  - Type: 3
+    SynchronizeType: 1
+    Name: AttackState
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!136 &136233743149595206
 CapsuleCollider:
   m_ObjectHideFlags: 1

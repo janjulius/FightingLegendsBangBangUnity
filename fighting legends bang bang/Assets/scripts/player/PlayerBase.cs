@@ -36,7 +36,7 @@ public class PlayerBase : MonoBehaviour
         currentCharacter = GetComponent<Character>();
         healthController = GetComponent<Health>();
         playerController = GetComponent<PlayerController>();
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
 
         myColor = new Color((float)photonViewer.owner.CustomProperties["pColorR"], (float)photonViewer.owner.CustomProperties["pColorG"], (float)photonViewer.owner.CustomProperties["pColorB"]);
         netPlayer = photonViewer.owner;
@@ -133,30 +133,6 @@ public class PlayerBase : MonoBehaviour
 
     #region playerRPCS
     [PunRPC]
-    public void RPC_DoJump()
-    {
-        animator.SetTrigger("IsJumping");
-    }
-
-    [PunRPC]
-    void RPC_DoRunning()
-    {
-        animator.SetBool("IsRunning", true);
-    }
-
-    [PunRPC]
-    void RPC_StopRunning()
-    {
-        animator.SetBool("IsRunning", false);
-    }
-
-    [PunRPC]
-    void RPC_IsGrounded(bool g)
-    {
-        animator.SetBool("IsGrounded", g);
-    }
-
-    [PunRPC]
     public void RPC_DoPunch(int a, Vector2 dir)
     {
         if (a > -1 && a <= 3)
@@ -170,8 +146,6 @@ public class PlayerBase : MonoBehaviour
             sys.Play();
 
         }
-
-        animator.SetInteger("AttackState", a);
     }
 
     [PunRPC]

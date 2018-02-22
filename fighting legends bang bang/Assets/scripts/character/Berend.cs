@@ -35,29 +35,8 @@ public class Berend : Character
         }
         else
         {
-            CapsuleCollider coll = pb.playerController.capsule;
-
-            int punchType = 1;
-
-            if (dir.y == 1)
-                punchType = 3;
-            if (dir.y == -1)
-                punchType = 2;
-
-            pb.RPC_DoPunch(punchType, dir);
-
-            GetComponent<PhotonView>().RPC("RPC_DoPunch", PhotonTargets.Others, punchType, dir);
-
-            float rangeside = coll.radius;
-            float rangeUpDown = coll.height / 3;
-
-            swingobject.gameObject.SetActive(true);
-            swingobject.dir = dir;
-            swingobject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + dir.y * rangeUpDown * rangeModifier, gameObject.transform.position.z + dir.x * rangeside * rangeModifier);
+           base.Attack(dir);
             swingobject.type = 1;
-            swingobject.dmg = BasicAttackDamage;
-            swingDelay = swingRemoveCooldown;
-            attackDelay = attackRemoveCooldown;
             pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, 0);
 
         }

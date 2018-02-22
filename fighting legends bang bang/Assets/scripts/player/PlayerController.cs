@@ -59,13 +59,9 @@ public class PlayerController : MonoBehaviour
             hor = 0;
 
 
-            if (hor > 0.1f && !pb.animator.GetBool("IsRunning"))
-                pb.photonViewer.RPC("RPC_DoRunning", PhotonTargets.All);
-            else if (hor < 0.1f && pb.animator.GetBool("IsRunning"))
-                pb.photonViewer.RPC("RPC_StopRunning", PhotonTargets.All);
+        pb.animator.SetBool("IsRunning", hor > 0.1f);
 
-            if (pb.animator.GetBool("IsGrounded") != CheckSide(Direction.Bottom))
-                pb.photonViewer.RPC("RPC_IsGrounded", PhotonTargets.All, CheckSide(Direction.Bottom));
+        pb.animator.SetBool("IsGrounded", CheckSide(Direction.Bottom));
 
         //pb.hollowObject.SetActive(!(body.velocity.y > 0 || pb.Keys.Vertical() < -0.2));
 
@@ -98,7 +94,6 @@ public class PlayerController : MonoBehaviour
         {
             jumping = true;
             pb.animator.SetTrigger("IsJumping");
-            pb.photonViewer.RPC("RPC_DoJump", PhotonTargets.Others);
         }
 
         if ((CheckSide(Direction.Bottom) && !jumping && !_jumping) || (VerticalVelocity > 0 && CheckSide(Direction.Top)) || KnockBack.y != 0)

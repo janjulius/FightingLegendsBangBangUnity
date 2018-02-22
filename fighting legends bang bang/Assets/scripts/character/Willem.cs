@@ -42,11 +42,9 @@ public class Willem : Character
     {
         ScoreManager.Instance.view.RPC("RPC_AddUltsUsed", PhotonTargets.MasterClient, pb.netPlayer, 1);
         Ulted = true;
-        pb.RPC_DoPunch(4, Vector2.zero);
-        pb.photonViewer.RPC("RPC_DoPunch", PhotonTargets.Others, 4, Vector2.zero);
+        pb.animator.SetInteger("AttackState", 4);
         yield return new WaitForSeconds(0.7f);
-        pb.RPC_DoPunch(-1, Vector2.zero);
-        pb.photonViewer.RPC("RPC_DoPunch", PhotonTargets.Others, -1, Vector2.zero);
+        pb.animator.SetInteger("AttackState", -1);
 
         Vector3 pos = transform.position;
 

@@ -76,7 +76,7 @@ public abstract class Character : MonoBehaviour
         blockobject = GetComponentInChildren<BlockObject>();
         blockobject.gameObject.SetActive(false);
 
-        pb.RPC_DoPunch(-1, Vector2.zero);
+        pb.animator.SetInteger("AttackState", -1);
 
     }
 
@@ -96,8 +96,7 @@ public abstract class Character : MonoBehaviour
         else if (swingobject.gameObject.activeSelf)
         {
             swingobject.gameObject.SetActive(false);
-            pb.RPC_DoPunch(-1, Vector2.zero);
-            GetComponent<PhotonView>().RPC("RPC_DoPunch", PhotonTargets.Others, -1, Vector2.zero);
+            pb.animator.SetInteger("AttackState", -1);
 
         }
 
@@ -146,6 +145,7 @@ public abstract class Character : MonoBehaviour
         if (dir.y == -1)
             punchType = 2;
 
+        pb.animator.SetInteger("AttackState", punchType);
         pb.RPC_DoPunch(punchType, dir);
 
         GetComponent<PhotonView>().RPC("RPC_DoPunch", PhotonTargets.Others, punchType, dir);
