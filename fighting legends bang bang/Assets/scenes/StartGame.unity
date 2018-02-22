@@ -311,6 +311,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5cfca76620221ac44930b67dec1dae78, type: 3}
   - {fileID: 8300000, guid: 70f12bafa0aafc14c95489bbc2cd2f07, type: 3}
   - {fileID: 8300000, guid: eb82cb4b127dc56479d29d0fe1cfd2bb, type: 3}
+  - {fileID: 8300000, guid: 7b7b9dea65650074b906da3c48a2c186, type: 3}
+  - {fileID: 8300000, guid: 7809d482997a1144ca288c2bb1f39259, type: 3}
+  - {fileID: 8300000, guid: 5f7697ba575df124ca966e2800bb7c7a, type: 3}
+  - {fileID: 8300000, guid: 4b1391586b0cbb949b4e3f308d7e1626, type: 3}
   volumeSound: 0.05
   volumeMusic: 0.005
 --- !u!82 &1371888476
