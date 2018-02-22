@@ -60,7 +60,10 @@ public abstract class Character : MonoBehaviour
     protected float specialTimer;
     protected bool chargeAttack;
 
-
+    //audio
+    internal int basicAttackAudio = 0;
+    internal int gotHitAudio = 1;
+    internal int blockedAudio = 2;
 
     protected SwingObject swingobject;
     protected BlockObject blockobject;
@@ -148,6 +151,7 @@ public abstract class Character : MonoBehaviour
         pb.animator.SetInteger("AttackState", punchType);
         pb.RPC_DoPunch(punchType, dir);
 
+        PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, basicAttackAudio);
         GetComponent<PhotonView>().RPC("RPC_DoPunch", PhotonTargets.Others, punchType, dir);
 
         float rangeside = coll.radius;

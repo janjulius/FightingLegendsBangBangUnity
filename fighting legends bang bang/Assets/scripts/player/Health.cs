@@ -109,6 +109,8 @@ public class Health : MonoBehaviour
         {
             if (!isBlocking)
             {
+                PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, pb.currentCharacter.gotHitAudio);
+
                 ScoreManager.Instance.view.RPC("RPC_AddDamageTaken", PhotonTargets.MasterClient, pb.netPlayer, other, dmg, t);
                 GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.Others, dmg);
 
@@ -120,6 +122,7 @@ public class Health : MonoBehaviour
             }
             else
             {
+                PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, pb.currentCharacter.blockedAudio);
                 ScoreManager.Instance.view.RPC("RPC_AddDamageBlocked", PhotonTargets.MasterClient, pb.netPlayer, dmg);
             }
         }

@@ -76,4 +76,7 @@ MonoBehaviour:
   - RPC_Stun
   - RPC_alliveAgain
   - RPC_ChangePosition
+  - PlayMusic
+  - PlaySound
+  - StopMusic
   DisableAutoOpenWizard: 1

@@ -1,25 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class pingTest : MonoBehaviour {
+public class pingTest : MonoBehaviour
+{
 
     float deltaTime = 0.0f;
 
-    void Awake()
+    void Update()
     {
-        StartCoroutine(UpdateUI());
-    }
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
 
-    IEnumerator UpdateUI()
-    {
-        while (true)
-        {
-
-            deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-            yield return new WaitForSeconds(0.5f);
-        }
-
-        yield break;
     }
 
     void OnGUI()
@@ -37,6 +27,6 @@ public class pingTest : MonoBehaviour {
         string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         float ping = PhotonNetwork.networkingPeer.RoundTripTime;
         string pingTest = string.Format("\nping: {0}", ping);
-        GUI.Label(rect, text+pingTest, style);
+        GUI.Label(rect, text + pingTest, style);
     }
 }

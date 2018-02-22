@@ -608,6 +608,7 @@ GameObject:
   - component: {fileID: 344837034}
   - component: {fileID: 344837033}
   - component: {fileID: 344837037}
+  - component: {fileID: 344837038}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -710,6 +711,18 @@ MonoBehaviour:
   CurrentRoomCanvas: {fileID: 288278920}
   CreateRoomCanvas: {fileID: 1099060937}
   LevelSelectCanvas: {fileID: 1931735355}
+--- !u!114 &344837038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344837032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84da8904c1f1220488655a14e1efe648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicClip: {fileID: 8300000, guid: 1b7d48ed2b1161d4d94e24f2cba408d1, type: 3}
 --- !u!1 &436441352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000016188467}
+  m_AnchoredPosition: {x: 0, y: -0.000005949596}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493566016
@@ -1320,8 +1333,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 961272661}
   m_HandleRect: {fileID: 961272660}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
