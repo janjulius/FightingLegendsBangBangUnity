@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boomstronk : MonoBehaviour {
+public class Boomstronk : Character {
 
 	// Use this for initialization
 	void Start () {
