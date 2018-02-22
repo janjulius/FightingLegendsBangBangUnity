@@ -9,8 +9,12 @@ public class Berend : Character
     private float standardJumpForce;
     private float standardAttackCooldown;
     private int standardDamage;
+    private int standardhitAudio;
 
     private bool inUlt;
+
+    private int ultHitAudio = 7;
+    private int ultShoutAudio = 8;
 
     public Berend()
     {
@@ -25,6 +29,7 @@ public class Berend : Character
         standardJumpForce = jumpForce;
         standardAttackCooldown = AttackCooldown;
         standardDamage = BasicAttackDamage;
+        standardhitAudio = basicAttackAudio;
         specialCounterThreshHold = 100;
     }
     public override void Attack(Vector2 dir)
@@ -53,12 +58,15 @@ public class Berend : Character
 
     IEnumerator SpecialAttackIE()
     {
+        PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, ultShoutAudio);
+
         speed = 20;
         jumpForce = 20;
         IsKnockBackImmume = true;
         BasicAttackDamage = 20;
         AttackCooldown = 0.2f;
         armor = 0.5f;
+        basicAttackAudio = ultHitAudio;
 
         yield return new WaitForSeconds(4);
 
@@ -67,6 +75,7 @@ public class Berend : Character
         IsKnockBackImmume = false;
         BasicAttackDamage = standardDamage;
         AttackCooldown = standardAttackCooldown;
+        basicAttackAudio = standardhitAudio;
         armor = 1;
         inUlt = false;
         pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, 0);

@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     private PlayerBase pb;
     public PhotonPlayer LastHitBy;
 
+    private int Cheering1Audio = 12;
 
     public float Damage
     {
@@ -46,6 +47,7 @@ public class Health : MonoBehaviour
     public void OnDeath()
     {
         death = true;
+        PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, Cheering1Audio);
         StartCoroutine(CurrentGameManager.Instance.RespawnPlayer(gameObject, pb.SpawnPoint));
         pb.playerController.KnockBack = Vector2.zero;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -66,7 +68,7 @@ public class Health : MonoBehaviour
         this.death = true;
         this.lives--;
         this.Damage = 0;
-        
+
 
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
         if (this.lives <= 0)
@@ -103,12 +105,14 @@ public class Health : MonoBehaviour
         bool isInvulnerable = pb.currentCharacter.IsInvulnerable;
         bool isKnockBackImmune = pb.currentCharacter.IsKnockBackImmume;
         LastHitBy = other;
-        dmg =  (int)(dmg/pb.currentCharacter.armor);
+        dmg = (int)(dmg / pb.currentCharacter.armor);
 
         if (!isInvulnerable)
         {
             if (!isBlocking)
             {
+                PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, pb.currentCharacter.gotHitAudio);
+
                 ScoreManager.Instance.view.RPC("RPC_AddDamageTaken", PhotonTargets.MasterClient, pb.netPlayer, other, dmg, t);
                 GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.Others, dmg);
 
@@ -120,6 +124,7 @@ public class Health : MonoBehaviour
             }
             else
             {
+                PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, pb.currentCharacter.blockedAudio);
                 ScoreManager.Instance.view.RPC("RPC_AddDamageBlocked", PhotonTargets.MasterClient, pb.netPlayer, dmg);
             }
         }

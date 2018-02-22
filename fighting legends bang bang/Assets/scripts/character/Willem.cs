@@ -8,6 +8,8 @@ public class Willem : Character
     private bool Ulted;
     private bool InBallForm;
 
+    private int ultStartAudio = 9;
+
     private GameObject ultobj;
 
     public Willem()
@@ -55,7 +57,7 @@ public class Willem : Character
         var rigd = obj.GetComponent<Rigidbody>();
         bool right = pb.playerController.right;
 
-
+        PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, ultStartAudio);
         rigd.velocity = new Vector3(0, 0, right ? 20 : -20);
 
         float timer = 2.5f;

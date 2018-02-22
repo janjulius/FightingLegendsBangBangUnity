@@ -7,6 +7,10 @@ public class Rocky : Character
     private int ultHitDamage = 20;
     private int ultLastHitDamage = 25;
 
+    private int ultVanishAudio = 4;
+    private int ultAttackAudio = 6;
+    private int ultLastAudio = 5;
+
     public Rocky()
     {
         name = "Rocky";
@@ -52,6 +56,7 @@ public class Rocky : Character
         prepPos.y = transform.position.y + 3;
 
         print(Vector3.Distance(transform.position, prepPos));
+        PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, ultVanishAudio);
         while (Vector3.Distance(transform.position, prepPos) > 0.5f)
         {
             transform.position = Vector3.Lerp(transform.position, prepPos, 5 * Time.deltaTime);
@@ -88,8 +93,8 @@ public class Rocky : Character
 
         for (int i = 0; i < 2; i++)
         {
+            PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, ultAttackAudio);
             ultTarget.photonViewer.RPC("RPC_GotAttacked", ultTarget.netPlayer, ultHitDamage, dir, 1, PhotonNetwork.player);
-            print("lol");
             pb.animator.SetInteger("AttackState", 1);
             yield return new WaitForSeconds(0.4f);
             pb.animator.SetInteger("AttackState", -1);
@@ -97,6 +102,7 @@ public class Rocky : Character
         }
         ultTarget.photonViewer.RPC("RPC_Stun", ultTarget.netPlayer, 0f);
 
+        PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, ultLastAudio);
         ultTarget.photonViewer.RPC("RPC_GotAttacked", ultTarget.netPlayer, ultLastHitDamage, dir, 1, PhotonNetwork.player);
 
 
