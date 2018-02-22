@@ -25,34 +25,11 @@ public class Rocky : Character
     public override void SpecialAttack()
     {
         print("special pogchamp");
-        PlayerBase ultTarget = null;
-        List<PlayerBase> ultTargets = GameManager.Instance.Players.FindAll(x =>
-            x != null &&
-            Vector3.Distance(x.transform.position, transform.position) < 500 &&
-            !x.healthController.death &&
-            x.netPlayer != PhotonNetwork.player);
+        PlayerBase ultTarget = GetTarget();
 
-        if (ultTargets.Count == 0)
+        if (!ultTarget)
             return;
 
-        ScoreManager.Instance.view.RPC("RPC_AddUltsUsed", PhotonTargets.MasterClient, pb.netPlayer, 1);
-
-        if (ultTargets.Count == 1)
-            ultTarget = ultTargets[0];
-
-        if (ultTarget == null)
-        {
-            float dist = float.MaxValue;
-            foreach (PlayerBase pbb in ultTargets)
-            {
-                float between = Vector3.Distance(pbb.transform.position, transform.position);
-                if (between < dist)
-                {
-                    dist = between;
-                    ultTarget = pbb;
-                }
-            }
-        }
 
         StartCoroutine(Leaping(ultTarget));
 
@@ -62,8 +39,9 @@ public class Rocky : Character
 
     }
 
-    IEnumerator Leaping(PlayerBase ultTarget)
+    IEnumerator Leaping(PlayerBase t)
     {
+        PlayerBase ultTarget = t;
         pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, 0);
         IsStunned = true;
         pb.stunDuration = 10;
@@ -86,8 +64,17 @@ public class Rocky : Character
         transform.position = pos;
         yield return new WaitForSeconds(1f);
         pos.x = 0;
-        //transform.position = pos;
+        transform.position = pos;
 
+        ultTarget = GetTarget();
+
+        if (!ultTarget)
+        {
+            pb.stunDuration = 0;
+            yield break;
+        }
+
+        ultTarget.photonViewer.RPC("RPC_ChangePosition", ultTarget.netPlayer, ultTarget.transform.position);
         ultTarget.photonViewer.RPC("RPC_Stun", ultTarget.netPlayer, 100f);
 
         var targetpos = ultTarget.transform.position;
@@ -103,7 +90,10 @@ public class Rocky : Character
         {
             ultTarget.photonViewer.RPC("RPC_GotAttacked", ultTarget.netPlayer, ultHitDamage, dir, 1, PhotonNetwork.player);
             print("lol");
-            yield return new WaitForSeconds(0.3f);
+            pb.animator.SetInteger("AttackState", 1);
+            yield return new WaitForSeconds(0.4f);
+            pb.animator.SetInteger("AttackState", -1);
+            yield return new WaitForSeconds(0.1f);
         }
         ultTarget.photonViewer.RPC("RPC_Stun", ultTarget.netPlayer, 0f);
 
@@ -112,5 +102,40 @@ public class Rocky : Character
 
         pb.stunDuration = 0;
         yield break;
+    }
+
+
+    private PlayerBase GetTarget()
+    {
+        PlayerBase ultTarget = null;
+        List<PlayerBase> ultTargets = GameManager.Instance.Players.FindAll(x =>
+            x != null &&
+            Vector3.Distance(x.transform.position, transform.position) < 500 &&
+            !x.healthController.death &&
+            x.netPlayer != PhotonNetwork.player);
+
+        if (ultTargets.Count == 0)
+            return null;
+
+        ScoreManager.Instance.view.RPC("RPC_AddUltsUsed", PhotonTargets.MasterClient, pb.netPlayer, 1);
+
+        if (ultTargets.Count == 1)
+            ultTarget = ultTargets[0];
+
+        if (ultTarget == null)
+        {
+            float dist = float.MaxValue;
+            foreach (PlayerBase pbb in ultTargets)
+            {
+                float between = Vector3.Distance(pbb.transform.position, transform.position);
+                if (between < dist)
+                {
+                    dist = between;
+                    ultTarget = pbb;
+                }
+            }
+        }
+
+        return ultTarget;
     }
 }

@@ -155,6 +155,12 @@ public class PlayerBase : MonoBehaviour
     }
 
     [PunRPC]
+    public void RPC_ChangePosition(Vector3 pos)
+    {
+        transform.position = pos;
+    }
+
+    [PunRPC]
     public void RPC_UpdateDirection(bool dir)
     {
         playerController.right = dir;
