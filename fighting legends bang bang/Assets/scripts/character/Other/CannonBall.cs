@@ -18,9 +18,14 @@ public class CannonBall : MonoBehaviour
     private int impactDmg = 100;
     private float impactDistance = 10;
 
+    private int bombFallingAudio = 10;
+    private int bombExplodingAudio = 11;
+
     void Awake()
     {
         phoview = GetComponent<PhotonView>();
+        AudioManager.Instance.soundSource.clip = AudioManager.Instance.sounds[bombFallingAudio];
+        AudioManager.Instance.soundSource.Play();
     }
 
     void Update()
@@ -72,5 +77,12 @@ public class CannonBall : MonoBehaviour
         this.fallSpeed = fallspeed;
         this.speedIncr = speedincr;
         this.possibleTargets = targets;
+    }
+
+    void OnDestroy()
+    {
+        AudioManager.Instance.soundSource.Stop();
+        AudioManager.Instance.soundSource.clip = null;
+        PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, bombExplodingAudio);
     }
 }
