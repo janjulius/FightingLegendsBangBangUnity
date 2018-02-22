@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: 2362ca003dace2644a27d54144794ccb
+timeCreated: 1519312633
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: EnkeiN
+    100002: NamiN
+    100004: Pirates3_1_NAMI_01
+    100006: Pirates3_1_NAMI_02
+    100008: Pirates3_1_NAMI_03
+    100010: Pirates3_1_NAMI_04
+    100012: Pirates3_1_NAMI_05
+    100014: Pirates3_1_NAMI_06
+    100016: Pirates3_1_NAMI_07
+    100018: Pirates3_1_NAMI_08
+    100020: Pirates3_1_NAMI_10
+    100022: Pirates3_1_NAMI_11
+    100024: Pirates3_1_NAMI_12
+    100026: Pirates3_1_NAMI_13
+    100028: Pirates3_1_NAMI_14
+    100030: Pirates3_1_NAMI_15
+    100032: Pirates3_1_NAMI_16
+    100034: Pirates3_1_NAMI_17
+    100036: Pirates3_1_NAMI_18
+    100038: Pirates3_1_NAMI_19
+    100040: polygon0
+    100042: polygon1
+    100044: polygon10
+    100046: polygon11
+    100048: polygon12
+    100050: polygon13
+    100052: polygon14
+    100054: polygon15
+    100056: polygon16
+    100058: polygon17
+    100060: polygon18
+    100062: polygon19
+    100064: polygon2
+    100066: polygon20
+    100068: polygon21
+    100070: polygon22
+    100072: polygon23
+    100074: polygon3
+    100076: polygon4
+    100078: polygon5
+    100080: polygon6
+    100082: polygon7
+    100084: polygon8
+    100086: polygon9
+    100088: StgPirates00U
+    100090: //RootNode
+    100092: Suimen
+    400000: EnkeiN
+    400002: NamiN
+    400004: Pirates3_1_NAMI_01
+    400006: Pirates3_1_NAMI_02
+    400008: Pirates3_1_NAMI_03
+    400010: Pirates3_1_NAMI_04
+    400012: Pirates3_1_NAMI_05
+    400014: Pirates3_1_NAMI_06
+    400016: Pirates3_1_NAMI_07
+    400018: Pirates3_1_NAMI_08
+    400020: Pirates3_1_NAMI_10
+    400022: Pirates3_1_NAMI_11
+    400024: Pirates3_1_NAMI_12
+    400026: Pirates3_1_NAMI_13
+    400028: Pirates3_1_NAMI_14
+    400030: Pirates3_1_NAMI_15
+    400032: Pirates3_1_NAMI_16
+    400034: Pirates3_1_NAMI_17
+    400036: Pirates3_1_NAMI_18
+    400038: Pirates3_1_NAMI_19
+    400040: polygon0
+    400042: polygon1
+    400044: polygon10
+    400046: polygon11
+    400048: polygon12
+    400050: polygon13
+    400052: polygon14
+    400054: polygon15
+    400056: polygon16
+    400058: polygon17
+    400060: polygon18
+    400062: polygon19
+    400064: polygon2
+    400066: polygon20
+    400068: polygon21
+    400070: polygon22
+    400072: polygon23
+    400074: polygon3
+    400076: polygon4
+    400078: polygon5
+    400080: polygon6
+    400082: polygon7
+    400084: polygon8
+    400086: polygon9
+    400088: StgPirates00U
+    400090: //RootNode
+    400092: Suimen
+    2100000: Zs_umi03
+    2100002: Zs_sora03
+    2100004: SkyKumori
+    2100006: SkyCOLOR
+    2100008: Namimoyou
+    2100010: Namimoyou_t
+    2100012: nonNamimoyoun
+    4300000: polygon0
+    4300002: polygon1
+    4300004: polygon2
+    4300006: polygon3
+    4300008: polygon4
+    4300010: polygon5
+    4300012: polygon6
+    4300014: polygon7
+    4300016: polygon8
+    4300018: polygon9
+    4300020: polygon10
+    4300022: polygon11
+    4300024: polygon12
+    4300026: polygon13
+    4300028: polygon14
+    4300030: polygon15
+    4300032: polygon16
+    4300034: polygon17
+    4300036: polygon18
+    4300038: polygon19
+    4300040: polygon20
+    4300042: polygon21
+    4300044: polygon22
+    4300046: polygon23
+    9500000: //RootNode
+    13700000: polygon0
+    13700002: polygon1
+    13700004: polygon10
+    13700006: polygon11
+    13700008: polygon12
+    13700010: polygon13
+    13700012: polygon14
+    13700014: polygon15
+    13700016: polygon16
+    13700018: polygon17
+    13700020: polygon18
+    13700022: polygon19
+    13700024: polygon2
+    13700026: polygon20
+    13700028: polygon21
+    13700030: polygon22
+    13700032: polygon23
+    13700034: polygon3
+    13700036: polygon4
+    13700038: polygon5
+    13700040: polygon6
+    13700042: polygon7
+    13700044: polygon8
+    13700046: polygon9
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 8872e562245a2b741b10a37537b83fd4
+timeCreated: 1519312636
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: A_CATAPULT_ARM
+    100002: A_CATAPULT_ARM_base
+    100004: A_CATAPULT_BASE
+    100006: A_CATAPULT_LEVER
+    100008: A_SHIP_CATAPULT_COVER
+    100010: NShadow1
+    100012: NShadow1_1
+    100014: NShadow1_2
+    100016: NShadow1_3
+    100018: NShadow1_4
+    100020: polygon0
+    100022: polygon1
+    100024: polygon10
+    100026: polygon11
+    100028: polygon12
+    100030: polygon2
+    100032: polygon3
+    100034: polygon4
+    100036: polygon5
+    100038: polygon6
+    100040: polygon7
+    100042: polygon8
+    100044: polygon9
+    100046: //RootNode
+    100048: StgPirates00S
+    400000: A_CATAPULT_ARM
+    400002: A_CATAPULT_ARM_base
+    400004: A_CATAPULT_BASE
+    400006: A_CATAPULT_LEVER
+    400008: A_SHIP_CATAPULT_COVER
+    400010: NShadow1
+    400012: NShadow1_1
+    400014: NShadow1_2
+    400016: NShadow1_3
+    400018: NShadow1_4
+    400020: polygon0
+    400022: polygon1
+    400024: polygon10
+    400026: polygon11
+    400028: polygon12
+    400030: polygon2
+    400032: polygon3
+    400034: polygon4
+    400036: polygon5
+    400038: polygon6
+    400040: polygon7
+    400042: polygon8
+    400044: polygon9
+    400046: //RootNode
+    400048: StgPirates00S
+    2100000: Z_kai_main7
+    2100002: Z_kai_main6
+    2100004: MShadow1
+    2100006: Z_kai_main3
+    4300000: polygon0
+    4300002: polygon1
+    4300004: polygon2
+    4300006: polygon3
+    4300008: polygon4
+    4300010: polygon5
+    4300012: polygon6
+    4300014: polygon7
+    4300016: polygon8
+    4300018: polygon9
+    4300020: polygon10
+    4300022: polygon11
+    4300024: polygon12
+    9500000: //RootNode
+    13700000: polygon0
+    13700002: polygon1
+    13700004: polygon10
+    13700006: polygon11
+    13700008: polygon12
+    13700010: polygon2
+    13700012: polygon3
+    13700014: polygon4
+    13700016: polygon5
+    13700018: polygon6
+    13700020: polygon7
+    13700022: polygon8
+    13700024: polygon9
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

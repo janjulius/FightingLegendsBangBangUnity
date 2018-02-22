@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA version="1.5.0" xmlns="http://www.collada.org/2008/03/COLLADASchema">
+	<asset>
+		<contributor>
+			<authoring_tool>BrawlBox</authoring_tool>
+		</contributor>
+		<created>2013-12-20T02:13:44Z</created>
+		<modified>2013-12-20T02:13:44Z</modified>
+		<unit meter="0.01" name="centimeter" />
+		<up_axis>Y_UP</up_axis>
+	</asset>
+	<library_visual_scenes>
+		<visual_scene id="RootNodeID" name="RootNode">
+			<node id="StgPirates00-ID" name="StgPirates00" sid="StgPirates00-ID" type="JOINT">
+				<node id="KaizokuN-ID" name="KaizokuN" sid="KaizokuN-ID" type="JOINT" />
+				<node id="RedN-ID" name="RedN" sid="RedN-ID" type="JOINT">
+					<translate>222.569 0 0</translate>
+				</node>
+				<node id="RotateN-ID" name="RotateN" sid="RotateN-ID" type="JOINT">
+					<node id="TranslateN-ID" name="TranslateN" sid="TranslateN-ID" type="JOINT">
+						<node id="SeaN-ID" name="SeaN" sid="SeaN-ID" type="JOINT" />
+						<node id="TatsumakiSkyN-ID" name="TatsumakiSkyN" sid="TatsumakiSkyN-ID" type="JOINT" />
+					</node>
+				</node>
+				<node id="TScreenN-ID" name="TScreenN" sid="TScreenN-ID" type="JOINT" />
+			</node>
+		</visual_scene>
+	</library_visual_scenes>
+	<scene>
+		<instance_visual_scene url="#RootNodeID" />
+	</scene>
+</COLLADA>
