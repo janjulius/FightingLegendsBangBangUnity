@@ -79,6 +79,8 @@ public class Rocky : Character
             yield break;
         }
 
+        ScoreManager.Instance.view.RPC("RPC_AddUltsUsed", PhotonTargets.MasterClient, pb.netPlayer, 1);
+
         ultTarget.photonViewer.RPC("RPC_ChangePosition", ultTarget.netPlayer, ultTarget.transform.position);
         ultTarget.photonViewer.RPC("RPC_Stun", ultTarget.netPlayer, 100f);
 
@@ -122,8 +124,6 @@ public class Rocky : Character
 
         if (ultTargets.Count == 0)
             return null;
-
-        ScoreManager.Instance.view.RPC("RPC_AddUltsUsed", PhotonTargets.MasterClient, pb.netPlayer, 1);
 
         if (ultTargets.Count == 1)
             ultTarget = ultTargets[0];
