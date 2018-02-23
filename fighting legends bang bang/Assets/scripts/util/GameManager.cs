@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public List<PlayerBase> Players = new List<PlayerBase>();
     public GameObject GameUI;
+    public Camera GameCamera;
     private string[] SceneList;
     internal List<string> Levels = new List<string>();
     public Sprite[] LevelsImage;

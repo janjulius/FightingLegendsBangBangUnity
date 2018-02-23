@@ -61,6 +61,7 @@ public class PlayerNetwork : MonoBehaviour
         {
             ScoreManager.Instance.players.Clear();
             Instantiate(GameManager.Instance.GameUI);
+            Instantiate(GameManager.Instance.GameCamera);
             GetComponent<Game>().LoadInterface();
             playersInGame = 0;
             if (PhotonNetwork.isMasterClient)
