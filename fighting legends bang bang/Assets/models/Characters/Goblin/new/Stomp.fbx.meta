@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: fc23251107f156040a2933df2230bb4c
-timeCreated: 1518813720
+timeCreated: 1519393094
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -64,6 +64,41 @@ ModelImporter:
     100112: mixamorig:Spine1
     100114: mixamorig:Spine2
     100116: //RootNode
+    100118: Goblin_Rookie:Head
+    100120: Goblin_Rookie:HeadTop_End
+    100122: Goblin_Rookie:Hips
+    100124: Goblin_Rookie:Image096A9020_096D0AF0_png
+    100126: Goblin_Rookie:LeftArm
+    100128: Goblin_Rookie:LeftFoot
+    100130: Goblin_Rookie:LeftForeArm
+    100132: Goblin_Rookie:LeftHand
+    100134: Goblin_Rookie:LeftHandIndex1
+    100136: Goblin_Rookie:LeftHandIndex2
+    100138: Goblin_Rookie:LeftHandIndex3
+    100140: Goblin_Rookie:LeftHandIndex4
+    100142: Goblin_Rookie:LeftLeg
+    100144: Goblin_Rookie:LeftShoulder
+    100146: Goblin_Rookie:LeftToe_End
+    100148: Goblin_Rookie:LeftToeBase
+    100150: Goblin_Rookie:LeftUpLeg
+    100152: Goblin_Rookie:Neck
+    100154: Goblin_Rookie:Regroup11
+    100156: Goblin_Rookie:RightArm
+    100158: Goblin_Rookie:RightFoot
+    100160: Goblin_Rookie:RightForeArm
+    100162: Goblin_Rookie:RightHand
+    100164: Goblin_Rookie:RightHandIndex1
+    100166: Goblin_Rookie:RightHandIndex2
+    100168: Goblin_Rookie:RightHandIndex3
+    100170: Goblin_Rookie:RightHandIndex4
+    100172: Goblin_Rookie:RightLeg
+    100174: Goblin_Rookie:RightShoulder
+    100176: Goblin_Rookie:RightToe_End
+    100178: Goblin_Rookie:RightToeBase
+    100180: Goblin_Rookie:RightUpLeg
+    100182: Goblin_Rookie:Spine
+    100184: Goblin_Rookie:Spine1
+    100186: Goblin_Rookie:Spine2
     400000: Mesh
     400002: mixamorig:Head
     400004: mixamorig:HeadTop_End
@@ -123,11 +158,52 @@ ModelImporter:
     400112: mixamorig:Spine1
     400114: mixamorig:Spine2
     400116: //RootNode
+    400118: Goblin_Rookie:Head
+    400120: Goblin_Rookie:HeadTop_End
+    400122: Goblin_Rookie:Hips
+    400124: Goblin_Rookie:Image096A9020_096D0AF0_png
+    400126: Goblin_Rookie:LeftArm
+    400128: Goblin_Rookie:LeftFoot
+    400130: Goblin_Rookie:LeftForeArm
+    400132: Goblin_Rookie:LeftHand
+    400134: Goblin_Rookie:LeftHandIndex1
+    400136: Goblin_Rookie:LeftHandIndex2
+    400138: Goblin_Rookie:LeftHandIndex3
+    400140: Goblin_Rookie:LeftHandIndex4
+    400142: Goblin_Rookie:LeftLeg
+    400144: Goblin_Rookie:LeftShoulder
+    400146: Goblin_Rookie:LeftToe_End
+    400148: Goblin_Rookie:LeftToeBase
+    400150: Goblin_Rookie:LeftUpLeg
+    400152: Goblin_Rookie:Neck
+    400154: Goblin_Rookie:Regroup11
+    400156: Goblin_Rookie:RightArm
+    400158: Goblin_Rookie:RightFoot
+    400160: Goblin_Rookie:RightForeArm
+    400162: Goblin_Rookie:RightHand
+    400164: Goblin_Rookie:RightHandIndex1
+    400166: Goblin_Rookie:RightHandIndex2
+    400168: Goblin_Rookie:RightHandIndex3
+    400170: Goblin_Rookie:RightHandIndex4
+    400172: Goblin_Rookie:RightLeg
+    400174: Goblin_Rookie:RightShoulder
+    400176: Goblin_Rookie:RightToe_End
+    400178: Goblin_Rookie:RightToeBase
+    400180: Goblin_Rookie:RightUpLeg
+    400182: Goblin_Rookie:Spine
+    400184: Goblin_Rookie:Spine1
+    400186: Goblin_Rookie:Spine2
     2100000: lambert3
+    2100002: lambert4
+    2100004: lambert1
     4300000: Mesh
+    4300002: Goblin_Rookie:Image096A9020_096D0AF0_png
+    4300004: Goblin_Rookie:Regroup11
     7400000: mixamo.com
     9500000: //RootNode
     13700000: Mesh
+    13700002: Goblin_Rookie:Image096A9020_096D0AF0_png
+    13700004: Goblin_Rookie:Regroup11
   externalObjects: {}
   materials:
     importMaterials: 1

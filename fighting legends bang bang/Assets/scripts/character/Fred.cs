@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fred : MonoBehaviour {
+public class Fred : Character {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Fred()
+    {
+        name = "Fred";
+        nameAfter = "der Goblin";
+        AttackCooldown = 0.5f;
+        SwingCooldown = 0.1f;
+        BasicAttackDamage = 10;
+        rangeModifier = 1;
+        specialCounterThreshHold = 100;
+    }
 }

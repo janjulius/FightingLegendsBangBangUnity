@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Boomstronk : Character {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Boomstronk()
+    {
+        name = "Boomstronk";
+        nameAfter = "the Treestump";
+        AttackCooldown = 0.5f;
+        SwingCooldown = 0.1f;
+        BasicAttackDamage = 10;
+        rangeModifier = 1;
+        specialCounterThreshHold = 100;
+    }
 }

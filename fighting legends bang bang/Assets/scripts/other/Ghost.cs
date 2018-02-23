@@ -11,7 +11,7 @@ public class Ghost : MonoBehaviour
         PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, ghostAudio);
         var pho = GetComponent<PhotonView>();
         PhotonPlayer p = pho.owner;
-        var col = new Color((float)p.CustomProperties["pColorR"], (float)p.CustomProperties["pColorG"], (float)p.CustomProperties["pColorB"]);
+        var col = new Color((float)p.CustomProperties["pColorR"], (float)p.CustomProperties["pColorG"], (float)p.CustomProperties["pColorB"], 145f);
         GetComponentInChildren<Renderer>().material.color = col;
     }
 }
