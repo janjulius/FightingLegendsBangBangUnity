@@ -9,6 +9,8 @@ public class MainMenuManager : MonoBehaviour
     public Text playerText;
     public InputField input;
 
+    public Transform optionsMenu;
+
     public void Awake()
     {
         string name = PlayerPrefs.GetString("playerName", "");
@@ -40,7 +42,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnClickOptions()
     {
-
+        optionsMenu.SetAsLastSibling();
     }
 
     public void OnClickExit()

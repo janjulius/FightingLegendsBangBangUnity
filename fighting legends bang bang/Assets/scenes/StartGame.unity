@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -315,8 +315,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7809d482997a1144ca288c2bb1f39259, type: 3}
   - {fileID: 8300000, guid: 5f7697ba575df124ca966e2800bb7c7a, type: 3}
   - {fileID: 8300000, guid: 4b1391586b0cbb949b4e3f308d7e1626, type: 3}
-  volumeSound: 0.05
-  volumeMusic: 0.005
+  volumeSound: 0.1
+  volumeMusic: 0.05
 --- !u!82 &1371888476
 AudioSource:
   m_ObjectHideFlags: 0
