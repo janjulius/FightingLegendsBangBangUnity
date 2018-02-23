@@ -14,6 +14,8 @@ public class pingTest : MonoBehaviour
 
     void OnGUI()
     {
+
+
         int w = Screen.width, h = Screen.height;
 
         GUIStyle style = new GUIStyle();

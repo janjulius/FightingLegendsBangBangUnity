@@ -15,6 +15,8 @@ public class PlayerNetwork : MonoBehaviour
     private int playersInGame = 0;
     public ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable();
 
+    public KeyCode[] keyBindings;
+
     private void Awake()
     {
         Instance = this;

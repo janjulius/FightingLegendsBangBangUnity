@@ -7,12 +7,17 @@ public class PlayerControlsKeyBoard : PlayerControls
 
     public override void ControlUpdate()
     {
-        controlsNew.horizontal = Input.GetAxis("Horizontal");
-        controlsNew.vertical = Input.GetAxis("Vertical");
-        controlsNew.attackButton = Input.GetButton("RegularAttack");
-        controlsNew.specialAttackButton = Input.GetButton("SpecialAttack");
-        controlsNew.jumpButton = Input.GetButton("Jump");
-        controlsNew.blockButton = Input.GetButton("Block");
+        float horAxis = (Input.GetKey(PlayerNetwork.Instance.keyBindings[0]) ? -1 : 0) +
+                        (Input.GetKey(PlayerNetwork.Instance.keyBindings[1]) ? 1 : 0);
+        float verAxis = (Input.GetKey(PlayerNetwork.Instance.keyBindings[2]) ? 1 : 0) +
+                        (Input.GetKey(PlayerNetwork.Instance.keyBindings[3]) ? -1 : 0);
+
+        controlsNew.horizontal = horAxis;
+        controlsNew.vertical = verAxis;
+        controlsNew.attackButton = Input.GetKey(PlayerNetwork.Instance.keyBindings[4]);
+        controlsNew.specialAttackButton = Input.GetKey(PlayerNetwork.Instance.keyBindings[5]);
+        controlsNew.jumpButton = Input.GetKey(PlayerNetwork.Instance.keyBindings[7]);
+        controlsNew.blockButton = Input.GetKey(PlayerNetwork.Instance.keyBindings[6]);
 
         base.ControlUpdate();
     }
