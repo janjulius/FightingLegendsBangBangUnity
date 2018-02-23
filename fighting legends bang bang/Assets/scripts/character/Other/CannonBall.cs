@@ -33,11 +33,9 @@ public class CannonBall : MonoBehaviour
         if (!phoview.isMine)
             return;
 
-
-        Debug.Log("Canjnonballl spawned");
+        
         if (gameObject.transform.position.y > targetpos.y)
         {
-            Debug.Log("Falling");
             gameObject.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
             fallSpeed += speedIncr;
         }
