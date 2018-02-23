@@ -5,9 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody body;
-    private float gravity = 35f;
-    private float VerticalVelocityMin = 25f;
-    private float gravityAcceleration = 25f;
+    private float VerticalVelocityMin;
 
     private bool canJump = true;
     private bool sliding = false;
@@ -60,27 +58,19 @@ public class PlayerController : MonoBehaviour
         sliding = CheckSide(Direction.Left) || CheckSide(Direction.Right);
 
 
-        var hor = Mathf.Abs(pb.Keys.Horizontal());
-        if (pb.CanNotMove)
-            hor = 0;
-
-
-        pb.animator.SetBool("IsRunning", hor > 0.1f);
+        pb.animator.SetBool("IsRunning", Mathf.Abs(pb.Keys.Horizontal()) > 0.1f && !pb.CanNotMove);
 
         pb.animator.SetBool("IsGrounded", CheckSide(Direction.Bottom));
-
-        //pb.hollowObject.SetActive(!(body.velocity.y > 0 || pb.Keys.Vertical() < -0.2));
-
 
         pb.CheckWithinArena();
         UpdateFaceDirection();
 
 
-        VerticalVelocityMin = sliding ? gravity / 10 : gravity;
+        VerticalVelocityMin = sliding ? pb.currentCharacter.maxGravity / 13 : pb.currentCharacter.maxGravity;
 
 
         if (VerticalVelocity > -VerticalVelocityMin)
-            VerticalVelocity -= gravityAcceleration * Time.deltaTime;
+            VerticalVelocity -= pb.currentCharacter.gravitySpeed * Time.deltaTime;
         else
             VerticalVelocity = -VerticalVelocityMin;
 

@@ -16,12 +16,14 @@ public abstract class Character : MonoBehaviour
 
     //attack range and speed
     internal float speed = 13f;
+    internal float maxGravity = 45f;
+    internal float gravitySpeed = 35f;
     protected double attackRange;
     protected double attackWidth;
 
     //jumping
     internal int maxJumps = 1;
-    internal float jumpForce = 15f;
+    internal float jumpForce = 20f;
 
     //special attacking
     private int specialCounter;

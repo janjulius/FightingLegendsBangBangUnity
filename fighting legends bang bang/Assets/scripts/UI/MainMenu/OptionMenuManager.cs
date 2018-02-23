@@ -58,14 +58,15 @@ public class OptionMenuManager : MonoBehaviour
         print(PlayerPrefs.GetInt("vfull", 1));
         toggleFullscreen.isOn = PlayerPrefs.GetInt("vfull", 1) == 1;
         toggleVsync.isOn = PlayerPrefs.GetInt("VVsync", 1) == 1;
-        Resolution[] resolutions = Screen.resolutions;
-        resses = resolutions;
-        foreach (Resolution res in resolutions)
+        resses = GetResolutions();
+        foreach (Resolution res in resses)
         {
             string ress = res.width + "x" + res.height;
             print(ress);
             dropdownResses.options.Add(new Dropdown.OptionData(ress));
         }
+        print(resses.Length);
+        print(dropdownResses.options.Count);
         dropdownResses.value = PlayerPrefs.GetInt("vRes", 0);
         OnClickApplyVideoSettings();
 
@@ -107,6 +108,25 @@ public class OptionMenuManager : MonoBehaviour
         QualitySettings.vSyncCount = vsync ? 1 : 0;
     }
 
+    private Resolution[] GetResolutions()
+    {
+        List<Resolution> resolutions = new List<Resolution>();
+
+        int lastWidth = 0;
+        int lastHeight = 0;
+
+        foreach (Resolution res in Screen.resolutions)
+        {
+            if (res.width != lastWidth || res.height != lastHeight)
+            {
+                lastHeight = res.height;
+                lastWidth = res.width;
+                resolutions.Add(res);
+            }
+        }
+
+        return resolutions.ToArray();
+    }
 
     #endregion
 
