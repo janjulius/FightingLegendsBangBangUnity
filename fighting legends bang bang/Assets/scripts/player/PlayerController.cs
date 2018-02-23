@@ -49,6 +49,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     public void PlayerUpdate()
     {
+        if (VerticalVelocity > 0 || pb.Keys.Vertical() < -0.8)
+            gameObject.layer = 11;
+        else if (gameObject.layer == 11)
+            gameObject.layer = 8;
+
+        TrackGrounded();
 
         LerpingKnockBack();
         sliding = CheckSide(Direction.Left) || CheckSide(Direction.Right);
@@ -68,8 +74,6 @@ public class PlayerController : MonoBehaviour
 
         pb.CheckWithinArena();
         UpdateFaceDirection();
-
-        
 
 
         VerticalVelocityMin = sliding ? gravity / 10 : gravity;
@@ -165,7 +169,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateFaceDirection()
     {
-        if(pb.CanNotMove)
+        if (pb.CanNotMove)
             return;
 
         if (pb.Keys.Horizontal() > 0.2 && !right)
@@ -203,9 +207,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!pb.photonViewer.isMine)
             return;
-
-
-        TrackGrounded();
 
         // Calculate how fast we should be moving
         float MoveSpeed = pb.Keys.Horizontal() * pb.currentCharacter.speed;
@@ -281,17 +282,17 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(rayMiddel, out hitMiddel, lenght))
         {
-            if (hitMiddel.transform.gameObject.layer == 9)
+            if (hitMiddel.transform.gameObject.layer == 9 || (hitMiddel.transform.gameObject.layer == 10 && gameObject.layer != 11))
                 obj = hitMiddel.transform.gameObject;
         }
         else if (Physics.Raycast(rayLeft, out hitLeft, lenght))
         {
-            if (hitLeft.transform.gameObject.layer == 9)
+            if (hitLeft.transform.gameObject.layer == 9 || (hitLeft.transform.gameObject.layer == 10 && gameObject.layer != 11))
                 obj = hitLeft.transform.gameObject;
         }
         else if (Physics.Raycast(rayRight, out hitRight, lenght))
         {
-            if (hitRight.transform.gameObject.layer == 9)
+            if (hitRight.transform.gameObject.layer == 9 || (hitRight.transform.gameObject.layer == 10 && gameObject.layer != 11))
                 obj = hitRight.transform.gameObject;
         }
 
