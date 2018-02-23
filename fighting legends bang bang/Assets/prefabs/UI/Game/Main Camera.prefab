@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  boundingBoxPadding: 2
-  speed: 8
+  boundingBoxPadding: 4
+  speed: 3
 --- !u!124 &124078854034441178
 Behaviour:
   m_ObjectHideFlags: 1
