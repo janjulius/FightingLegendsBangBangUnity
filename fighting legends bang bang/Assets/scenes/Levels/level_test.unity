@@ -563,6 +563,21 @@ Prefab:
       propertyPath: instantiationId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
+        type: 2}
+      propertyPath: arenaTopLeft.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
+        type: 2}
+      propertyPath: arenaTopLeft.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
+        type: 2}
+      propertyPath: arenaBottemRight.z
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 806f706847fc91a42a51887c9df53cd8, type: 2}
   m_IsPrefabParent: 0
