@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA version="1.5.0" xmlns="http://www.collada.org/2008/03/COLLADASchema">
+	<asset>
+		<contributor>
+			<authoring_tool>BrawlBox</authoring_tool>
+		</contributor>
+		<created>2013-12-08T00:37:18Z</created>
+		<modified>2013-12-08T00:37:18Z</modified>
+		<unit meter="0.01" name="centimeter" />
+		<up_axis>Y_UP</up_axis>
+	</asset>
+	<library_visual_scenes>
+		<visual_scene id="RootNodeID" name="RootNode">
+			<node id="stagePosition_lion-ID" name="stagePosition_lion" sid="stagePosition_lion-ID" type="JOINT">
+				<node id="CamCntrN-ID" name="CamCntrN" sid="CamCntrN-ID" type="JOINT">
+					<translate>0 -10 0</translate>
+				</node>
+				<node id="CamLimit0N-ID" name="CamLimit0N" sid="CamLimit0N-ID" type="JOINT">
+					<translate>-100 68 0</translate>
+				</node>
+				<node id="CamLimit1N-ID" name="CamLimit1N" sid="CamLimit1N-ID" type="JOINT">
+					<translate>100 -78 0</translate>
+				</node>
+				<node id="Dead0N-ID" name="Dead0N" sid="Dead0N-ID" type="JOINT">
+					<translate>-140 93 0</translate>
+				</node>
+				<node id="Dead1N-ID" name="Dead1N" sid="Dead1N-ID" type="JOINT">
+					<translate>140 -123 0</translate>
+				</node>
+				<node id="Iceclimber0E-ID" name="Iceclimber0E" sid="Iceclimber0E-ID" type="JOINT">
+					<translate>0 -78 0</translate>
+				</node>
+				<node id="Iceclimber0N-ID" name="Iceclimber0N" sid="Iceclimber0N-ID" type="JOINT">
+					<translate>0 -78 0</translate>
+				</node>
+				<node id="Item0E-ID" name="Item0E" sid="Item0E-ID" type="JOINT">
+					<translate>80 55 0</translate>
+				</node>
+				<node id="Item0N-ID" name="Item0N" sid="Item0N-ID" type="JOINT">
+					<translate>-80 55 0</translate>
+				</node>
+				<node id="Item1E-ID" name="Item1E" sid="Item1E-ID" type="JOINT">
+					<translate>80 23 0</translate>
+				</node>
+				<node id="Item1N-ID" name="Item1N" sid="Item1N-ID" type="JOINT">
+					<translate>-80 23 0</translate>
+				</node>
+				<node id="Item2E-ID" name="Item2E" sid="Item2E-ID" type="JOINT">
+					<translate>80 -7 0</translate>
+				</node>
+				<node id="Item2N-ID" name="Item2N" sid="Item2N-ID" type="JOINT">
+					<translate>-80 -7 0</translate>
+				</node>
+				<node id="Item3E-ID" name="Item3E" sid="Item3E-ID" type="JOINT">
+					<translate>80 -31 0</translate>
+				</node>
+				<node id="Item3N-ID" name="Item3N" sid="Item3N-ID" type="JOINT">
+					<translate>-80 -31 0</translate>
+				</node>
+				<node id="Lucario0E-ID" name="Lucario0E" sid="Lucario0E-ID" type="JOINT">
+					<translate>0 40 0</translate>
+				</node>
+				<node id="Lucario0N-ID" name="Lucario0N" sid="Lucario0N-ID" type="JOINT">
+					<translate>0 40 0</translate>
+				</node>
+				<node id="Pikmin0E-ID" name="Pikmin0E" sid="Pikmin0E-ID" type="JOINT">
+					<translate>0 40 0</translate>
+				</node>
+				<node id="Pikmin0N-ID" name="Pikmin0N" sid="Pikmin0N-ID" type="JOINT">
+					<translate>0 40 0</translate>
+				</node>
+				<node id="Player0E-ID" name="Player0E" sid="Player0E-ID" type="JOINT">
+					<translate>-60 -51 0</translate>
+				</node>
+				<node id="Player0N-ID" name="Player0N" sid="Player0N-ID" type="JOINT">
+					<translate>-60 -51 0</translate>
+				</node>
+				<node id="Player1E-ID" name="Player1E" sid="Player1E-ID" type="JOINT">
+					<translate>60 -51 0</translate>
+				</node>
+				<node id="Player1N-ID" name="Player1N" sid="Player1N-ID" type="JOINT">
+					<translate>60 -51 0</translate>
+				</node>
+				<node id="Player2E-ID" name="Player2E" sid="Player2E-ID" type="JOINT">
+					<translate>-20 -51 0</translate>
+				</node>
+				<node id="Player2N-ID" name="Player2N" sid="Player2N-ID" type="JOINT">
+					<translate>-20 -51 0</translate>
+				</node>
+				<node id="Player3E-ID" name="Player3E" sid="Player3E-ID" type="JOINT">
+					<translate>20 -51 0</translate>
+				</node>
+				<node id="Player3N-ID" name="Player3N" sid="Player3N-ID" type="JOINT">
+					<translate>20 -51 0</translate>
+				</node>
+				<node id="PokeTrainer0E-ID" name="PokeTrainer0E" sid="PokeTrainer0E-ID" type="JOINT">
+					<translate>-40 -51 -5</translate>
+				</node>
+				<node id="PokeTrainer0N-ID" name="PokeTrainer0N" sid="PokeTrainer0N-ID" type="JOINT">
+					<translate>-40 -51 -5</translate>
+				</node>
+				<node id="PokeTrainer1E-ID" name="PokeTrainer1E" sid="PokeTrainer1E-ID" type="JOINT">
+					<translate>-15 -51 -5</translate>
+				</node>
+				<node id="PokeTrainer1N-ID" name="PokeTrainer1N" sid="PokeTrainer1N-ID" type="JOINT">
+					<translate>-15 -51 -5</translate>
+				</node>
+				<node id="PokeTrainer2E-ID" name="PokeTrainer2E" sid="PokeTrainer2E-ID" type="JOINT">
+					<translate>15 -51 -5</translate>
+				</node>
+				<node id="PokeTrainer2N-ID" name="PokeTrainer2N" sid="PokeTrainer2N-ID" type="JOINT">
+					<translate>15 -51 -5</translate>
+				</node>
+				<node id="PokeTrainer3E-ID" name="PokeTrainer3E" sid="PokeTrainer3E-ID" type="JOINT">
+					<translate>40 -51 -5</translate>
+				</node>
+				<node id="PokeTrainer3N-ID" name="PokeTrainer3N" sid="PokeTrainer3N-ID" type="JOINT">
+					<translate>40 -51 -5</translate>
+				</node>
+				<node id="Rebirth0E-ID" name="Rebirth0E" sid="Rebirth0E-ID" type="JOINT">
+					<translate>-15 -4 0</translate>
+				</node>
+				<node id="Rebirth0N-ID" name="Rebirth0N" sid="Rebirth0N-ID" type="JOINT">
+					<translate>-15 -4 0</translate>
+				</node>
+				<node id="Rebirth1E-ID" name="Rebirth1E" sid="Rebirth1E-ID" type="JOINT">
+					<translate>15 -4 0</translate>
+				</node>
+				<node id="Rebirth1N-ID" name="Rebirth1N" sid="Rebirth1N-ID" type="JOINT">
+					<translate>15 -4 0</translate>
+				</node>
+				<node id="Rebirth2E-ID" name="Rebirth2E" sid="Rebirth2E-ID" type="JOINT">
+					<translate>-45 -4 0</translate>
+				</node>
+				<node id="Rebirth2N-ID" name="Rebirth2N" sid="Rebirth2N-ID" type="JOINT">
+					<translate>-45 -4 0</translate>
+				</node>
+				<node id="Rebirth3E-ID" name="Rebirth3E" sid="Rebirth3E-ID" type="JOINT">
+					<translate>45 -4 0</translate>
+				</node>
+				<node id="Rebirth3N-ID" name="Rebirth3N" sid="Rebirth3N-ID" type="JOINT">
+					<translate>45 -4 0</translate>
+				</node>
+			</node>
+		</visual_scene>
+	</library_visual_scenes>
+	<scene>
+		<instance_visual_scene url="#RootNodeID" />
+	</scene>
+</COLLADA>

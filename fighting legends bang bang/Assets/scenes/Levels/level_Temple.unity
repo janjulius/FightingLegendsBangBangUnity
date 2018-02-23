@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4124,22 +4124,22 @@ Prefab:
     - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
         type: 2}
       propertyPath: arenaTopLeft.y
-      value: 57.17
+      value: 35.4
       objectReference: {fileID: 0}
     - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
         type: 2}
       propertyPath: arenaTopLeft.z
-      value: -88
+      value: -71
       objectReference: {fileID: 0}
     - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
         type: 2}
       propertyPath: arenaBottemRight.z
-      value: 93.2
+      value: 35.6
       objectReference: {fileID: 0}
     - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
         type: 2}
       propertyPath: arenaBottemRight.y
-      value: -58.5
+      value: -40.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 806f706847fc91a42a51887c9df53cd8, type: 2}

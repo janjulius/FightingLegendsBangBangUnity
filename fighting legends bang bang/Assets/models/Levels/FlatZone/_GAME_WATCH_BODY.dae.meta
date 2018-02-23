@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: d74743a0d3a96134fbc866b01fb3ff7b
+timeCreated: 1519405640
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: _GAME_WATCH_BODY
+    100004: BlackoutCurtain_Screen
+    100006: NShadow1_01
+    100008: polygon0
+    100010: polygon10
+    100012: polygon11
+    100014: polygon12
+    100016: polygon13
+    100018: polygon14
+    100020: polygon15
+    100022: polygon16
+    100024: polygon17
+    100026: polygon18
+    100028: polygon19
+    100030: polygon2
+    100032: polygon20
+    100034: polygon24
+    100036: polygon25
+    100038: polygon27
+    100040: polygon3
+    100042: polygon30
+    100044: polygon4
+    100046: polygon5
+    100048: polygon9
+    100050: Sphere
+    400000: _GAME_WATCH_BODY
+    400002: //RootNode
+    400004: BlackoutCurtain_Screen
+    400006: NShadow1_01
+    400008: polygon0
+    400010: polygon10
+    400012: polygon11
+    400014: polygon12
+    400016: polygon13
+    400018: polygon14
+    400020: polygon15
+    400022: polygon16
+    400024: polygon17
+    400026: polygon18
+    400028: polygon19
+    400030: polygon2
+    400032: polygon20
+    400034: polygon24
+    400036: polygon25
+    400038: polygon27
+    400040: polygon3
+    400042: polygon30
+    400044: polygon4
+    400046: polygon5
+    400048: polygon9
+    400050: Sphere
+    2100000: ACL_ALARM_Button1
+    2100002: Black_Frame
+    2100004: Blackout_Curtain
+    2100006: Screen
+    2100008: Body
+    2100010: Font_SMASH_BROTHERS
+    2100012: black_line
+    2100014: Font_RIGHT
+    2100016: Font_LEFT
+    2100018: Font_TIME
+    2100020: FontGAME_B
+    2100022: Font_GAME_A
+    2100024: Font_ALARM
+    2100026: Font_ACL
+    2100028: Font_WIDE_SCREEN
+    2100030: Font_GAME_WATCH
+    2100032: Button
+    2100034: Iron_Plate
+    2100036: LR_Button
+    2100038: MShadow1
+    2100040: Black_Frame_1
+    4300000: polygon0
+    4300002: polygon2
+    4300004: polygon3
+    4300006: polygon4
+    4300008: polygon5
+    4300010: polygon9
+    4300012: polygon10
+    4300014: polygon11
+    4300016: polygon12
+    4300018: polygon13
+    4300020: polygon14
+    4300022: polygon15
+    4300024: polygon16
+    4300026: polygon17
+    4300028: polygon18
+    4300030: polygon19
+    4300032: polygon20
+    4300034: polygon24
+    4300036: polygon25
+    4300038: polygon27
+    4300040: polygon30
+    9500000: //RootNode
+    13700000: polygon0
+    13700002: polygon10
+    13700004: polygon11
+    13700006: polygon12
+    13700008: polygon13
+    13700010: polygon14
+    13700012: polygon15
+    13700014: polygon16
+    13700016: polygon17
+    13700018: polygon18
+    13700020: polygon19
+    13700022: polygon2
+    13700024: polygon20
+    13700026: polygon24
+    13700028: polygon25
+    13700030: polygon27
+    13700032: polygon3
+    13700034: polygon30
+    13700036: polygon4
+    13700038: polygon5
+    13700040: polygon9
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

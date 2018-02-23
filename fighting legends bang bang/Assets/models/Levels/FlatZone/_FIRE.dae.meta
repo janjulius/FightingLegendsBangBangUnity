@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: bc5f5ee1d024fe04ab7366e46365b41f
+timeCreated: 1519405636
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: _CAT_ACTION_POSITION__01
+    100002: _CAT_ACTION_POSITION__02
+    100004: _CAT_ACTION_POSITION__03
+    100006: _CAT_NOMAL_POSITION__01
+    100008: _CAT_NOMAL_POSITION__02
+    100010: _CAT_NOMAL_POSITION__03
+    100012: _CAT_POSITION
+    100014: _DIVER_POSITION
+    100016: _FIRE
+    100018: //RootNode
+    100020: _FIRE_DIVER_POSITION_01
+    100022: _FIRE_DIVER_POSITION_02
+    100024: _FIRE_POSITION
+    100026: _FIRE_STEP_POSITION__01
+    100028: _FIRE_STEP_POSITION__02
+    100030: _FIRE_STEP_POSITION__03
+    100032: _FIRE_STEP_POSITION__04
+    100034: _FIRE_STEP_POSITION__05
+    100036: _FIRE_STEP_POSITION__06
+    100038: _FIRE_STEP_POSITION__07
+    100040: _FIRE_STEP_POSITION__08
+    100042: _FIRE_STEP_POSITION__09
+    100044: _FIRE_STEP_POSITION__10
+    100046: _FIRE_STEP_POSITION__11
+    100048: _FIRE_STEP_POSITION__12
+    100050: _FIRE_STEP_POSITION__13
+    100052: _FIRE_STEP_POSITION__14
+    100054: _FIRE_STEP_POSITION__15
+    100056: _FIRE_STEP_POSITION__16
+    100058: _FIRE_STEP_POSITION__17
+    100060: _FIRE_STEP_POSITION__18
+    100062: _FIRE_STEP_POSITION__19
+    100064: _FIRE_STEP_POSITION__20
+    100066: _STEP_POSITION
+    100068: Fire_Background_02
+    100070: Fire_Background_03
+    100072: Fire_Background_A
+    100074: Fire_Background_B
+    100076: polygon0
+    100078: polygon1
+    100080: polygon10
+    100082: polygon11
+    100084: polygon14
+    100086: polygon2
+    100088: polygon3
+    100090: polygon4
+    100092: polygon5
+    100094: polygon6
+    100096: polygon7
+    100098: polygon8
+    100100: polygon9
+    400000: _CAT_ACTION_POSITION__01
+    400002: _CAT_ACTION_POSITION__02
+    400004: _CAT_ACTION_POSITION__03
+    400006: _CAT_NOMAL_POSITION__01
+    400008: _CAT_NOMAL_POSITION__02
+    400010: _CAT_NOMAL_POSITION__03
+    400012: _CAT_POSITION
+    400014: _DIVER_POSITION
+    400016: //RootNode
+    400018: _FIRE
+    400020: _FIRE_DIVER_POSITION_01
+    400022: _FIRE_DIVER_POSITION_02
+    400024: _FIRE_POSITION
+    400026: _FIRE_STEP_POSITION__01
+    400028: _FIRE_STEP_POSITION__02
+    400030: _FIRE_STEP_POSITION__03
+    400032: _FIRE_STEP_POSITION__04
+    400034: _FIRE_STEP_POSITION__05
+    400036: _FIRE_STEP_POSITION__06
+    400038: _FIRE_STEP_POSITION__07
+    400040: _FIRE_STEP_POSITION__08
+    400042: _FIRE_STEP_POSITION__09
+    400044: _FIRE_STEP_POSITION__10
+    400046: _FIRE_STEP_POSITION__11
+    400048: _FIRE_STEP_POSITION__12
+    400050: _FIRE_STEP_POSITION__13
+    400052: _FIRE_STEP_POSITION__14
+    400054: _FIRE_STEP_POSITION__15
+    400056: _FIRE_STEP_POSITION__16
+    400058: _FIRE_STEP_POSITION__17
+    400060: _FIRE_STEP_POSITION__18
+    400062: _FIRE_STEP_POSITION__19
+    400064: _FIRE_STEP_POSITION__20
+    400066: _STEP_POSITION
+    400068: Fire_Background_02
+    400070: Fire_Background_03
+    400072: Fire_Background_A
+    400074: Fire_Background_B
+    400076: polygon0
+    400078: polygon1
+    400080: polygon10
+    400082: polygon11
+    400084: polygon14
+    400086: polygon2
+    400088: polygon3
+    400090: polygon4
+    400092: polygon5
+    400094: polygon6
+    400096: polygon7
+    400098: polygon8
+    400100: polygon9
+    2100000: Fire_Buck_Screen
+    2100002: Fire_Red
+    2100004: Black_Cellophane
+    2100006: Fire_Blue
+    2100008: Fire_Brown
+    2100010: Shadow_Fire_Brown
+    2100012: Shadow_Black_Cellophane
+    2100014: Shadow_Fire_Blue
+    2100016: Shadow_Fire_Red
+    4300000: polygon0
+    4300002: polygon1
+    4300004: polygon2
+    4300006: polygon3
+    4300008: polygon4
+    4300010: polygon5
+    4300012: polygon6
+    4300014: polygon7
+    4300016: polygon8
+    4300018: polygon9
+    4300020: polygon10
+    4300022: polygon11
+    4300024: polygon14
+    9500000: //RootNode
+    13700000: polygon0
+    13700002: polygon1
+    13700004: polygon10
+    13700006: polygon11
+    13700008: polygon14
+    13700010: polygon2
+    13700012: polygon3
+    13700014: polygon4
+    13700016: polygon5
+    13700018: polygon6
+    13700020: polygon7
+    13700022: polygon8
+    13700024: polygon9
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

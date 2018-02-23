@@ -55,10 +55,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phoView: {fileID: 0}
   SpawnPoints:
-  - {x: 0, y: 12, z: -19.94}
-  - {x: 0, y: 12, z: -14.45}
-  - {x: 0, y: 12, z: -8.09}
-  - {x: 0, y: 5.32, z: 2.1}
+  - {x: 0, y: 12, z: -20}
+  - {x: 0, y: 12, z: -15}
+  - {x: 0, y: 12, z: -10}
+  - {x: 0, y: 12, z: -5}
+  playerGhost: {fileID: 0}
 --- !u!114 &114472232825080364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -96,5 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c937f52d5541844bd20212ad616c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arenaTopLeft: {x: 0, y: 40, z: -50}
-  arenaBottemRight: {x: 0, y: -10, z: 20}
+  arenaTopLeft: {x: 0, y: 29.63, z: -37.5}
+  arenaBottemRight: {x: 0, y: -5, z: 6.42}

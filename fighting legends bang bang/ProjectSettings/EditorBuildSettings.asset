@@ -32,3 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/Levels/level_PirateShip.unity
     guid: 16c84e36088a6d5499151c948b222a84
+  - enabled: 1
+    path: Assets/scenes/Levels/level_flatzone.unity
+    guid: 9586b29e5befeb3428a6a1d1aa5474e0
+  - enabled: 1
+    path: Assets/scenes/Levels/level_mushroomkingdomii.unity
+    guid: 3dac43ff26fa7754dab1e664580e2d9a

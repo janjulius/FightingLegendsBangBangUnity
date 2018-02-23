@@ -11,7 +11,18 @@ public class TextureOffsetter : MonoBehaviour {
 
     void Start()
     {
-        r = GetComponent<SkinnedMeshRenderer>().materials[0];
+        if (GetComponent<SkinnedMeshRenderer>() != null)
+        {
+            r = GetComponent<SkinnedMeshRenderer>().materials[0];
+        } 
+        else if (GetComponent<MeshRenderer>() != null)
+        {
+            r = GetComponent<MeshRenderer>().materials[0];
+        }
+        else
+        {
+            Debug.LogError("There is no kind of mesh renedere attatched");
+        }
     }
 
     void Update()

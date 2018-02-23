@@ -1,0 +1,170 @@
+fileFormatVersion: 2
+guid: 9bb06e1b390e3c04ca3404c3614f9a70
+timeCreated: 1519405635
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: CamCntrN
+    100002: CamLimit0N
+    100004: CamLimit1N
+    100006: Dead0N
+    100008: Dead1N
+    100010: Iceclimber0E
+    100012: Iceclimber0N
+    100014: Item0E
+    100016: Item0N
+    100018: Item1E
+    100020: Item1N
+    100022: Lucario0E
+    100024: Lucario0N
+    100026: Pikmin0E
+    100028: Pikmin0N
+    100030: Player0E
+    100032: Player0N
+    100034: Player1E
+    100036: Player1N
+    100038: Player2E
+    100040: Player2N
+    100042: Player3E
+    100044: Player3N
+    100046: PokeTrainer0E
+    100048: PokeTrainer0N
+    100050: PokeTrainer1E
+    100052: PokeTrainer1N
+    100054: PokeTrainer2E
+    100056: PokeTrainer2N
+    100058: PokeTrainer3E
+    100060: PokeTrainer3N
+    100062: Rebirth0E
+    100064: Rebirth0N
+    100066: Rebirth1E
+    100068: Rebirth1N
+    100070: Rebirth2E
+    100072: Rebirth2N
+    100074: Rebirth3E
+    100076: Rebirth3N
+    100078: //RootNode
+    100080: stagePosition_chif
+    400000: CamCntrN
+    400002: CamLimit0N
+    400004: CamLimit1N
+    400006: Dead0N
+    400008: Dead1N
+    400010: Iceclimber0E
+    400012: Iceclimber0N
+    400014: Item0E
+    400016: Item0N
+    400018: Item1E
+    400020: Item1N
+    400022: Lucario0E
+    400024: Lucario0N
+    400026: Pikmin0E
+    400028: Pikmin0N
+    400030: Player0E
+    400032: Player0N
+    400034: Player1E
+    400036: Player1N
+    400038: Player2E
+    400040: Player2N
+    400042: Player3E
+    400044: Player3N
+    400046: PokeTrainer0E
+    400048: PokeTrainer0N
+    400050: PokeTrainer1E
+    400052: PokeTrainer1N
+    400054: PokeTrainer2E
+    400056: PokeTrainer2N
+    400058: PokeTrainer3E
+    400060: PokeTrainer3N
+    400062: Rebirth0E
+    400064: Rebirth0N
+    400066: Rebirth1E
+    400068: Rebirth1N
+    400070: Rebirth2E
+    400072: Rebirth2N
+    400074: Rebirth3E
+    400076: Rebirth3N
+    400078: //RootNode
+    400080: stagePosition_chif
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: 9a90b3a719cffa24f872773ac771c1d0
+timeCreated: 1519405635
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: CamCntrN
+    100002: CamLimit0N
+    100004: CamLimit1N
+    100006: Dead0N
+    100008: Dead1N
+    100010: Iceclimber0E
+    100012: Iceclimber0N
+    100014: Item0E
+    100016: Item0N
+    100018: Item1E
+    100020: Item1N
+    100022: Item2E
+    100024: Item2N
+    100026: Item3E
+    100028: Item3N
+    100030: Lucario0E
+    100032: Lucario0N
+    100034: Pikmin0E
+    100036: Pikmin0N
+    100038: Player0E
+    100040: Player0N
+    100042: Player1E
+    100044: Player1N
+    100046: Player2E
+    100048: Player2N
+    100050: Player3E
+    100052: Player3N
+    100054: PokeTrainer0E
+    100056: PokeTrainer0N
+    100058: PokeTrainer1E
+    100060: PokeTrainer1N
+    100062: PokeTrainer2E
+    100064: PokeTrainer2N
+    100066: PokeTrainer3E
+    100068: PokeTrainer3N
+    100070: Rebirth0E
+    100072: Rebirth0N
+    100074: Rebirth1E
+    100076: Rebirth1N
+    100078: Rebirth2E
+    100080: Rebirth2N
+    100082: Rebirth3E
+    100084: Rebirth3N
+    100086: stagePosition_lion
+    100088: //RootNode
+    400000: CamCntrN
+    400002: CamLimit0N
+    400004: CamLimit1N
+    400006: Dead0N
+    400008: Dead1N
+    400010: Iceclimber0E
+    400012: Iceclimber0N
+    400014: Item0E
+    400016: Item0N
+    400018: Item1E
+    400020: Item1N
+    400022: Item2E
+    400024: Item2N
+    400026: Item3E
+    400028: Item3N
+    400030: Lucario0E
+    400032: Lucario0N
+    400034: Pikmin0E
+    400036: Pikmin0N
+    400038: Player0E
+    400040: Player0N
+    400042: Player1E
+    400044: Player1N
+    400046: Player2E
+    400048: Player2N
+    400050: Player3E
+    400052: Player3N
+    400054: PokeTrainer0E
+    400056: PokeTrainer0N
+    400058: PokeTrainer1E
+    400060: PokeTrainer1N
+    400062: PokeTrainer2E
+    400064: PokeTrainer2N
+    400066: PokeTrainer3E
+    400068: PokeTrainer3N
+    400070: Rebirth0E
+    400072: Rebirth0N
+    400074: Rebirth1E
+    400076: Rebirth1N
+    400078: Rebirth2E
+    400080: Rebirth2N
+    400082: Rebirth3E
+    400084: Rebirth3N
+    400086: //RootNode
+    400088: stagePosition_lion
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
