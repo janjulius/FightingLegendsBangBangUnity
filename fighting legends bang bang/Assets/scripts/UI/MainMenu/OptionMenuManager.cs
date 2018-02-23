@@ -47,7 +47,7 @@ public class OptionMenuManager : MonoBehaviour
         musicSound.value = music;
         sfxSound.value = sound;
         AudioManager.Instance.volumeMusic = maxMusic * musicSound.value;
-        AudioManager.Instance.volumeMusic = maxSfx * sfxSound.value;
+        AudioManager.Instance.volumeSound = maxSfx * sfxSound.value;
 
         //keybindings
         pressButtonOverlay.gameObject.SetActive(false);
