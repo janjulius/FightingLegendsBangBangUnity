@@ -152,6 +152,7 @@ MonoBehaviour:
   PlayerName: 
   currentLevel: 0
   photonView: {fileID: 0}
+  keyBindings: 
 --- !u!114 &1371888468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +318,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7809d482997a1144ca288c2bb1f39259, type: 3}
   - {fileID: 8300000, guid: 5f7697ba575df124ca966e2800bb7c7a, type: 3}
   - {fileID: 8300000, guid: 4b1391586b0cbb949b4e3f308d7e1626, type: 3}
+  - {fileID: 8300000, guid: c25ab4c0293113346b1c964647e1287b, type: 3}
   volumeSound: 0.1
   volumeMusic: 0.05
 --- !u!82 &1371888476
