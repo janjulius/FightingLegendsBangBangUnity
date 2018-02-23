@@ -18,7 +18,6 @@ public class PlayerBase : MonoBehaviour
     internal GameObject playerBody;
     internal PhotonView photonViewer;
     internal Vector3 SpawnPoint;
-    public GameObject hollowObject;
 
     internal Color myColor;
     internal bool CanNotMove;
@@ -54,8 +53,6 @@ public class PlayerBase : MonoBehaviour
         PlayerNameObject = Instantiate(PlayerNameObject);
 
         PlayerNameObject.GetComponent<PlayerName>().SetTarget(this, myColor);
-        //hollowObject = Instantiate(hollowObject, transform, false);
-        //hollowObject.transform.localPosition = new Vector3(0, (-GetComponent<CapsuleCollider>().height / 2) - 0.1f, 0);
     }
 
     public void CheckWithinArena()

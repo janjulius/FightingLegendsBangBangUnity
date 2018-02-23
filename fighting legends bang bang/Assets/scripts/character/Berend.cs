@@ -61,7 +61,7 @@ public class Berend : Character
         PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, ultShoutAudio);
 
         speed = 20;
-        jumpForce = 20;
+        jumpForce = 25;
         IsKnockBackImmume = true;
         BasicAttackDamage = 20;
         AttackCooldown = 0.2f;

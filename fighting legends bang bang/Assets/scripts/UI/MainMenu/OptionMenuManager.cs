@@ -12,6 +12,12 @@ public class OptionMenuManager : MonoBehaviour
 
     public Transform pressButtonOverlay;
 
+    [Header("video")]
+    public Toggle toggleFullscreen;
+    public Toggle toggleVsync;
+    public Dropdown dropdownResses;
+    private Resolution[] resses;
+
     //soundOptions
     [Header("sound options")]
     public Slider musicSound;
@@ -41,10 +47,29 @@ public class OptionMenuManager : MonoBehaviour
         musicSound.value = music;
         sfxSound.value = sound;
         AudioManager.Instance.volumeMusic = maxMusic * musicSound.value;
-        AudioManager.Instance.volumeMusic = maxSfx * sfxSound.value;
-        pressButtonOverlay.gameObject.SetActive(false);
+        AudioManager.Instance.volumeSound = maxSfx * sfxSound.value;
 
+        //keybindings
+        pressButtonOverlay.gameObject.SetActive(false);
         SetKeyBindings();
+
+        //video
+        dropdownResses.options.Clear();
+        print(PlayerPrefs.GetInt("vfull", 1));
+        toggleFullscreen.isOn = PlayerPrefs.GetInt("vfull", 1) == 1;
+        toggleVsync.isOn = PlayerPrefs.GetInt("VVsync", 1) == 1;
+        resses = GetResolutions();
+        foreach (Resolution res in resses)
+        {
+            string ress = res.width + "x" + res.height;
+            print(ress);
+            dropdownResses.options.Add(new Dropdown.OptionData(ress));
+        }
+        print(resses.Length);
+        print(dropdownResses.options.Count);
+        dropdownResses.value = PlayerPrefs.GetInt("vRes", 0);
+        OnClickApplyVideoSettings();
+
     }
 
     #region Buttons
@@ -67,6 +92,42 @@ public class OptionMenuManager : MonoBehaviour
     {
         optionsControls.SetAsLastSibling();
     }
+    #endregion
+
+    #region Video
+
+    public void OnClickApplyVideoSettings()
+    {
+        Resolution res = resses[dropdownResses.value];
+        bool full = toggleFullscreen.isOn;
+        bool vsync = toggleVsync.isOn;
+        PlayerPrefs.SetInt("vfull", toggleFullscreen.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("VVsync", toggleVsync.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("vRes", dropdownResses.value);
+        Screen.SetResolution(res.width, res.height, full);
+        QualitySettings.vSyncCount = vsync ? 1 : 0;
+    }
+
+    private Resolution[] GetResolutions()
+    {
+        List<Resolution> resolutions = new List<Resolution>();
+
+        int lastWidth = 0;
+        int lastHeight = 0;
+
+        foreach (Resolution res in Screen.resolutions)
+        {
+            if (res.width != lastWidth || res.height != lastHeight)
+            {
+                lastHeight = res.height;
+                lastWidth = res.width;
+                resolutions.Add(res);
+            }
+        }
+
+        return resolutions.ToArray();
+    }
+
     #endregion
 
     #region sound
@@ -209,4 +270,5 @@ public class OptionMenuManager : MonoBehaviour
     }
 
     #endregion
+
 }
