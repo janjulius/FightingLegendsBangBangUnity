@@ -23,9 +23,6 @@ public class PlayerName : MonoBehaviour
 
  
 
-    /// <summary>
-    /// MonoBehaviour method called on GameObject by Unity during early initialization phase
-    /// </summary>
     void Awake()
     {
 
@@ -33,10 +30,7 @@ public class PlayerName : MonoBehaviour
         PlayerNameText = GetComponent<Text>();
     }
 
-    /// <summary>
-    /// MonoBehaviour method called on GameObject by Unity on every frame.
-    /// update the health slider to reflect the Player's health
-    /// </summary>
+
     void Update()
     {
         // Destroy itself if the target is null, It's a fail safe when Photon is destroying Instances of a Player over the network
@@ -47,10 +41,7 @@ public class PlayerName : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// MonoBehaviour method called after all Update functions have been called. This is useful to order script execution.
-    /// In our case since we are following a moving GameObject, we need to proceed after the player was moved during a particular frame.
-    /// </summary>
+
     void LateUpdate()
     {
 
@@ -65,9 +56,9 @@ public class PlayerName : MonoBehaviour
         if (_targetTransform != null)
         {
             _targetPosition = _targetTransform.position;
-            _targetPosition.y += _characterControllerHeight;
+            _targetPosition.y += (_characterControllerHeight/2)+0.4f;
 
-            this.transform.position = Camera.main.WorldToScreenPoint(_targetPosition) + ScreenOffset;
+            this.transform.position = Camera.main.WorldToScreenPoint(_targetPosition);
         }
     }
 
