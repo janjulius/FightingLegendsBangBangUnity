@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ public class OptionMenuManager : MonoBehaviour
     public Toggle toggleFullscreen;
     public Toggle toggleVsync;
     public Dropdown dropdownResses;
+    public Dropdown dropdownQuality;
     private Resolution[] resses;
 
     //soundOptions
@@ -58,16 +60,17 @@ public class OptionMenuManager : MonoBehaviour
         print(PlayerPrefs.GetInt("vfull", 1));
         toggleFullscreen.isOn = PlayerPrefs.GetInt("vfull", 1) == 1;
         toggleVsync.isOn = PlayerPrefs.GetInt("VVsync", 1) == 1;
+
         resses = GetResolutions();
         foreach (Resolution res in resses)
-        {
-            string ress = res.width + "x" + res.height;
-            print(ress);
-            dropdownResses.options.Add(new Dropdown.OptionData(ress));
-        }
-        print(resses.Length);
-        print(dropdownResses.options.Count);
-        dropdownResses.value = PlayerPrefs.GetInt("vRes", 0);
+            dropdownResses.options.Add(new Dropdown.OptionData(res.width + "x" + res.height));
+        dropdownResses.value = PlayerPrefs.GetInt("vRes", resses.Length - 1);
+
+        var quals = GetQualitySettings();
+        foreach (string qual in quals)
+            dropdownQuality.options.Add(new Dropdown.OptionData(qual));
+        dropdownQuality.value = PlayerPrefs.GetInt("vQual", quals.Length - 1);
+
         OnClickApplyVideoSettings();
 
     }
@@ -101,11 +104,14 @@ public class OptionMenuManager : MonoBehaviour
         Resolution res = resses[dropdownResses.value];
         bool full = toggleFullscreen.isOn;
         bool vsync = toggleVsync.isOn;
+        int qual = dropdownQuality.value;
         PlayerPrefs.SetInt("vfull", toggleFullscreen.isOn ? 1 : 0);
         PlayerPrefs.SetInt("VVsync", toggleVsync.isOn ? 1 : 0);
         PlayerPrefs.SetInt("vRes", dropdownResses.value);
+        PlayerPrefs.SetInt("vQual", qual);
         Screen.SetResolution(res.width, res.height, full);
         QualitySettings.vSyncCount = vsync ? 1 : 0;
+        QualitySettings.SetQualityLevel(qual, true);
     }
 
     private Resolution[] GetResolutions()
@@ -126,6 +132,11 @@ public class OptionMenuManager : MonoBehaviour
         }
 
         return resolutions.ToArray();
+    }
+
+    private string[] GetQualitySettings()
+    {
+        return QualitySettings.names;
     }
 
     #endregion
