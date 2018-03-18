@@ -110,8 +110,9 @@ public class OptionMenuManager : MonoBehaviour
         PlayerPrefs.SetInt("vRes", dropdownResses.value);
         PlayerPrefs.SetInt("vQual", qual);
         Screen.SetResolution(res.width, res.height, full);
-        QualitySettings.vSyncCount = vsync ? 1 : 0;
         QualitySettings.SetQualityLevel(qual, true);
+        QualitySettings.vSyncCount = vsync ? 1 : 0;
+
     }
 
     private Resolution[] GetResolutions()
