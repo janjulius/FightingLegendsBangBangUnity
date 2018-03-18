@@ -35,7 +35,7 @@ public class PlayerNetwork : MonoBehaviour
             {
                 PhotonNetwork.room.IsOpen = true;
                 PhotonNetwork.room.IsVisible = true;
-
+                DiscordController.discord.InRoom();
                 var CRC = MainCanvasManager.Instance.CurrentRoomCanvas;
 
                 MainCanvasManager.Instance.CurrentRoomCanvas.playerNameText.text = PhotonNetwork.player.NickName;
@@ -61,6 +61,7 @@ public class PlayerNetwork : MonoBehaviour
         }
         else if (GameManager.Instance.Levels.Contains(scene.name))
         {
+            DiscordController.discord.InGame();
             ScoreManager.Instance.players.Clear();
             Instantiate(GameManager.Instance.GameUI);
             Instantiate(GameManager.Instance.GameCamera);
@@ -72,6 +73,11 @@ public class PlayerNetwork : MonoBehaviour
                 NonMasterLoadedGame();
         }
 
+    }
+
+    void OnLeftRoom()
+    {
+        DiscordController.discord.InMenus();
     }
 
     private void MasterLoadedGame()

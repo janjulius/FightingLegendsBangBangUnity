@@ -14,7 +14,7 @@ public class MainMenuManager : MonoBehaviour
     public void Awake()
     {
         string name = PlayerPrefs.GetString("playerName", "");
-
+        DiscordController.discord.InMenus();
         input.text = name;
     }
 

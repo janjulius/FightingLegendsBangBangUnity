@@ -12,7 +12,7 @@ public class LobbyCanvas : MonoBehaviour
         print("joining");
         if (PhotonNetwork.JoinRoom(roomName))
         {
-
+            DiscordController.discord.InRoom();
         }
         else
         {
