@@ -118,7 +118,7 @@ public class Health : MonoBehaviour
 
                 if (!isKnockBackImmune)
                 {
-                    pb.AddKnockBack(dir, 10 + this.dmg+this.dmg);
+                    pb.AddKnockBack(dir, 10 + this.dmg);
                 }
             }
             else
