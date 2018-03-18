@@ -42,6 +42,7 @@ public abstract class Character : MonoBehaviour
     private bool stunned;
     private bool invulnerable;
     private bool knockbackImmume;
+    private bool rooted;
     private Vector3 knockBack;
     private double maxGravityVelocity;
     private double gravityVelocity;
@@ -89,7 +90,7 @@ public abstract class Character : MonoBehaviour
     {
         if (!pb.photonViewer.isMine)
             return;
-
+        
         if (attackDelay >= 0)
         {
             attackDelay -= 1 * Time.deltaTime;
