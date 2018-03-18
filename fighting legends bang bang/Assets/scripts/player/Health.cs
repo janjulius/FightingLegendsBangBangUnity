@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
@@ -143,11 +144,14 @@ public class Health : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_Heal(int healAmount)
+    public void RPC_Heal(double healAmount)
     {
-        this.dmg = this.dmg - healAmount;
+        this.dmg = this.dmg - (int)healAmount;
 
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
-        pb.HealParticleSystem.Play();
+        if (pb.HealParticleSystem != null)
+        {
+            pb.HealParticleSystem.Play();
+        }
     }
 }

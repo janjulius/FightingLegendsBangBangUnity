@@ -921,11 +921,12 @@ MonoBehaviour:
     type: 2}
   swingObject: {fileID: 1154622516679632, guid: bbf09a3279f512947837048739e5aa39,
     type: 2}
-  blockObject: {fileID: 1508325045089318, guid: 6a8d7ed18783f444b8028fd78b9e7985,
+  blockObject: {fileID: 1955288847350058, guid: 0e1a2438f6c452e47b08b1924557d155,
     type: 2}
   PlayerNameObject: {fileID: 1055657689792608, guid: 45815f75258d8424099ef74d80cadebb,
     type: 2}
   PlayerHitParticle: {fileID: 100004, guid: ae1fa9866ff2ea448864256202b3f9ee, type: 2}
+  PlayerHealParticle: {fileID: 0}
 --- !u!114 &114497723177001236
 MonoBehaviour:
   m_ObjectHideFlags: 1

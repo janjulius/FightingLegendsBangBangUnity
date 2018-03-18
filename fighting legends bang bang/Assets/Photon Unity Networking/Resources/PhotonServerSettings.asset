@@ -81,4 +81,5 @@ MonoBehaviour:
   - StopMusic
   - RPC_CreateExplosion
   - RPC_Heal
+  - RPC_DoHeal
   DisableAutoOpenWizard: 1

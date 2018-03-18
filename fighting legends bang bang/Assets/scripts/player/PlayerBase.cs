@@ -15,6 +15,7 @@ public class PlayerBase : MonoBehaviour
     public GameObject blockObject;
     public GameObject PlayerNameObject;
     public GameObject PlayerHitParticle;
+    public GameObject PlayerHealParticle;
     internal Animator animator;
     internal GameObject playerBody;
     internal PhotonView photonViewer;
@@ -55,6 +56,13 @@ public class PlayerBase : MonoBehaviour
         blockObject = Instantiate(blockObject, playerBody.transform, false);
         PlayerHitParticle = Instantiate(PlayerHitParticle, playerBody.transform, false);
         HitParticleSystem = PlayerHitParticle.GetComponent<ParticleSystem>();
+
+        if (PlayerHealParticle != null)
+        {
+            PlayerHealParticle = Instantiate(PlayerHealParticle, playerBody.transform, false);
+            HealParticleSystem = PlayerHealParticle.GetComponent<ParticleSystem>();
+        }
+
         PlayerNameObject = Instantiate(PlayerNameObject);
 
         PlayerNameObject.GetComponent<PlayerName>().SetTarget(this, myColor);
@@ -154,6 +162,12 @@ public class PlayerBase : MonoBehaviour
     public void RPC_DoBlock(bool a)
     {
         blockObject.SetActive(a);
+    }
+
+    [PunRPC]
+    public void RPC_DoHeal(bool a)
+    {
+        PlayerHealParticle.SetActive(a);
     }
 
     [PunRPC]
