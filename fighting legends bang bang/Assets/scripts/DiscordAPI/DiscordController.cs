@@ -21,21 +21,21 @@ public class DiscordController : MonoBehaviour
 
     public void InMenus()
     {
-        presence.details = "In Menus";
+        presence.state = "In Menus";
 
         DiscordRpc.UpdatePresence(presence);
     }
 
     public void InRoom()
     {
-        presence.details = "In Room";
+        presence.state = "In Room";
 
         DiscordRpc.UpdatePresence(presence);
     }
 
     public void InGame()
     {
-        presence.details = "In Game";
+        presence.state = "In Game";
 
         DiscordRpc.UpdatePresence(presence);
     }
