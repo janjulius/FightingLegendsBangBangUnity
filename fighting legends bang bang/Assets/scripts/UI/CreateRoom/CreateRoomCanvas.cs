@@ -35,6 +35,7 @@ public class CreateRoomCanvas : MonoBehaviour
         if (PhotonNetwork.CreateRoom(rName, options, TypedLobby.Default))
         {
             print("create room send succesfully: " + rName);
+            DiscordController.discord.InRoom();
         }
         else
         {
