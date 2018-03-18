@@ -114,12 +114,11 @@ public class Health : MonoBehaviour
                 PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, pb.currentCharacter.gotHitAudio);
 
                 ScoreManager.Instance.view.RPC("RPC_AddDamageTaken", PhotonTargets.MasterClient, pb.netPlayer, other, dmg, t);
-                GetComponent<PhotonView>().RPC("RPC_DealDamage", PhotonTargets.Others, dmg);
+                pb.photonViewer.RPC("RPC_DealDamage", PhotonTargets.All, dmg);
 
-                this.dmg = this.dmg + dmg;
                 if (!isKnockBackImmune)
                 {
-                    pb.AddKnockBack(dir, 10 + this.dmg);
+                    pb.AddKnockBack(dir, 10 + this.dmg+this.dmg);
                 }
             }
             else
@@ -128,7 +127,6 @@ public class Health : MonoBehaviour
                 ScoreManager.Instance.view.RPC("RPC_AddDamageBlocked", PhotonTargets.MasterClient, pb.netPlayer, dmg);
             }
         }
-        pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
     }
 
 
@@ -140,5 +138,6 @@ public class Health : MonoBehaviour
         this.dmg = this.dmg + dmg;
 
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
+        pb.HitParticleSystem.Play();
     }
 }

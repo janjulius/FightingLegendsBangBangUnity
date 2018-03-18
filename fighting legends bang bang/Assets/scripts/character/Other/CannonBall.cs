@@ -8,6 +8,7 @@ public class CannonBall : MonoBehaviour
 {
     private Vector3 targetpos;
     public AudioClip audio;
+    public GameObject explosion;
     private List<PlayerBase> possibleTargets;
     private PhotonView phoview;
 
@@ -33,11 +34,11 @@ public class CannonBall : MonoBehaviour
         if (!phoview.isMine)
             return;
 
-        
+
         if (gameObject.transform.position.y > targetpos.y)
         {
             gameObject.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-            fallSpeed += speedIncr;
+            fallSpeed += speedIncr * Time.deltaTime;
         }
 
         if (gameObject.transform.position.y <= targetpos.y)
@@ -81,6 +82,8 @@ public class CannonBall : MonoBehaviour
     {
         AudioManager.Instance.soundSource.Stop();
         AudioManager.Instance.soundSource.clip = null;
+        GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(expl, 1.5f);
         PlayerNetwork.Instance.photonView.RPC("PlaySound", PhotonTargets.All, bombExplodingAudio);
     }
 }
