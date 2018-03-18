@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -139,5 +140,14 @@ public class Health : MonoBehaviour
 
         pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
         pb.HitParticleSystem.Play();
+    }
+
+    [PunRPC]
+    public void RPC_Heal(int healAmount)
+    {
+        this.dmg = this.dmg - healAmount;
+
+        pb.gpc.playerPanels.Find(x => x.photonPlayer == pb.netPlayer).UpdateUI();
+        pb.HealParticleSystem.Play();
     }
 }

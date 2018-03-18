@@ -946,8 +946,7 @@ MonoBehaviour:
     type: 2}
   PlayerNameObject: {fileID: 1055657689792608, guid: 45815f75258d8424099ef74d80cadebb,
     type: 2}
-  PlayerHitParticle: {fileID: 1165206330475346, guid: 89255590ab5a2684a8bb9ef2566291d5,
-    type: 2}
+  PlayerHitParticle: {fileID: 100004, guid: ae1fa9866ff2ea448864256202b3f9ee, type: 2}
 --- !u!114 &114509017591596080
 MonoBehaviour:
   m_ObjectHideFlags: 1

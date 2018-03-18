@@ -25,6 +25,7 @@ public class PlayerBase : MonoBehaviour
     internal bool InMenus;
     internal bool frozen;
     internal ParticleSystem HitParticleSystem;
+    internal ParticleSystem HealParticleSystem;
 
     internal float stunDuration;
 

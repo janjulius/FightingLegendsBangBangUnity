@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boomstronk : Character {
+public class Boomstronk : Character
+{
+    private int totalDamageThisUlt = 0;
 
     public Boomstronk()
     {
@@ -23,6 +26,7 @@ public class Boomstronk : Character {
             if (SpecialReady()) //can acutally use special attack
             {
                 pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, 0);
+                ScoreManager.Instance.view.RPC("RPC_AddUltsUsed", PhotonTargets.MasterClient, pb.netPlayer, 1);
 
                 List<PlayerBase> ultTargets = GameManager.Instance.Players.FindAll(x =>
                     x != null &&
@@ -30,9 +34,27 @@ public class Boomstronk : Character {
                     !x.healthController.death && 
                     x.playerController.CheckSide(PlayerController.Direction.Bottom) &&
                     x.netPlayer != PhotonNetwork.player);
+                
+                foreach (PlayerBase t in ultTargets)
+                {
+                    int dmg = calcDamage(t);
+                    totalDamageThisUlt += dmg;
+                    bool left = t.transform.position.z < transform.position.z;
+                    Vector2 dir = new Vector2(left ? -1 : 1, 1);
+                    t.photonViewer.RPC("RPC_Stun", pb.netPlayer, 10f);
+                    t.photonViewer.RPC("RPC_GotAttacked", t.netPlayer, dmg, dir, 1, PhotonNetwork.player);
+                }
 
-                pb.photonViewer.RPC("RPC_Stun", pb.netPlayer, 1000f);
+
+
             }
         }
+    }
+
+    public int calcDamage(PlayerBase t)
+    {
+        float result = 0;
+
+        return Convert.ToInt32(Mathf.Round(result));
     }
 }
