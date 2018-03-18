@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fred : Character {
-    
-    private float impactDistance = 100;
+public class Fred : Character
+{
+
+    private float impactDistance = 5;
     private int damage = 75;
+    public GameObject UltExplosion;
 
     private int ultSound = 13;
 
@@ -40,11 +42,19 @@ public class Fred : Character {
             }
 
             pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, 0);
+            pb.photonViewer.RPC("RPC_CreateExplosion", PhotonTargets.All);
         }
     }
-    
+
     public Vector2 FindBlastDirection(Vector3 otherpos)
     {
         return new Vector2(otherpos.z < gameObject.transform.position.z ? -1 : 1, 1);
+    }
+
+    [PunRPC]
+    public void RPC_CreateExplosion()
+    {
+        GameObject expl = Instantiate(UltExplosion, transform.position, Quaternion.identity);
+        Destroy(expl, 1.5f);
     }
 }

@@ -1276,6 +1276,8 @@ MonoBehaviour:
   nameBefore: 
   nameAfter: der Goblin
   rangeModifier: 1
+  UltExplosion: {fileID: 1009628991507174, guid: ccf0dc21572f8ba4b92884f0970ed4ba,
+    type: 2}
 --- !u!114 &114804049376146256
 MonoBehaviour:
   m_ObjectHideFlags: 1
