@@ -14,6 +14,7 @@ public class PlayerBase : MonoBehaviour
     public GameObject swingObject;
     public GameObject blockObject;
     public GameObject PlayerNameObject;
+    public GameObject PlayerHitParticle;
     internal Animator animator;
     internal GameObject playerBody;
     internal PhotonView photonViewer;
@@ -23,6 +24,7 @@ public class PlayerBase : MonoBehaviour
     internal bool CanNotMove;
     internal bool InMenus;
     internal bool frozen;
+    internal ParticleSystem HitParticleSystem;
 
     internal float stunDuration;
 
@@ -50,6 +52,8 @@ public class PlayerBase : MonoBehaviour
         attackParticles = Instantiate(attackParticles, playerBody.transform, false);
         swingObject = Instantiate(swingObject, playerBody.transform, false);
         blockObject = Instantiate(blockObject, playerBody.transform, false);
+        PlayerHitParticle = Instantiate(PlayerHitParticle, playerBody.transform, false);
+        HitParticleSystem = PlayerHitParticle.GetComponent<ParticleSystem>();
         PlayerNameObject = Instantiate(PlayerNameObject);
 
         PlayerNameObject.GetComponent<PlayerName>().SetTarget(this, myColor);

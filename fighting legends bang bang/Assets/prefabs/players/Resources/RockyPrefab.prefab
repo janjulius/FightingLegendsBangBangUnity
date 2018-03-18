@@ -1066,7 +1066,7 @@ MonoBehaviour:
     type: 2}
   PlayerNameObject: {fileID: 1055657689792608, guid: 45815f75258d8424099ef74d80cadebb,
     type: 2}
-  hollowObject: {fileID: 1757029547438904, guid: 7606dbf201728a24ebf5ff81cbfc7647,
+  PlayerHitParticle: {fileID: 1165206330475346, guid: 89255590ab5a2684a8bb9ef2566291d5,
     type: 2}
 --- !u!114 &114625013767142938
 MonoBehaviour:
