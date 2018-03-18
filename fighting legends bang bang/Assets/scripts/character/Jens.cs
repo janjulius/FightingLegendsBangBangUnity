@@ -18,7 +18,7 @@ public class Jens : Character
         SwingCooldown = 0.1f;
         BasicAttackDamage = 10;
         rangeModifier = 1.3f;
-        specialCounterThreshHold = 100;
+        specialCounterThreshHold = 0;
         //SpecialCounter = 1000;
     }
     public override void Attack(Vector2 dir)
@@ -34,8 +34,7 @@ public class Jens : Character
             List<PlayerBase> possibleTargets = GameManager.Instance.Players.FindAll(x =>
                 x != null &&
                 Vector3.Distance(x.transform.position, transform.position) < 500 &&
-                !x.healthController.death &&
-                x.netPlayer != PhotonNetwork.player);
+                !x.healthController.death);
 
             if (possibleTargets.Count == 0)
                 return;
@@ -44,12 +43,14 @@ public class Jens : Character
 
             Random r = new Random();
 
+            var levelHeight = AreaManager.Instance.arenaTopLeft.y;
+
             PlayerBase target = possibleTargets[r.Next(0, possibleTargets.Count)];
             Vector3 targetPos = target.gameObject.transform.position;
             PhotonNetwork.Instantiate("Cannonball",
-                    new Vector3(target.gameObject.transform.position.x, target.gameObject.transform.position.y + 20,
+                    new Vector3(target.gameObject.transform.position.x, levelHeight,
                         target.gameObject.transform.position.z), Quaternion.identity, 0)
-                .GetComponent<CannonBall>().Setup(target.gameObject.transform.position, possibleTargets, 50, 100, 7, 10, 0.1f);
+                .GetComponent<CannonBall>().Setup(target.gameObject.transform.position, possibleTargets, 50, 100, 7, 15, 50f);
             pb.photonViewer.RPC("RPC_AddSpecial", PhotonTargets.All, 0);
         }
     }
