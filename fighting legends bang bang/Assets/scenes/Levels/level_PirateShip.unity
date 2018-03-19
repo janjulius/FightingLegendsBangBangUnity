@@ -1570,17 +1570,17 @@ Prefab:
     - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
         type: 2}
       propertyPath: arenaTopLeft.y
-      value: 31.29
+      value: 37.8
       objectReference: {fileID: 0}
     - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
         type: 2}
       propertyPath: arenaTopLeft.z
-      value: -41.9
+      value: -57.4
       objectReference: {fileID: 0}
     - target: {fileID: 114630123723838850, guid: 806f706847fc91a42a51887c9df53cd8,
         type: 2}
       propertyPath: arenaBottemRight.z
-      value: 17.5
+      value: 39.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 806f706847fc91a42a51887c9df53cd8, type: 2}
