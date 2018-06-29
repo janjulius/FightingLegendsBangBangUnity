@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 0a7e982060ebccd4eae8a3a17da179d0
-timeCreated: 1518696317
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -69,6 +67,7 @@ ModelImporter:
     7400000: mixamo.com
     9500000: //RootNode
     13700000: polySurface16
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -88,6 +87,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
