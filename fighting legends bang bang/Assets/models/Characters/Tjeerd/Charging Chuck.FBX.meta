@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 7745fdcbc8b13b846b4f6fa8cda5ac6e
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: AllRoot
+    100002: Bull
+    100004: Bull__BullMat00
+    100006: Bull__BullMat01
+    100008: //RootNode
+    100010: CollarL
+    100012: CollarR
+    100014: ElbowL
+    100016: ElbowR
+    100018: Finger1L
+    100020: Finger1R
+    100022: Finger2L
+    100024: Finger2R
+    100026: FootL
+    100028: FootR
+    100030: Hair
+    100032: HandL
+    100034: HandR
+    100036: Head
+    100038: Helmet
+    100040: Helmet_1
+    100042: Helmet__BullMat01
+    100044: HelmetFace
+    100046: HelmetFace__BullMat00
+    100048: Jaw
+    100050: jointRoot
+    100052: KneeL
+    100054: KneeR
+    100056: LegL
+    100058: LegR
+    100060: Naked
+    100062: Naked__BullMat00
+    100064: nw4f_root
+    100066: Shell
+    100068: ShoulderL
+    100070: ShoulderR
+    100072: Spine1
+    100074: Spine2
+    100076: ThumbL
+    100078: ThumbR
+    100080: ToeL
+    100082: ToeR
+    100084: Tongue
+    100086: UpperLip
+    400000: AllRoot
+    400002: Bull
+    400004: Bull__BullMat00
+    400006: Bull__BullMat01
+    400008: //RootNode
+    400010: CollarL
+    400012: CollarR
+    400014: ElbowL
+    400016: ElbowR
+    400018: Finger1L
+    400020: Finger1R
+    400022: Finger2L
+    400024: Finger2R
+    400026: FootL
+    400028: FootR
+    400030: Hair
+    400032: HandL
+    400034: HandR
+    400036: Head
+    400038: Helmet
+    400040: Helmet_1
+    400042: Helmet__BullMat01
+    400044: HelmetFace
+    400046: HelmetFace__BullMat00
+    400048: Jaw
+    400050: jointRoot
+    400052: KneeL
+    400054: KneeR
+    400056: LegL
+    400058: LegR
+    400060: Naked
+    400062: Naked__BullMat00
+    400064: nw4f_root
+    400066: Shell
+    400068: ShoulderL
+    400070: ShoulderR
+    400072: Spine1
+    400074: Spine2
+    400076: ThumbL
+    400078: ThumbR
+    400080: ToeL
+    400082: ToeR
+    400084: Tongue
+    400086: UpperLip
+    2100000: 'Material #27'
+    2100002: 'Material #32'
+    2100004: 'Material #28'
+    2100006: 'Material #33'
+    2100008: 'Material #34'
+    4300000: Bull__BullMat00
+    4300002: Bull__BullMat01
+    4300004: Helmet__BullMat01
+    4300006: HelmetFace__BullMat00
+    4300008: Naked__BullMat00
+    9500000: //RootNode
+    13700000: Bull__BullMat00
+    13700002: Bull__BullMat01
+    13700004: Helmet__BullMat01
+    13700006: HelmetFace__BullMat00
+    13700008: Naked__BullMat00
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

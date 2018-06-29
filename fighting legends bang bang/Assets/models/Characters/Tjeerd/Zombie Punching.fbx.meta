@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: ac065ef0a88c0604c9b0333e79d74a46
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: AllRoot
+    100002: Bull
+    100004: Bull__BullMat00
+    100006: Bull__BullMat01
+    100008: CollarL
+    100010: CollarR
+    100012: ElbowL
+    100014: ElbowR
+    100016: Finger1L
+    100018: Finger1R
+    100020: Finger2L
+    100022: Finger2R
+    100024: FootL
+    100026: FootR
+    100028: Hair
+    100030: HandL
+    100032: HandR
+    100034: Head
+    100036: Helmet
+    100038: Helmet_1
+    100040: Helmet__BullMat01
+    100042: HelmetFace
+    100044: HelmetFace__BullMat00
+    100046: Jaw
+    100048: jointRoot
+    100050: KneeL
+    100052: KneeR
+    100054: LegL
+    100056: LegR
+    100058: Naked
+    100060: Naked__BullMat00
+    100062: nw4f_root
+    100064: Shell
+    100066: ShoulderL
+    100068: ShoulderR
+    100070: Spine1
+    100072: Spine2
+    100074: ThumbL
+    100076: ThumbR
+    100078: ToeL
+    100080: ToeR
+    100082: Tongue
+    100084: UpperLip
+    100086: //RootNode
+    400000: AllRoot
+    400002: Bull
+    400004: Bull__BullMat00
+    400006: Bull__BullMat01
+    400008: CollarL
+    400010: CollarR
+    400012: ElbowL
+    400014: ElbowR
+    400016: Finger1L
+    400018: Finger1R
+    400020: Finger2L
+    400022: Finger2R
+    400024: FootL
+    400026: FootR
+    400028: Hair
+    400030: HandL
+    400032: HandR
+    400034: Head
+    400036: Helmet
+    400038: Helmet_1
+    400040: Helmet__BullMat01
+    400042: HelmetFace
+    400044: HelmetFace__BullMat00
+    400046: Jaw
+    400048: jointRoot
+    400050: KneeL
+    400052: KneeR
+    400054: LegL
+    400056: LegR
+    400058: Naked
+    400060: Naked__BullMat00
+    400062: nw4f_root
+    400064: Shell
+    400066: ShoulderL
+    400068: ShoulderR
+    400070: Spine1
+    400072: Spine2
+    400074: ThumbL
+    400076: ThumbR
+    400078: ToeL
+    400080: ToeR
+    400082: Tongue
+    400084: UpperLip
+    400086: //RootNode
+    2100000: 'Material #27'
+    2100002: 'Material #32'
+    2100004: 'Material #28'
+    2100006: 'Material #33'
+    2100008: 'Material #34'
+    4300000: Bull__BullMat00
+    4300002: Bull__BullMat01
+    4300004: Helmet__BullMat01
+    4300006: HelmetFace__BullMat00
+    4300008: Naked__BullMat00
+    7400000: Tjeerd Stomp
+    9500000: //RootNode
+    13700000: Bull__BullMat00
+    13700002: Bull__BullMat01
+    13700004: Helmet__BullMat01
+    13700006: HelmetFace__BullMat00
+    13700008: Naked__BullMat00
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Tjeerd Stomp
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
