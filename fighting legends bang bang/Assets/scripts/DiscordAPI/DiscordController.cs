@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 
@@ -22,6 +23,7 @@ public class DiscordController : MonoBehaviour
     public void InMenus()
     {
         presence.state = "In Menus";
+        presence.details = "";
 
         DiscordRpc.UpdatePresence(presence);
     }
@@ -29,13 +31,15 @@ public class DiscordController : MonoBehaviour
     public void InRoom()
     {
         presence.state = "In Room";
+        presence.details = "";
 
         DiscordRpc.UpdatePresence(presence);
     }
 
-    public void InGame()
+    public void InGame(String character)
     {
-        presence.state = "In Game";
+        presence.state = "Playing " + character;
+        presence.details = "In Game";
 
         DiscordRpc.UpdatePresence(presence);
     }
