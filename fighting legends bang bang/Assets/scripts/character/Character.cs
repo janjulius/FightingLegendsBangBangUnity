@@ -47,6 +47,7 @@ public abstract class Character : MonoBehaviour
     private double maxGravityVelocity;
     private double gravityVelocity;
     private int[] touchingWalls = new[] { -1, -1, -1, -1 };
+    private Vector3 shieldoffset = new Vector3(0, 0, 0);
 
     //timer properties
     protected const float blockCooldownTimer = 0.7f; //time for the block to be able to be used again
@@ -84,6 +85,7 @@ public abstract class Character : MonoBehaviour
 
         pb.animator.SetInteger("AttackState", -1);
 
+        DiscordController.discord.InGame(name);
     }
 
     public void Update()
@@ -190,6 +192,11 @@ public abstract class Character : MonoBehaviour
     }
 
     #endregion
+
+    public Vector3 GetShieldOffset()
+    {
+        return shieldoffset;
+    }
 
     public int BasicAttackDamage
     {
