@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class CharacterLayoutGroup : MonoBehaviour
@@ -24,6 +25,11 @@ public class CharacterLayoutGroup : MonoBehaviour
             i++;
         }
 
+    }
+
+    void UpdateToolTip()
+    {
+        //TODO: change to CharacterListing And createtooltip in lobby.unity
     }
 
 }

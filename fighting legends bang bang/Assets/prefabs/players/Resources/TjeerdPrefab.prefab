@@ -751,7 +751,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553736173300098}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -1.011, z: 0}
+  m_LocalPosition: {x: 0, y: -0.543, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4729132812270108}
@@ -1141,7 +1141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662555680598862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.124, z: 0}
   m_LocalScale: {x: 0.230295, y: 0.230295, z: 0.230295}
   m_Children:
   - {fileID: 4633747546834896}
@@ -1286,7 +1286,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225761920833712}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -1.481}
+  m_LocalPosition: {x: 5.078204, y: 5.4009476, z: -7.581835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4199498058343018}
@@ -1385,8 +1385,8 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225761920833712}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 10323a4dcc3cbbd45b6fd5f8f708563b, type: 3}
-  m_Controller: {fileID: 9100000, guid: b1256169e31b2fb44b47bad737cdc088, type: 2}
+  m_Avatar: {fileID: 9000000, guid: a7fa2c56189680f449bdd75c4ed063b5, type: 3}
+  m_Controller: {fileID: 9100000, guid: 6eced172ce075be4dafade601f63149d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1609,8 +1609,8 @@ MonoBehaviour:
   - {fileID: 114900342473105960}
   - {fileID: 114707188954621298}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!136 &136875477570156776
@@ -1622,10 +1622,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 80f643342bc52ff40bd11adf5848cc92, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.87
-  m_Height: 1.62
+  m_Radius: 0.49
+  m_Height: 1.42
   m_Direction: 1
-  m_Center: {x: 0, y: -0.33, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137004951427471240
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
