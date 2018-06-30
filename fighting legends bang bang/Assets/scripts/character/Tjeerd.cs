@@ -19,7 +19,6 @@ public class Tjeerd : Character
         AttackCooldown = 0.5f;
         SwingCooldown = 0.1f;
         BasicAttackDamage = 10;
-        SpecialCounter = 100;
         specialCounterThreshHold = 100;
         rangeModifier = 1;
     }
@@ -69,8 +68,6 @@ public class Tjeerd : Character
         isUlting = true;
         CanJump = false;
         speed = speed * 2;
-
-        print("Tjeerd special");
 
         yield return new WaitForSeconds(2.5f);
 

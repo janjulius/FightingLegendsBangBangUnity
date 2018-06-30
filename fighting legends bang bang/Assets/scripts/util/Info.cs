@@ -44,7 +44,7 @@ public class Info : MonoBehaviour
 
         "",
 
-        "",
+        "Tjeerd can mark enemies for 2.5 seconds by walking on them and being enable to jump for the duration, after this time is over all marked enemies will take damage",
         "",
         ""
     };
