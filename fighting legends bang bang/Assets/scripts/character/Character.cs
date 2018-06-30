@@ -142,7 +142,7 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Attack(Vector2 dir)
     {
-        CapsuleCollider coll = pb.playerController.capsule;
+        CapsuleCollider coll = GetComponent<PlayerController>().capsule;//pb.playerController.capsule;
 
         int punchType = 1;
 

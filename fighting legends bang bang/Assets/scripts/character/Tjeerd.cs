@@ -21,13 +21,9 @@ public class Tjeerd : Character
         AttackCooldown = 0.5f;
         SwingCooldown = 0.1f;
         BasicAttackDamage = 10;
+        SpecialCounter = 100;
         specialCounterThreshHold = 100;
         rangeModifier = 1;
-    }
-
-    public override void Attack(Vector2 dir)
-    {
-        base.Attack(dir);
     }
 
     public void Update()
@@ -67,7 +63,7 @@ public class Tjeerd : Character
     {
         ScoreManager.Instance.view.RPC("RPC_AddUltsUsed", PhotonTargets.MasterClient, pb.netPlayer, 1);
         isUlting = true;
-        CanJump = false;
+        //CanJump = false;
         speed = speed * 2;
         timeChecker = 0;
         yield return new WaitForSeconds(2.5f);
@@ -80,7 +76,7 @@ public class Tjeerd : Character
         }
 
         speed = speed / 2;
-        CanJump = true;
+        //CanJump = true;
         isUlting = false;
         ultTargets.Clear();
     }
