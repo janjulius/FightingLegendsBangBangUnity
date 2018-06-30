@@ -82,4 +82,5 @@ MonoBehaviour:
   - RPC_CreateExplosion
   - RPC_Heal
   - RPC_DoHeal
+  - RPC_MarkEnemy
   DisableAutoOpenWizard: 1

@@ -11,6 +11,8 @@ public class Tjeerd : Character
     private float impactDistance = 2;
     private List<PlayerBase> ultTargets = new List<PlayerBase>();
     private List<PlayerBase> players;
+    public GameObject mark;
+    private float timeChecker;
 
     public Tjeerd()
     {
@@ -33,6 +35,7 @@ public class Tjeerd : Character
         players = GameManager.Instance.Players;
         if (isUlting)
         {
+            timeChecker += Time.deltaTime;
             for (int i = 0; i < players.Count; i++)
             {
                 if (players[i].netPlayer != PhotonNetwork.player
@@ -40,12 +43,10 @@ public class Tjeerd : Character
                     && !ultTargets.Contains(players[i]))
                 {
                     ultTargets.Add(players[i]);
-                    print("added target " + players[i].name);
+                    //players[i].netPlayer.ID
+                    pb.photonViewer.RPC("RPC_MarkEnemy", PhotonTargets.All, 2.5f - timeChecker,
+                        players[i].netPlayer.ID);
                 }
-            }
-            for (int i = 0; i < ultTargets.Count; i++)
-            {
-                //set all targets their position to tjeerds position
             }
         }
     }
@@ -68,7 +69,7 @@ public class Tjeerd : Character
         isUlting = true;
         CanJump = false;
         speed = speed * 2;
-
+        timeChecker = 0;
         yield return new WaitForSeconds(2.5f);
 
         for (int i = 0; i < ultTargets.Count; i++)
@@ -81,5 +82,26 @@ public class Tjeerd : Character
         speed = speed / 2;
         CanJump = true;
         isUlting = false;
+        ultTargets.Clear();
+    }
+
+    [PunRPC]
+    public void RPC_MarkEnemy(float timer, int enemy)
+    {
+        PlayerBase target = null;
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].netPlayer.ID == enemy)
+            {
+                target = players[i];
+                break;
+            }
+        }
+        if (target != null)
+        {
+            GameObject m = Instantiate(mark, target.transform.position, Quaternion.identity);
+            m.transform.parent = target.transform;
+            Destroy(m, timer);
+        }
     }
 }
