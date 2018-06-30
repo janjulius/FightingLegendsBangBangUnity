@@ -61,6 +61,7 @@ public class PlayerNetwork : MonoBehaviour
         }
         else if (GameManager.Instance.Levels.Contains(scene.name))
         {
+            DiscordController.discord.InGame((int)PhotonNetwork.player.CustomProperties["charId"]);
             ScoreManager.Instance.players.Clear();
             Instantiate(GameManager.Instance.GameUI);
             Instantiate(GameManager.Instance.GameCamera);

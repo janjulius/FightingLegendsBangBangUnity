@@ -84,8 +84,6 @@ public abstract class Character : MonoBehaviour
         blockobject.gameObject.SetActive(false);
 
         pb.animator.SetInteger("AttackState", -1);
-
-        DiscordController.discord.InGame(name);
     }
 
     public void Update()
