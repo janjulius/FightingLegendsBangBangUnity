@@ -1,4 +1,5 @@
 ﻿using System;
+using DiscordPresence;
 using UnityEngine;
 
 
@@ -25,6 +26,7 @@ public class DiscordController : MonoBehaviour
         presence.state = "In Menus";
         presence.details = "";
         presence.largeImageKey = "icon_large";
+        presence.startTimestamp = 0;
         DiscordRpc.UpdatePresence(presence);
     }
 
@@ -33,6 +35,7 @@ public class DiscordController : MonoBehaviour
         presence.state = "In Room";
         presence.details = "";
         presence.largeImageKey = "icon_large";
+        presence.startTimestamp = 0;
         DiscordRpc.UpdatePresence(presence);
     }
 
@@ -40,7 +43,8 @@ public class DiscordController : MonoBehaviour
     {
         presence.state = "Playing " + GameManager.Instance.charNames[charid];
         presence.details = "In Game";
-        presence.largeImageKey = "char_"+ GameManager.Instance.charNames[charid].ToLower();
+        presence.largeImageKey = "char_"+ GameManager.Instance.charNames[charid].ToLower().Replace(" ",string.Empty);
+        presence.startTimestamp = DiscordTime.TimeNow();
         DiscordRpc.UpdatePresence(presence);
     }
 
