@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
             return;
 
 
-        if ((CheckSide(Direction.Bottom) || jumpsLeft > 0) && pb.Keys.JumpButtonDown() && !jumping)
+        if ((CheckSide(Direction.Bottom) || jumpsLeft > 0) && pb.Keys.JumpButtonDown() && !jumping && canJump)
         {
             jumping = true;
             pb.animator.SetTrigger("IsJumping");
@@ -292,6 +292,16 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(rayMiddel.origin, rayMiddel.origin + dir * lenght, Color.green);
 
         return obj;
+    }
+
+    public void SetCanJump(bool b)
+    {
+        canJump = b;
+    }
+
+    public bool GetCanJump()
+    {
+        return canJump;
     }
 
 }

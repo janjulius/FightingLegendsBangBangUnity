@@ -251,6 +251,12 @@ public abstract class Character : MonoBehaviour
         set { stunned = value; }
     }
 
+    public bool CanJump
+    {
+        get { return GetComponent<PlayerController>().GetCanJump(); }
+        set { GetComponent<PlayerController>().SetCanJump(value); }
+    }
+
     public bool SpecialReady()
     {
         return specialCounter >= specialCounterThreshHold;
