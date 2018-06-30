@@ -24,7 +24,7 @@ public class DiscordController : MonoBehaviour
     {
         presence.state = "In Menus";
         presence.details = "";
-
+        presence.largeImageKey = "icon_large";
         DiscordRpc.UpdatePresence(presence);
     }
 
@@ -32,15 +32,15 @@ public class DiscordController : MonoBehaviour
     {
         presence.state = "In Room";
         presence.details = "";
-
+        presence.largeImageKey = "icon_large";
         DiscordRpc.UpdatePresence(presence);
     }
 
-    public void InGame(String character)
+    public void InGame(int charid)
     {
-        presence.state = "Playing " + character;
+        presence.state = "Playing " + GameManager.Instance.charNames[charid];
         presence.details = "In Game";
-
+        presence.largeImageKey = "char_"+ GameManager.Instance.charNames[charid].ToLower();
         DiscordRpc.UpdatePresence(presence);
     }
 
