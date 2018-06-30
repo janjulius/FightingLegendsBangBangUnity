@@ -44,6 +44,10 @@ public class Tjeerd : Character
                     print("added target " + players[i].name);
                 }
             }
+            for (int i = 0; i < ultTargets.Count; i++)
+            {
+                //set all targets their position to tjeerds position
+            }
         }
     }
 
@@ -66,12 +70,19 @@ public class Tjeerd : Character
         CanJump = false;
         speed = speed * 2;
 
-
-
         print("Tjeerd special");
 
         yield return new WaitForSeconds(2.5f);
 
+        for (int i = 0; i < ultTargets.Count; i++)
+        {
+            bool left = ultTargets[i].transform.position.z < transform.position.z;
+            Vector2 dir = new Vector2(left ? -1 : 1, 1);
+            ultTargets[i].photonViewer.RPC("RPC_GotAttacked", ultTargets[i].netPlayer, damage, dir, 1, PhotonNetwork.player);
+        }
 
+        speed = speed / 2;
+        CanJump = true;
+        isUlting = false;
     }
 }
