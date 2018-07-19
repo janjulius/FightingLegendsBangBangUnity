@@ -22,7 +22,7 @@ public class CharacterListing : MonoBehaviour
 
     public void OnHover()
     {
-        HoverText.text = GameManager.Instance.charNames[charId] + "\n" +
+        HoverText.text = GameManager.Instance.CharacterData[charId].CharacterName + "\n" +
             GameManager.Instance.GetComponent<Info>().GetCharacterInformation(charId) +"\n"+
                          GameManager.Instance.GetComponent<Info>().GetSpecialAttackInformation(charId);
     }

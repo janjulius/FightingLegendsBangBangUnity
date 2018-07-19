@@ -44,8 +44,8 @@ public class PlayerPanel : MonoBehaviour
 
         damageText.color = Color.Lerp(Color.white, new Color(0.5f, 0, 0), ratio);
 
-        charText.text = GameManager.Instance.charNames[(int)photonPlayer.CustomProperties["charId"]].ToUpper();
-        charImage.sprite = GameManager.Instance.CharacterHeads[(int)photonPlayer.CustomProperties["charId"]];
+        charText.text = GameManager.Instance.CharacterData[(int)photonPlayer.CustomProperties["charId"]].CharacterName.ToUpper();
+        charImage.sprite = GameManager.Instance.CharacterData[(int)photonPlayer.CustomProperties["charId"]].CharacterHead;
 
         foreach (Transform child in LifesContainer.transform)
         {

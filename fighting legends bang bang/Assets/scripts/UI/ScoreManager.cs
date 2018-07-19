@@ -126,7 +126,7 @@ public class ScoreManager : MonoBehaviour
         s.phoPlayer = p;
         s.pb = pb;
         s.Name = p.NickName;
-        s.CharName = GameManager.Instance.charNames[(int)p.CustomProperties["charId"]].ToUpper();
+        s.CharName = GameManager.Instance.CharacterData[(int)p.CustomProperties["charId"]].CharacterName.ToUpper();
         s.color = new Color((float)p.CustomProperties["pColorR"], (float)p.CustomProperties["pColorG"], (float)p.CustomProperties["pColorB"]);
         s.kills = 0;
         s.deaths = 0;
