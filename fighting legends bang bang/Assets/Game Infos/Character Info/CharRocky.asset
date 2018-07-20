@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Rocky
   CharacterHead: {fileID: 21300000, guid: 267bd591d91bec7469c0c816f9d66c3e, type: 3}
-  CharacterPrefab: RockyPrefab
+  CharacterPrefab: Rocky2Prefab
   CharacterDisabled: 0

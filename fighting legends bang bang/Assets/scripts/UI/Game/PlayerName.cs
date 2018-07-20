@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerName : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerName : MonoBehaviour
     private Vector3 ScreenOffset = new Vector3(0f, -30f, 0f);
 
     [Tooltip("UI Text to display Player's Name")]
-    public Text PlayerNameText;
+    public TextMeshProUGUI PlayerNameText;
 
     PlayerBase _target;
 
@@ -21,13 +22,13 @@ public class PlayerName : MonoBehaviour
 
     Vector3 _targetPosition;
 
- 
+
 
     void Awake()
     {
 
         this.GetComponent<Transform>().SetParent(GameObject.FindObjectOfType<Canvas>().GetComponent<Transform>());
-        PlayerNameText = GetComponent<Text>();
+        PlayerNameText = GetComponent<TextMeshProUGUI>();
     }
 
 
@@ -56,7 +57,7 @@ public class PlayerName : MonoBehaviour
         if (_targetTransform != null)
         {
             _targetPosition = _targetTransform.position;
-            _targetPosition.y += (_characterControllerHeight/2)+0.4f;
+            _targetPosition.y += (_characterControllerHeight / 2) + 0.4f;
 
             this.transform.position = Camera.main.WorldToScreenPoint(_targetPosition);
         }
@@ -71,7 +72,6 @@ public class PlayerName : MonoBehaviour
         _targetRenderer = _target.GetComponent<Renderer>();
 
         PlayerNameText.color = c;
-
 
         CapsuleCollider _characterController = _target.GetComponent<CapsuleCollider>();
 
