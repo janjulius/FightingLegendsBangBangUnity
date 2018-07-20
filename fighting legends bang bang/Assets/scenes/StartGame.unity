@@ -229,6 +229,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d84e282c02fe9042965489dbf3b3d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUGMODE: 1
+  DEBUGCHARACTER: 1
+  DEBUGLEVEL: 0
+  DEBUGCHARACTERNAME: kiprok
 --- !u!4 &1371888469
 Transform:
   m_ObjectHideFlags: 0
