@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private bool canJump = true;
     private bool sliding = false;
-    private float jumpsLeft = 1;
+    private int jumpsLeft = 1;
     public CapsuleCollider capsule;
     private Vector3 groundVelocity;
 
@@ -55,12 +55,25 @@ public class PlayerController : MonoBehaviour
         TrackGrounded();
 
         LerpingKnockBack();
-        sliding = CheckSide(Direction.Left) || CheckSide(Direction.Right);
+        sliding = (CheckSide(Direction.Left) || CheckSide(Direction.Right)) && !CheckSide(Direction.Bottom);
+        pb.animator.SetBool("IsSliding", sliding);
 
 
         pb.animator.SetBool("IsRunning", Mathf.Abs(pb.Keys.Horizontal()) > 0.1f && !pb.CanNotMove);
 
         pb.animator.SetBool("IsGrounded", CheckSide(Direction.Bottom));
+
+        pb.animator.SetInteger("JumpsLeft",jumpsLeft);
+
+        var atDir = 0;
+
+        if (pb.Keys.Vertical() > 0.5f)
+            atDir = 2;
+        else if (pb.Keys.Vertical() < -0.5f)
+            atDir = 3;
+        else if (Mathf.Abs(pb.Keys.Horizontal()) > 0.5f)
+            atDir = 1;
+        pb.animator.SetInteger("AttackDirection", atDir);
 
         pb.CheckWithinArena();
         UpdateFaceDirection();
@@ -78,6 +91,12 @@ public class PlayerController : MonoBehaviour
         controlUpdate();
     }
 
+    public void JumpEvent()
+    {
+        jumping = true;
+        pb.animator.SetBool("Jumping", false);
+    }
+
     private void controlUpdate()
     {
         if (pb.CanNotMove)
@@ -86,8 +105,8 @@ public class PlayerController : MonoBehaviour
 
         if ((CheckSide(Direction.Bottom) || jumpsLeft > 0) && pb.Keys.JumpButtonDown() && !jumping && canJump)
         {
-            jumping = true;
-            pb.animator.SetTrigger("IsJumping");
+            pb.animator.SetBool("Jumping", true);
+            pb.animator.SetTrigger("Jumped");
         }
 
         if ((CheckSide(Direction.Bottom) && !jumping && !_jumping) || (VerticalVelocity > 0 && CheckSide(Direction.Top)) || KnockBack.y != 0)
@@ -165,16 +184,14 @@ public class PlayerController : MonoBehaviour
         if (pb.Keys.Horizontal() > 0.2 && !right)
         {
             right = true;
-            pb.photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, true);
-            pb.playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
+
             lookDirection.x = 1;
 
         }
         else if (pb.Keys.Horizontal() < -0.2 && right)
         {
             right = false;
-            pb.photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, false);
-            pb.playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
+
             lookDirection.x = -1;
 
         }
@@ -191,6 +208,36 @@ public class PlayerController : MonoBehaviour
         {
             lookDirection.y = 0;
         }
+
+        if (!sliding)
+        {
+            if (right)
+            {
+                pb.photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, true);
+                pb.playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                pb.photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, false);
+                pb.playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+        }
+        else
+        {
+            if (CheckSide(Direction.Left) && !right)
+            {
+                right = true;
+                pb.photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, true);
+                pb.playerBody.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else if (CheckSide(Direction.Right) && right)
+            {
+                right = false;
+                pb.photonViewer.RPC("RPC_UpdateDirection", PhotonTargets.Others, false);
+                pb.playerBody.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+        }
+
     }
 
     void FixedUpdate()
@@ -201,11 +248,13 @@ public class PlayerController : MonoBehaviour
         // Calculate how fast we should be moving
         float MoveSpeed = pb.Keys.Horizontal() * pb.currentCharacter.speed;
 
+        pb.animator.SetFloat("VerticalVelocity", body.velocity.y);
+
         _jumping = false;
         // Jump
         if (jumping)
         {
-            if (!CheckSide(Direction.Bottom) || (sliding && !CheckSide(Direction.Bottom)))
+            if ((!CheckSide(Direction.Bottom) && !sliding))
                 jumpsLeft--;
             VerticalVelocity = pb.currentCharacter.jumpForce;
 
@@ -213,6 +262,7 @@ public class PlayerController : MonoBehaviour
                 KnockBack.x += 10;
             else if (CheckSide(Direction.Right))
                 KnockBack.x -= 10;
+
             touchingSides[(int)Direction.Bottom] = null;
             jumping = false;
             _jumping = true;
