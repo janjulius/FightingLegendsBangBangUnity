@@ -144,4 +144,9 @@ public class Rocky : Character
 
         return ultTarget;
     }
+
+    public void LandingEvent()
+    {
+        Debug.Log("Landed");
+    }
 }

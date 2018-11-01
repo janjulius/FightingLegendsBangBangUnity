@@ -12,14 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject GameUI;
     public Camera GameCamera;
     private string[] SceneList;
-    internal List<string> Levels = new List<string>();
-    public Sprite[] LevelsImage;
-    [Space(10)]
-    [Header("Character Data")]
-    public Sprite[] CharacterHeads;
-    public string[] charNames;
-    public string[] charPrefabs;
-    public int[] charsNotImplemented;
+
+    public LevelInfo[] LevelData;
+    public CharacterInfo[] CharacterData;
 
 
     private void Awake()
@@ -34,12 +29,6 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             SceneList[i] = System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
-
-            if (SceneList[i].Substring(0, 5) == "level")
-            {
-                print(SceneList[i].Substring(6));
-                Levels.Add(SceneList[i]);
-            }
         }
     }
 

@@ -11,17 +11,18 @@ public class LevelLayoutGroup : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
         int i = 0;
-        foreach (Sprite image in GameManager.Instance.LevelsImage)
+        foreach (var level in GameManager.Instance.LevelData)
         {
 
 
             GameObject obj = Instantiate(levelObj, transform, false);
-            obj.GetComponent<Image>().sprite = image;
+            obj.GetComponent<Image>().sprite = level.LevelImage;
             obj.GetComponent<LevelListing>().lid = i;
 
             i++;
         }
-
+        
     }
 }

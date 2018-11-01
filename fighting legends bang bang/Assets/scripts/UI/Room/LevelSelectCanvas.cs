@@ -14,7 +14,7 @@ public class LevelSelectCanvas : MonoBehaviour
     {
         bool Ready = true;
 
-        int roomid = GameManager.Instance.GetSceneId(GameManager.Instance.Levels[i]);
+        int roomid = GameManager.Instance.GetSceneId(GameManager.Instance.LevelData[i].LevelFileName);
         PlayerNetwork.Instance.currentLevel = roomid;
 
         foreach (PhotonPlayer plr in PhotonNetwork.playerList)

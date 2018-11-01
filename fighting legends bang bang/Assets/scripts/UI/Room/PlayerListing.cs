@@ -49,10 +49,10 @@ public class PlayerListing : MonoBehaviour
             MainCanvasManager.Instance.CurrentRoomCanvas.startButton.SetActive(Ready);
         }
 
-        charImage.sprite = GameManager.Instance.CharacterHeads[(int)photonPlayer.CustomProperties["charId"]];
+        charImage.sprite = GameManager.Instance.CharacterData[(int)photonPlayer.CustomProperties["charId"]].CharacterHead;
         Color c = new Color((float)photonPlayer.CustomProperties["pColorR"], (float)photonPlayer.CustomProperties["pColorG"], (float)photonPlayer.CustomProperties["pColorB"]);
         backGround.color = c;
-        charName.text = GameManager.Instance.charNames[(int)photonPlayer.CustomProperties["charId"]].ToUpper();
+        charName.text = GameManager.Instance.CharacterData[(int)photonPlayer.CustomProperties["charId"]].CharacterName.ToUpper();
     }
 
     public void OnClick()

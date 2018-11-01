@@ -14,15 +14,15 @@ public class CharacterLayoutGroup : MonoBehaviour
     void Start()
     {
         int i = 0;
-        foreach (Sprite head in GameManager.Instance.CharacterHeads)
+        foreach (var character in GameManager.Instance.CharacterData)
         {
             if (i != 0)
             {
                 GameObject obj = Instantiate(charHead, transform, false);
-                obj.GetComponent<Image>().sprite = head;
+                obj.GetComponent<Image>().sprite = character.CharacterHead;
                 obj.GetComponent<CharacterListing>().charId = i;
                 obj.GetComponent<CharacterListing>().HoverText = HoverText;
-                if (GameManager.Instance.charsNotImplemented.Contains(i))
+                if (character.CharacterDisabled)
                 {
                     obj.GetComponent<Button>().interactable = false;
                 }

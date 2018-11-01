@@ -41,9 +41,9 @@ public class DiscordController : MonoBehaviour
 
     public void InGame(int charid)
     {
-        presence.state = "Playing " + GameManager.Instance.charNames[charid];
+        presence.state = "Playing " + GameManager.Instance.CharacterData[charid].CharacterName;
         presence.details = "In Game";
-        presence.largeImageKey = "char_"+ GameManager.Instance.charNames[charid].ToLower().Replace(" ",string.Empty);
+        presence.largeImageKey = "char_"+ GameManager.Instance.CharacterData[charid].CharacterName.ToLower().Replace(" ",string.Empty);
         presence.startTimestamp = DiscordTime.TimeNow();
         DiscordRpc.UpdatePresence(presence);
     }

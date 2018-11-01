@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using ExitGames.Client.Photon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,7 +61,7 @@ public class PlayerNetwork : MonoBehaviour
 
             MainCanvasManager.Instance.lobbyCanvas.roomLayoutGroup.OnReceivedRoomListUpdate();
         }
-        else if (GameManager.Instance.Levels.Contains(scene.name))
+        else if (GameManager.Instance.LevelData.Any(x => x.LevelFileName == scene.name))
         {
             DiscordController.discord.InGame((int)PhotonNetwork.player.CustomProperties["charId"]);
             ScoreManager.Instance.players.Clear();

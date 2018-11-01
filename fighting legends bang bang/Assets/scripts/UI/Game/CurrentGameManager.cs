@@ -32,7 +32,7 @@ public class CurrentGameManager : MonoBehaviour
     public void CreatePlayer(PhotonPlayer p, Vector3 spawn)
     {
 
-        string pre = GameManager.Instance.charPrefabs[(int)p.CustomProperties["charId"]];
+        string pre = GameManager.Instance.CharacterData[(int)p.CustomProperties["charId"]].CharacterPrefab;
         Debug.Log(pre);
 
         GameObject obj = PhotonNetwork.Instantiate(pre, spawn, Quaternion.identity, 0);
